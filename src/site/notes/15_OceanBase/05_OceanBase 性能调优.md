@@ -9,7 +9,7 @@
 #### 1 性能相关工具
 1. 系统工具
 2. 内部表
-	1. [[15_OceanBase/05_OceanBase 性能调优/gv，sql_audit 视图\|gv，sql_audit 视图]]，；
+	1. [[15_OceanBase/05_OceanBase 性能调优/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
 3. 日志
 4. OCP，；
 
