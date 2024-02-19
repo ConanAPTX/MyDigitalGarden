@@ -21,6 +21,13 @@
 [[15_OceanBase/99_内部表介绍/DBA_RECYCLEBIN 表\|DBA_RECYCLEBIN 表]]，；
 [[15_OceanBase/99_内部表介绍/USER_RECYCLEBIN 表\|USER_RECYCLEBIN 表]]，；
 
+1. [[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，*GV$PLAN_CACHE_PLAN_STAT* 视图记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
+	1. 该视图从 V4.0.0 版本开始视图名由 *V\$PLAN_CACHE_PLAN_STAT* 调整为 *V\$OB_PLAN_CACHE_PLAN_STAT*；
+2. [[15_OceanBase/gv, sql_audit 视图123\|gv, sql_audit 视图123]]，；
+3. [[15_OceanBase/99_内部表介绍/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
+4. [[15_OceanBase/99_内部表介绍/gv, sysstat\|gv, sysstat]]，；
+
+
 ### 参考文档
 
 
