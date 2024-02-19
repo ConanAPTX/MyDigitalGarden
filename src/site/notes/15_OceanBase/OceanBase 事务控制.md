@@ -91,14 +91,14 @@ obclient> START TRANSACTION READ ONLY; -- 开启只读事务
 #### 3 语句超时与事务超时  
   
 1. `ob_query_timeout`：用于设置 SQL 最大执行时间，单位是微秒；【推荐使用默认值】  
-	1. 【**GLOBAL，SESSION**】【int】；默认值为 10000000，即 10s，取值范围为: [0, 3216672000000000]；  
+	1. 【*GLOBAL，SESSION*】【int】；默认值为 10000000，即 10s，取值范围为: [0, 3216672000000000]；  
 	2. 若语句执行时间超过此值会给应用返回语句超时的错误，错误码为 -6212，并回滚语句；  
 2. `ob_trx_timeout`：用于设置事务超时（未提交）时间，单位为微秒；【推荐使用默认值】  
-	1. 【**GLOBAL，SESSION**】【int】；默认值为 100000000，即 100s，取值范围为: [NULL]； 
+	1. 【*GLOBAL，SESSION*】【int】；默认值为 100000000，即 100s，取值范围为: [NULL]； 
 	2. 从 V4.0.0 版本开始默认值由 100000000 调整为 86400000000，即 86400s，1天；  
 	3. 事务执行时间超过此值会给应用返回事务超时的错误，错误码为 -6210，此时需要应用发起 ROLLBACK 语句回滚该事务；  
 3. `ob_trx_idle_timeout`：用于设置事务空闲超时时间，即事务中两条语句之间的执行间隔超过该值时超时，单位为微秒；  
-	1. 【**GLOBAL，SESSION**】【int】；默认值为 120000000，即120s，取值范围为: [100000000，+∞]；  
+	1. 【*GLOBAL，SESSION*】【int】；默认值为 120000000，即120s，取值范围为: [100000000，+∞]；  
 	2. 从 V4.0.0 版本开始默认值由 120000000 调整为 86400000000，即 86400s，1天；  
 	3. 表示 Session上一个事务处于的 IDLE 状态的最长时间，即长时间没有 DML 语句或结束该事务，则超过该时间值后，事务会自动回滚，再执行 DML 语句会给应用返回错误码 -6224，应用需要发起 ROLLBACK 语句清理 Session 状态；  
 	4. 根据需要设置，一般保持默认值；  
@@ -127,31 +127,30 @@ ob_trx_idle_timeout：用于设置事务空闲超时时间，即事务中两条�
 SELECT trans_id FROM oceanbase.__all_virtual_trans_stat;  
 /*  
 state 字段标识了事务所处的状态:  
-0，表示事务处于活跃状态，所有修改对其他事务不可见；  
-1，表示事务已经开始提交，目前处于 PREPARE 状态，读取该事务的修改可能会被卡住(取决于版本号)；  
-2，表示事务已经开始提交，且目前处于 COMMIT状态，其他事务可以看到该事务的修改(取决于版本号)；  
-3，表示事务已经回滚，处于 ABORT 状态，其他事务不能看到该事务的修改；  
-4，表示事务已经提交或回滚结束，处于 CLEAR 状态；  
-101，表示单分区事务提交完成，处于 COMMIT 状态，其他事务可以看到该事务的修改；  
-102，表示单分区事务已经回滚，其他事务看不到该事务的修改；  
+	0，表示事务处于活跃状态，所有修改对其他事务不可见；  
+	1，表示事务已经开始提交，目前处于 PREPARE 状态，读取该事务的修改可能会被卡住(取决于版本号)；  
+	2，表示事务已经开始提交，且目前处于 COMMIT状态，其他事务可以看到该事务的修改(取决于版本号)；  
+	3，表示事务已经回滚，处于 ABORT 状态，其他事务不能看到该事务的修改；  
+	4，表示事务已经提交或回滚结束，处于 CLEAR 状态；  
+	101，表示单分区事务提交完成，处于 COMMIT 状态，其他事务可以看到该事务的修改；  
+	102，表示单分区事务已经回滚，其他事务看不到该事务的修改；  
 */  
 ```  
 
 
 #### 5 Savepoint  
-
-**Savepoint** 是 OceanBase 数据库提供的可以由用户定义的一个事务内的执行标记。用户可以通过在事务内定义若干标记并在需要时将事务恢复到指定标记时的状态；[Savepoint](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000356644)，；  
+*Savepoint* 是 OceanBase 数据库提供的可以由用户定义的一个事务内的执行标记。用户可以通过在事务内定义若干标记并在需要时将事务恢复到指定标记时的状态；[Savepoint](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000356644)，；  
 
 例如，当用户在执行过程中在定义了某个 Savepoint 之后执行了一些错误的操作，用户不需要回滚整个事务再重新执行，而是可以通过执行 ROLLBACK TO 命令来将 Savepoint 之后的修改回滚；  
 
 ```sql  
 BEGIN; -- 开启事务  
-INSERT INTO a VALUE(1); -- 插入行 1  
-SAVEPOINT sp1; -- 创建名为 sp1 的 Savepoint  
-INSERT INTO a VALUE(2); -- 插入行 2  
-SAVEPOINT sp2; -- 创建名为 sp2 的 Savepoint  
-ROLLBACK TO sp1; -- 将修改回滚到 sp1  
-INSERT INTO a VALUE(3); -- 插入行 3  
+	INSERT INTO a VALUE(1); -- 插入行 1  
+	SAVEPOINT sp1;          -- 创建名为 sp1 的 Savepoint  
+	INSERT INTO a VALUE(2); -- 插入行 2  
+	SAVEPOINT sp2;          -- 创建名为 sp2 的 Savepoint  
+	ROLLBACK TO sp1;        -- 将修改回滚到 sp1  
+	INSERT INTO a VALUE(3); -- 插入行 3  
 COMMIT; -- 提交事务  
 ```
 
