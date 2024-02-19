@@ -33,9 +33,8 @@ netstat -anp | grep 7000      # 查询端口是否被占用
 需要联系 OceanBase 的技术人员下载安装包；
 
 ```shell
-# 使用 `scp` 命令将 OAT 安装包上传到服务器中
-# 语法：
-	# scp <oat_directory> <oat_server_user>@:<oat_server_ip>   # 其中 `oat_server` 为部署 OAT 的服务器的 IP 地址
+# 使用 scp 命令将 OAT 安装包上传到服务器中
+# 语法：scp <oat_directory> <oat_server_user>@:<oat_server_ip>   # 其中 oat_server 为部署 OAT 的服务器的 IP 地址
 
 ```
 
@@ -43,26 +42,25 @@ netstat -anp | grep 7000      # 查询端口是否被占用
 ##### 2.2 安装并运行
 
 ```shell
-
-mkdir -p /data_dir    # 在服务器创建 `/data_dir` 目录用来保存 OAT 的持久化数据
-	# 在 `/data_dir` 目录被挂载到 OAT 容器后，OAT 会自动创建 `/data_dir/logs`、`/data_dir/images` 和 `/data_dir/db` 目录，
+mkdir -p /data_dir    # 在服务器创建 /data_dir 目录用来保存 OAT 的持久化数据
+	# 在 /data_dir 目录被挂载到 OAT 容器后，OAT 会自动创建 /data_dir/logs、/data_dir/images 和 /data_dir/db 目录，
 	# 分别用于存放 OAT 的系统日志、组件和产品的 Docker 镜像以及 OAT 的数据库文件
 
 docker load -i oat.tar   # 将 OAT 安装包装载为镜像
 
-# 用 `docker images` 命令获取 OAT 镜像的标签
+# 用 docker images 命令获取 OAT 镜像的标签
 oat_image=`docker images | grep oat | awk '{printf $1":"$2"\n"}'`
-	# 说明：当只加载了一个 OAT 安装包时，使用示例命令即可。当加载了多个安装包时，使用 `docker images` 命令查看显示内容，并使用冒号（:）连接前两列的内容；
+	# 说明：当只加载了一个 OAT 安装包时，使用示例命令即可。当加载了多个安装包时，使用 docker images 命令查看显示内容，并使用冒号（:）连接前两列的内容；
 
 
-# 运行 `docker run` 命令，启动 OAT
+# 运行 docker run 命令，启动 OAT
 docker run -d --name oat -v /data_dir:/data -p 7000:7000 --restart on-failure:5 $oat_image
 ```
 
 ##### 2.3 登录验证
 
 ```shell 
-# 在浏览器地址栏输入 `http://<<oat_server_ip>:7000`
+# 在浏览器地址栏输入 http://<<oat_server_ip>:7000
 	# OAT 默认用户名为 admin，默认密码为 aaAA11__。首次登录后您必须修改密码；
 	# 若在浏览器窗口中看到登录界面，表示已经成功安装并启动 OAT；
 ```
