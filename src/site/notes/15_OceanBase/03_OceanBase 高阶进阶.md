@@ -8,11 +8,14 @@
 ### OceanBase 事务
 
 #### 1 事务管理
-1. 事务
+1. `事务`
 	1. [[15_OceanBase/03_OceanBase 高阶进阶/查询 clog 日志大小\|查询 clog 日志大小]]，；
-2. 事务并发和一致性
+2. `事务并发和一致性`
 	1. [[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 事务隔离级别\|OceanBase 事务隔离级别]]，；
 	2. [[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 弱一致性读\|OceanBase 弱一致性读]]，；
+
+
+
 
 
 
