@@ -8,9 +8,19 @@
 ### OceanBase 性能调优
 #### 1 性能相关工具
 1. 系统工具
+	1. Top 通用工具
+	2. CPU 工具
+	3. 内存工具
+	4. 磁盘 I/0 工具
+	5. 网络工具
 2. 内部表
-	1. [[15_OceanBase/05_OceanBase 性能调优/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
+	1. gv$sysstat
+	2. [[15_OceanBase/gv, sql_audit 视图123\|gv, sql_audit 视图123]]，；
+	3. `__all_virtual_trans_stat`
 3. 日志
+	1. slow trans
+	2. tenant dump
+	3. slow query
 4. OCP，；
 
 #### 2 系统调优
@@ -35,7 +45,7 @@
 1. [[15_OceanBase/05_OceanBase 性能调优/Sql 请求执行流程\|Sql 请求执行流程]]，；
 2. Sql 执行计划
 	1. [[15_OceanBase/05_OceanBase 性能调优/EXPLAIN，查看执行计划\|EXPLAIN，查看执行计划]]，；
-	2. [[15_OceanBase/05_OceanBase 性能调优/如何设置和查看 SQL 执行计划\|如何设置和查看 SQL 执行计划]]，查询 sql 实际执行计划 ；
+	2. [[15_OceanBase/05_OceanBase 性能调优/查看 SQL 执行的物理执行计划\|查看 SQL 执行的物理执行计划]]，查询 sql 实际执行计划 ；
 	3. 
 3. 分布式执行计划
 4. Sql 优化
