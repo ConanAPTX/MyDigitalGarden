@@ -285,11 +285,11 @@ OceanBase 配项项详情：[系统配置项总览_V3.2.3](https://www.oceanbase
 4. `backup_dest`：用于设置基线备份和日志归档的路径；
 	1. 【*集群级*】【字符串类型】；默认值为：空字符串；动态生效；
 	2. 注意事项：备份进行过程中不可修改 backup_dest 配置项；
-5. `backup_dest_option`：用于控制备份相关的参数；
-	1. 【*集群级*】【字符串类型】；该配置项默认值为：空字符串；动态生效；详细情况：[backup_dest_option_V3.2.4](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000944930)，；
+5. `backup_dest_option`：用于控制备份相关的参数；*该配置项在 2.2.77 版本中新增*；
+	1. 【*集群级*】【字符串类型】；该配置项默认值为：空字符串；动态生效；详细情况：[backup_dest_option_V3.2.4](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000944930)，；该配置项在 2.2.77 版本中新增； 
 6. `backup_backup_dest`：用于设置备份数据备份的目的端；
 	1. 【*集群级*】【字符串类型】；默认值为：空字符串；动态生效；
-7. `backup_backup_dest_option`：用于控制备份备份相关的参数；
+7. `backup_backup_dest_option`：用于控制备份备份相关的参数；*该配置项在 2.2.77 版本中新增*； 
 	1. 【*集群级*】【字符串类型】；该配置项默认值为：空字符串；动态生效；详细情况：
 8. `enable_log_archive`：用于设置是否开启日志归档功能；
 	1. 【*集群级*】【布尔类型】；取值范围为：[True, False]，默认值为 False；动态生效；
