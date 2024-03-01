@@ -19,13 +19,13 @@
 >3. 必须保证所有 OBServer 都挂载了同一个服务器的 NFS。同时，为保证备份的顺利进行，务必使用本文档中推荐的参数挂载 NFS。挂载 NFS 具体操作请参见 [部署 NFS 客户端](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000944110)。
 >4. 设置备份目的端并开启备份后，备份文件通常存放在以集群名命名的目录中，同一备份目的端可以存放不同集群的备份文件。如果在设置目的端时，备份目的端所在的目录中出现了与当前集群名相同的目录，则要求该目录（以集群名命名的目录）为空；
 
-
 ```sql
 -- 使用 `root` 用户登录数据库的 `sys` 租户
 
 -- 设置备份目的端
 obclient> ALTER SYSTEM SET backup_dest='file:///data/nfs/backup';
 ```
+
 
 ##### 1.2 阿里云 OSS
 当使用 OSS 作为备份目的端时，除了设置备份目的端，您还可以通过 `delete_mode` 参数来配置备份文件的清理模式。
@@ -46,7 +46,6 @@ obclient> ALTER SYSTEM SET backup_dest='oss://oceanbase-test-bucket/backup/?host
 > [!NOTE] 注意：
 > 1.  `backup_dest` 设置完成且发起过备份后，将无法再修改 `delete_mode` 参数的值；
 > 2. 禁止单独开启 OSS 的备份自动过期功能，必须配合OceanBase 数据库的 `delete_mode` 参数使用；
-
 
 
 ##### 1.3 腾讯云 COS
@@ -72,7 +71,6 @@ obclient> ALTER SYSTEM SET backup_dest='obs//oceanbase-test-appid/backup?host=ob
 ```
 
 
-
 #### 2 配置备份参数
 ```sql
 -- 使用 `root` 用户登录数据库的 `sys` 租户
@@ -94,7 +92,6 @@ ALTER SYSTEM SET backup_dest_option='log_archive_checkpoint_interval=2m&log_arch
 		6. `backup_copies` 参数：
 			1. 该参数用于指定一个备份级的冗余度，其默认值为 0；
 	4. 详细情况请查看：[backup_dest_option](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000944930)，；
-
 
 
 ###  参考文档：
