@@ -5,12 +5,12 @@
 ---
 
 
-#### 前提条件
+#### 1 前提条件
 必须完成备份前准备，[[15_OceanBase/04_OceanBase 高可用和容灾/备份恢复管理/OB 备份前准备\|OB 备份前准备]]；
 
-#### 1. 操作步骤
+#### 2 操作步骤
 
-##### 1. 配置备份模式，并开启归档日志压缩功能
+##### 2.1 配置备份模式，并开启归档日志压缩功能
 该步骤为可选步骤，使用默认也是可以的；
 
 备份模式目前支持 Optional 模式和 Mandatory 模式，如果不配置，默认为 Optional 模式：
@@ -31,7 +31,6 @@ obclient> ALTER SYSTEM SET backup_log_archive_option='optional compression= zstd
 obclient> ALTER SYSTEM SET backup_log_archive_option='optional compression= lz4_1.0';
 ```
 
-
 `配置后，如果需要关闭日志归档压缩:`
 ```sql
 -- 对于当前备份模式为 Optional 模式的场景
@@ -42,62 +41,40 @@ ALTER SYSTEM SET backup_log_archive_option = 'mandatory compression= disable'; -
 ALTER SYSTEM SET backup_log_archive_option = 'optional compression= disable'; --命令配置备份模式并关闭归档日志压缩
 ```
 
-##### 2. 启动日志备份
-为了减少日志备份发起的耗时，建议在开启日志备份前进行一次转储，待转储完成后再备份。这是因为日志备份的起始位点是最近一次转储位点，转储以后可以减少日志备份启动的时间；
-```sql
--- 使用 `root` 用户登录数据库的 `sys` 租户
-obclient> ALTER SYSTEM ARCHIVELOG;
-
-```
-启动成功后，OceanBase 数据库会自动将集群产生的事务日志定期备份到之前指定的备份目的地；
-
-
-##### 3. 确认日志备份任务是否已开始
-
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/04-ocean-base///#" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
-
-
-
-
-
-### 查询数据备份进度及备份任务历史
-#### 1 查询数据备份进度以及备份任务历史
+##### 2.2 启动日志备份
+为了减少日志备份发起的耗时，建议在开启日志备份前进行一次转储，待转储完成后再备份。这是因为日志备份的起始位点是最近一次转储位点，转储以后可以减少日志备份启动的时间；启动成功后，OceanBase 数据库会自动将集群产生的事务日志定期备份到之前指定的备份目的地；
 
 ```sql
--- 查看备份进度，即查询正在备份的任务(使用 root 用户登录数据库的 sys 租户)
-SELECT * FROM oceanbase.CDB_OB_BACKUP_PROGRESS;
+-- 1.使用 `root` 用户登录数据库的 `sys` 租户
 
--- 查看备份历史(使用 root 用户登录数据库的 sys 租户)
-SELECT * FROM oceanbase.CDB_OB_BACKUP_SET_DETAILS;
+-- 2.启动，停止日志备份
+obclient> SHOW PARAMETERS LIKE '%backup_dest%';    -- 查询日志备份相关配置项
+obclient> alter system minor freeze;               -- 转储数据，建议在开启日志备份前进行一次转储，待转储完成后再备份；
+obclient> ALTER SYSTEM ARCHIVELOG;                 -- 启动日志备份（若日志备份中断后，重新启动失败，可以先停止再启动）
+	-- 若日志备份中断后，重新启动后，建议最后马上重新进行一次全量备份，因为中断后重新启动会导致之前的备份不可用；
+obclient> ALTER SYSTEM NOARCHIVELOG;               -- 停止日志备份任务(使用 root 用户登录数据库的 sys 租户) 
 ```
-更多 `CDB_OB_BACKUP_PROGRESS` 视图的说明，请参见 [CDB_OB_BACKUP_PROGRESS](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000945440) ，；
-更多 `CDB_OB_BACKUP_SET_DETAILS` 视图的说明，请参见  [CDB_OB_BACKUP_SET_DETAILS](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000945439)，；
 
+##### 2.3 确认日志备份任务是否已开始
 
-#### 2 通过视图查看日志的备份进度
 ```sql
 -- 查看日志的备份进度(使用 root 用户登录数据库的 sys 租户)
 SELECT * FROM oceanbase.CDB_OB_BACKUP_ARCHIVELOG;
-SELECT * FROM oceanbase.CDB_OB_BACKUP_ARCHIVELOG;
 /*
-当 `STATUS`为 `DOING`时，则表示日志备份任务已开始;
+	当 `STATUS`为 `DOING`时，则表示日志备份任务已开始;
+*/
+
+-- 确认日志备份任务是否已开始
+SELECT * FROM oceanbase.CDB_OB_BACKUP_ARCHIVELOG_SUMMARY;  -- 查看当前日志归档状态信息
+/*
+	log_archive_status: 日志归档状态的种类，主要有：STOP: 没有日志归档备份；BEGINNING: 正在启动日志归档备份；DOING: 正在日志归档备份；
+		STOPPING: 停止日志归档备份；INTERRUPTED: 日志归档备份断流了；
 */
 ```
 更多 `CDB_OB_BACKUP_ARCHIVELOG` 视图的说明，请参见 [CDB_OB_BACKUP_ARCHIVELOG](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000945458)，；
+除了通过 SQl 语句查询，也可通过 OCP 查询，详细情况：[查看备份进度](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355896)，；
 
-
-#### 3 通过 OCP 查看备份进度
-详细情况：[查看备份进度](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355896)，；
-
-### 参考文档
-1. [查看备份进度](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355896)，；
-
-
-</div></div>
-
-
-
-##### 4.查看备份集中 Piece 的状态
+##### 2.4 4.查看备份集中 Piece 的状态
 ```sql
 obclient> SELECT * FROM CDB_OB_BACKUP_PIECE_FILES;
 ```
@@ -105,3 +82,4 @@ obclient> SELECT * FROM CDB_OB_BACKUP_PIECE_FILES;
 
 
 ### 参考文档：
+1. [查看备份进度](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355896)，；
