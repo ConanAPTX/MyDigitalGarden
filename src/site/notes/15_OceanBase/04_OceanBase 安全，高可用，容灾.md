@@ -10,7 +10,6 @@
 ##### 1.1 OceanBase 数据库 MySql 租户
 1. [[15_OceanBase/04_OceanBase 高可用和容灾/OceanBase 数据库 MySQL 模式下的权限分类\|OceanBase 数据库 MySQL 模式下的权限分类]]，；
 2. [[15_OceanBase/04_OceanBase 高可用和容灾/MySql 租户_用户和权限管理\|MySql 租户_用户和权限管理]]，；
-3. 
 
 ##### 1.2 OceanBase 数据库 Oracle 租户
 4. [[15_OceanBase/04_OceanBase 高可用和容灾/Oracle 模式下的权限分类\|Oracle 模式下的权限分类]]，；
