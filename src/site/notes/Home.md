@@ -12,7 +12,7 @@
 3. [[15_OceanBase/03_OceanBase 高阶进阶\|03_OceanBase 高阶进阶]]，；
 4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾\|04_OceanBase 安全，高可用，容灾]]，；
 5. [[15_OceanBase/05_OceanBase 性能调优\|05_OceanBase 性能调优]]，；
-6. [[15_OceanBase/06_数据迁移\|06_数据迁移]]，；
+6. [[15_OceanBase/06_OceanBase 数据迁移\|06_OceanBase 数据迁移]]，；
 7. [[15_OceanBase/99_OceanBase 内部表介绍\|99_OceanBase 内部表介绍]]，；
 
 
