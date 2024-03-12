@@ -7,7 +7,7 @@
 
 ### 管理索引_Oracle 租户
 #### 1 查看索引  
-可以通过系统视图来查看索引，查看索引的视图包括 [USER_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508842)，[ALL_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508915),[DBA_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508887)，`ALL_IND_COLUMNS`、`DBA_IND_COLUMNS` 和 `USER_IND_COLUMNS`；  
+可以通过系统视图来查看索引，查看索引的视图包括 [USER_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508842)，[ALL_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508915),[DBA_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508887)，[ALL_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508881)，[USER_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000508821)，[DBA_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000509035) ，；  
 
 ```sql
 -- 1.
