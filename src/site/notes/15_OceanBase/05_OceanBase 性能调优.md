@@ -15,7 +15,7 @@
 	5. 网络工具
 2. 内部表
 	1. gv$sysstat
-	2. [[15_OceanBase/gv, sql_audit 视图123\|gv, sql_audit 视图123]]，；
+	2. [[15_OceanBase/99_内部表介绍/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
 	3. `__all_virtual_trans_stat`
 3. 日志
 	1. slow trans
@@ -25,16 +25,15 @@
 
 #### 2 系统调优
 1. 操作系统参数调优
-2. 数据库参数调优
-3. OBProxy 参数调优
+2. OceanBase 数据库参数调优
+	1. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/OB 配置管理/OceanBase 管理配置项，租户变量\|OceanBase 管理配置项，租户变量]]，；
+	2. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/OB 配置管理/OceanBase 配置项，变量详细介绍\|OceanBase 配置项，变量详细介绍]]，；
+4. OBProxy 参数调优
 { #9c71b0}
 
 	1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 配置参数设置，及调优\|OBProxy 配置参数设置，及调优]]，；
 	2. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 配置参数详细介绍\|OBProxy 配置参数详细介绍]]，；
 
-
-
-[[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/OB 配置管理/OceanBase 配置项，变量详细介绍\|OceanBase 配置项，变量详细介绍]]，；
 
 #### 3 业务模型调优
 1. 负载均衡
