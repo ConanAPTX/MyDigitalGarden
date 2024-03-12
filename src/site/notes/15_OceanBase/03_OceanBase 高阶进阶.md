@@ -25,6 +25,6 @@
 [[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 字符集与字符序\|OceanBase 字符集与字符序]]，；
 
 
-[[15_OceanBase/OceanBase 悬挂事务与长事务\|OceanBase 悬挂事务与长事务]]，；
-[[15_OceanBase/OceanBase 事务分类\|OceanBase 事务分类]]，；
-[[15_OceanBase/OceanBase 事务控制\|OceanBase 事务控制]]，；
+[[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 悬挂事务与长事务\|OceanBase 悬挂事务与长事务]]，；
+[[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 事务分类\|OceanBase 事务分类]]，；
+[[15_OceanBase/03_OceanBase 高阶进阶/OceanBase 事务控制\|OceanBase 事务控制]]，；
