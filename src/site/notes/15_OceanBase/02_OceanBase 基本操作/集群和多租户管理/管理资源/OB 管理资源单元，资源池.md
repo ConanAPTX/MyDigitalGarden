@@ -24,16 +24,19 @@
 `资源单元未被使用`：如果资源单元未被指定给资源池，您可以直接执行以下语句，删除资源单元；
 ```sql
 -- 资源单元未被使用
--- 资源单元未被指定给资源池，您可以直接执行以下语句，删除资源单元;
-DROP RESOURCE UNIT unit1;
+DROP RESOURCE UNIT unit1;   -- 资源单元未被指定给资源池，您可以直接执行以下语句，删除资源单元;
 ```
 
 
 `资源单元正在被使用`：如果资源单元已被指定给资源池，需要为原资源池指定新的资源单元后，再删除资源单元；
 ```sql
--- 先创建资源单元 `unit2`，并 后，
+-- 1.先创建资源单元 `unit2`，并 后，
 CREATE RESOURCE UNIT unit2 MAX_CPU 4, MAX_MEMORY '5G', MAX_IOPS 128,MAX_DISK_SIZE '10G', MAX_SESSION_NUM 64, MIN_CPU=4, MIN_MEMORY= '5G', MIN_IOPS=128;
+
+-- 2.修改资源池
 ALTER RESOURCE POOL pool1 UNIT='unit2';   -- 将 `unit2` 指定给 `pool1`
+
+-- 3.删除资源单元
 DROP RESOURCE UNIT unit1;   -- 再删除 `unit1`
 ```
 
@@ -67,7 +70,25 @@ FROM OceanBase.__all_unit_config;
 ```
 
 #### 2 创建，修改，删除，查询资源池
-##### 2.1 创建资源池
+##### 2.1 创建，删除资源池
+
+
+```sql
+
+-- 1.创建资源池(使用 root 用户登录数据库的 sys 租户)  
+create resource pool pl_5c2g unit=ut_2c2g, unit_num=1; -- 创建资源池 pl_5c2g  
+CREATE RESOURCE POOL pool1 UNIT='unit1',UNIT_NUM=1,ZONE_LIST=('zone1','zone2','zone3'); -- 创建资源池 pool1 并为其指定资源配置
+
+-- 2.删除资源池
+-- 查看待删除的资源池 resource_pool1 是否被租户使用  
+SELECT tenant_id,tenant_name FROM oceanbase.gv$unit WHERE resource_pool_name='resource_pool1';  
+  
+DROP RESOURCE POOL resource_pool1;   -- 删除资源池(使用 root 用户登录到集群的 sys 租户  )
+  
+-- 查看资源池  
+SELECT * FROM oceanbase.__all_resource_pool where name='resource_pool1';
+```
+
 
 ##### 2.2 
 
