@@ -37,6 +37,33 @@ _(G)V$OB_PLAN_CACHE_PLAN_STAT_：；
 	select * from GV$OB_PLAN_CACHE_PLAN_EXPLAIN where tenant_id=1 and svr_ip='xx.xx.xx.xx' and svr_port=2882 and plan_id=349;
 ```
 
+通过 `gv$plan_cache_plan_stat` 查询信息，2.x，3.x 版本；
+
+```sql
+-- 1.登入租户
+	obclient -h10.x.x.x -P2883 -uroot@obmysql#obcluster -p    -- 登录业务 MySql 租户
+	obclient -h10.x.x.x -P2883 -uroot@oboracle#obcluster -p   -- 通过普通用户登录 Oracle 租户
+
+-- 2.
+	-- 使用 root@sys 登录 OceanBase 数据库的 sys 租户  
+	
+	-- 查看当前集群中的租户信息  
+	SELECT tenant_id,tenant_name FROM oceanbase.gv$tenant;  
+	
+	-- 使用 root@sys 登录 OceanBase 数据库的 sys 租户  
+	SELECT svr_ip,svr_port, plan_Id,TYPE,d.database_name, query_sql, first_load_time, avg_exe_usec, slow_count,executions, slowest_exe_usec, sql_id  
+	FROM oceanbase.gv$plan_cache_plan_stat s  
+	JOIN oceanbase.gv$database d ON (s.tenant_id=d.tenant_id AND s.db_id=d.database_id)  
+	WHERE s.tenant_id=1008 AND d.database_name LIKE 'test%' AND query_sql LIKE '%tab_1%'  
+	ORDER BY avg_exe_usec desc;  
+
+-- 3.通过 plan_id 或 SQL语句 查询信息
+SELECT * FROM oceanbase.gv$plan_cache_plan_stat WHERE plan_id = 1093;
+SELECT * FROM oceanbase.gv$plan_cache_plan_stat WHERE query_sql LIKE '%INSERT INTO test%';  -- 通过 SQL
+SELECT * FROM oceanbase.gv$plan_cache_plan_stat WHERE tenant_id= 1001 AND STATEMENT LIKE 'insert into tab_1%'  limit 10\G 
+SELECT /*+ QUERY_TIMEOUT(10000000) */ * FROM oceanbase.gv$plan_cache_plan_stat WHERE tenant_id= 1008 and statement LIKE '%tab_1%' limit 10\G
+```
+
 
 #### 4 字段说明
 1. `GV$OB_PLAN_CACHE_PLAN_STAT` 表字段：仅部分重要字段；
