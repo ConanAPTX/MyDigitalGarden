@@ -10,9 +10,9 @@
 #### 1.1 获取实际执行计划
 查询 sql 实际执行计划必须给定 IP、Port、`tenant_id` 和 `plan_id` 这四列的值，可以通过下面的方式获取到该信息；
 
-关于 `gv$sql_audit` 视图更多信息，请参考：[[15_OceanBase/99_内部表介绍/gv, sql_audit 视图#3 查询 gv$sql_audit 视图\|gv, sql_audit 视图#3 查询 gv$sql_audit 视图]]，；还可以通过 `gv$plan_cache_plan_stat` 查询该信息，详情请参考：[[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，；若在 4.x 版本中请参考：[执行计划](https://www.oceanbase.com/docs/common-oceanbase-database-1000000000033850)，；
+关于 `gv$sql_audit` 视图更多信息，请参考：[[15_OceanBase/99_内部表介绍/gv, sql_audit 视图\|gv, sql_audit 视图]]，；还可以通过 `gv$plan_cache_plan_stat` 查询该信息，详情请参考：[[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，；若在 4.x 版本中请参考：[执行计划](https://www.oceanbase.com/docs/common-oceanbase-database-1000000000033850)，；
 
-利用上面步骤获取的信息，使用以下语句查询实际执行计划，*gv$plan_cache_plan_explain* 视图详细情况可以查看：[[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，；
+利用上面步骤获取的信息，使用以下语句查询实际执行计划，`gv$plan_cache_plan_explain` 视图详细情况可以查看：[[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，；
 
 ```sql
 -- 1.查询执行计划信息
