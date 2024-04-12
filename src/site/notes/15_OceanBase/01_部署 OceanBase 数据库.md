@@ -28,16 +28,11 @@
 4. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/OBProxy 管理概述\|OBProxy 管理概述]]，；
 5. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/管理 OBProxy 集群\|管理 OBProxy 集群]]，；
 6. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/管理 OBProxy_启动，停止 OBProxy\|管理 OBProxy_启动，停止 OBProxy]]，；
-7. `OBProxy 参数调优`
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/05-ocean-base/#9c71b0" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
-
-
-
-4. OBProxy 参数调优 
-
-</div></div>
+7. `OBProxy 参数调优`，详细情况请参考：[[15_OceanBase/05_OceanBase 性能调优#^9c71b0\|05_OceanBase 性能调优#^9c71b0]]，；
 
 ##### 3.2 部署，管理 OceanBase 数据库
+1. [快速上手](https://open.oceanbase.com/quickStart)，；
+
 ##### 3.3 部署，管理 ODC
 1. `下载 ODC，OceanBase 开发者中心`
 	1. [下载桌面版 ODC](https://help.aliyun.com/document_detail/212816.html)，可以下载各版本的桌面版 ODC 安装包；除此之外还可以在：[OceanBase 软件下载中心](https://www.oceanbase.com/softwarecenter-enterprise)，；
