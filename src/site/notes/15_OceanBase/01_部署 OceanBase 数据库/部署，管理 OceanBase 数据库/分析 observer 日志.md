@@ -14,7 +14,7 @@
 	ip addr    # 查询服务器 ip 地址
 
 # 2.进入日志目录
-	cd /home/admin/oceanbase/log        # OB Server 日志目录  
+	cd /home/admin/oceanbase/log        # OB Server 日志目录，rootservice 日志也在该目录
 		# 若未使用默认目录，可以使用下面的命令查询实际目录  
 		find /home -name "clog"
 	cd /home/admin/logs/obproxy/log     # OB proxy 日志目录  
