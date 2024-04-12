@@ -8,16 +8,14 @@
 ### 管理表_Oracle 租户
 #### 1 创建，删除表  
 ```sql  
--- 创建表  
-CREATE TABLE test (c1 int PRIMARY KEY, c2 VARCHAR(50));  
-  
--- 复制已有表的数据创建新表  
-CREATE TABLE t2_copy AS SELECT * FROM t2;  
-```  
+-- 1.创建表  
+CREATE TABLE test (c1 int PRIMARY KEY, c2 VARCHAR(50));  -- 直接创建表
+CREATE TABLE t2_copy AS SELECT * FROM t2;                -- 复制已有表的数据创建新表
 
-```sql  
+-- 2.删除表
 DROP TABLE test; -- 删除表  
 ```  
+
 Oracle 租户删除表详细情况，[删除表_Oracle_3.2.3](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355498)，；  
 
 #### 2 查询表结构  
@@ -27,10 +25,17 @@ DESCRIBE USER1.test; -- 查询表字段信息
   
 -- 查询表创建语句  
 SELECT dbms_metadata.get_ddl('TABLE','TEST','USER1') FROM DUAL;  
--- TABLE：；TEST：表名；SYS：代表查看 SYS 用户下的表；  
+	-- TABLE：；TEST：表名；SYS：代表查看 SYS 用户下的表；  
 
--- 
+-- 查询表的创建语句
 SHOW CREATE TABLE USER1.test; -- 查询表的定义
+/*  
+	DEFAULT CHARSET = utf8mb4 指定默认字符集为 utf8mb4；  
+	ROW_FORMAT = DYNAMIC 表示这张表为动态表，若一张表里面存在 varchar、text 以及其变形、blob以及其变形的字段的话，那么这张表其实也叫动态表，
+		即该表的 row_format 是 dynamic；该表 row_format 是 fixed 那么张这个表是静态表。  
+	COMPRESSION 该字段信息显示的是表压缩方式；  
+	PCTFREE 字段信息表示留给更新该块数据使用空间；  
+*/
 
 ```  
 查看表的定义详细情况：[查看表的定义](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355495)，；  
