@@ -44,9 +44,14 @@
 	3. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/管理数据存储/OceanBase 合并管理概述\|OceanBase 合并管理概述]]，；
 	4. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/管理数据存储/查询转储，合并的信息\|查询转储，合并的信息]]，；
 6. 管理内存
+	1. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/OceanBase 管理内存\|OceanBase 管理内存]]，；
+	2. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/查询内存的使用信息\|查询内存的使用信息]]，；
 7. 管理进程
 8. 管理日志
-	1. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/基于 Trace 功能查找上一次 SQL 请求日志\|基于 Trace 功能查找上一次 SQL 请求日志]]，；
+	1. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/日志打印级别\|日志打印级别]]，；
+	2. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/日志文件大小及数量管理\|日志文件大小及数量管理]]，；
+	3. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/通用查找 SQL 请求日志\|通用查找 SQL 请求日志]]，；
+	4. [[15_OceanBase/02_OceanBase 基本操作/集群和多租户管理/基于 Trace 功能查找上一次 SQL 请求日志\|基于 Trace 功能查找上一次 SQL 请求日志]]，；
 
 
 #### 3 数据库对象管理
