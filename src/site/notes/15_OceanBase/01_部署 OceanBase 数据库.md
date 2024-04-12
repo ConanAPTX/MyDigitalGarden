@@ -29,9 +29,13 @@
 5. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/管理 OBProxy 集群\|管理 OBProxy 集群]]，；
 6. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/管理 OBProxy_启动，停止 OBProxy\|管理 OBProxy_启动，停止 OBProxy]]，；
 7. `OBProxy 参数调优`，详细情况请参考：[[15_OceanBase/05_OceanBase 性能调优#^9c71b0\|05_OceanBase 性能调优#^9c71b0]]，；
+8. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/如何查看当前 obproxy 集群的启动模式\|如何查看当前 obproxy 集群的启动模式]]，；
+9. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/分析 observer 日志\|分析 observer 日志]]，；
+10. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/拷贝 Oceanbase 日志文件\|拷贝 Oceanbase 日志文件]]，；
 
 ##### 3.2 部署，管理 OceanBase 数据库
 1. [快速上手](https://open.oceanbase.com/quickStart)，；
+2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/启动 observer 进程\|启动 observer 进程]]，；
 
 ##### 3.3 部署，管理 ODC
 1. `下载 ODC，OceanBase 开发者中心`
