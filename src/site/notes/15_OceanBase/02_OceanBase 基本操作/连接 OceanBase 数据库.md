@@ -11,12 +11,16 @@
  OBClient 是一个交互式和批处理查询工具，通过 OBClient 您可以连接 OceanBase 数据库的 MySQL 和 Oracle 租户；
  
 ##### 1.1 前提条件
- 1.请确认已下载并安装了 OBClient 应用；
- 2.连接租户前，请确认当前客户端在租户白名单中，租户白名单的查询及设置具体操作请参见：[设置和查看租户白名单](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355590)，；
+
+> [!NOTE] 前提条件：
+> 1. 请确认已下载并安装了 OBClient 应用；
+> 	1. rpm -qa | grep obclient # 查询是否安装 obclient 客户端
+> 2. 连接租户前，请确认当前客户端在租户白名单中，租户白名单的查询及设置具体操作请参见：[设置和查看租户白名单](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355590)，；
  
 ##### 1.2 通过 OBProxy 连接的方式
 
-```text
+```sql
+/*
 语法：
 	obclient -h10.10.10.1 -uusername@obtenant#obdemo -P2883 -ppassword -c -A oceanbase
 	obclient -h10.10.10.1 -uobdemo:obtenant:username -P2883 -ppassword -c -A oceanbase
@@ -28,11 +32,11 @@
 	-c：表示在 MySQL 运行环境中不要忽略注释；
 	-A：表示在 MySQL 连接数据库时不自动获取统计信息；
 	oceanbase：访问的数据库的名称，可以更改为业务数据库；
-```
+*/
+rpm -qa | grep obclient -- 查询是否安装 obclient 客户端
 
-```sql
-obclient -h10.10.10.1 -u*****@obtenant#obdemo -P2883 -p****** -c -A sys        
-	-- 通过 OBClient 连接 OceanBase 数据库的 MySQL 租户
+-- 通过 OBClient 连接 OceanBase 数据库的 MySQL 租户
+obclient -h10.10.10.1 -u*****@obtenant#obdemo -P2883 -p****** -c -A sys        	
 obclient -h10.10.10.1 -uobdemo:obtenant:***** -P2883 -p****** -c -A oceanbase
 ```
 
@@ -40,7 +44,8 @@ obclient -h10.10.10.1 -uobdemo:obtenant:***** -P2883 -p****** -c -A oceanbase
 ##### 1.3 通过直连方式
  普通租户通过直连方式连接时，需要确保该租户的资源分布在该 OBServer 上，如果该租户的资源未分布在该 OBServer 上，则无法通过直连该 OBServer 连接到该租户；
 
-```text
+```sql
+/*
 语法：
 	obclient -h10.10.10.1 -uusername@obtenant -P2881 -ppassword -c -A oceanbase
 参数说明：
@@ -52,12 +57,10 @@ obclient -h10.10.10.1 -uobdemo:obtenant:***** -P2883 -p****** -c -A oceanbase
 	-c：表示在 MySQL 运行环境中不要忽略注释。
 	-A：表示在 MySQL 连接数据库时不自动获取统计信息。
 	oceanbase：访问的数据库的名称，可以更改为业务数据库。
-```
-
-```sql
+*/
+-- 通过 OBClient 连接 OceanBase 数据库的 Oracle 租户
 obclient -h10.10.10.1 -u******@obtenant -P2881 -p****** -c -A oceanbase
 obclient -h10.10.10.1 -u******@t_oracle0_91#obdoc -P2883 -p****** -c -A sys  
-	-- 通过 OBClient 连接 OceanBase 数据库的 Oracle 租户
 ```
 
 
@@ -65,14 +68,16 @@ obclient -h10.10.10.1 -u******@t_oracle0_91#obdoc -P2883 -p****** -c -A sys
  需要使用 OceanBase 数据库的 MySQL 租户时，可以使用 MySQL 客户端连接该租户；
 
 ##### 2.1 前提条件
- 通过 MySQL 客户端连接数据库前，需要确认以下信息：
- 确保本地已正确安装 MySQL 客户端。OceanBase 数据库当前版本支持的 MySQL 客户端版本包括 V5.5、V5.6 和 V5.7；
- 确保环境变量 PATH 中包含了 MySQL 客户端命令所在目录；
- 连接租户前，请确认当前客户端在租户白名单中，租户白名单的查询及设置具体操作请参见：[设置和查看租户白名单](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355590)，；
+ 
+> [!NOTE] 通过 MySQL 客户端连接数据库前，需要确认以下信息：
+> 1. 确保本地已正确安装 MySQL 客户端。OceanBase 数据库当前版本支持的 MySQL 客户端版本包括 V5.5、V5.6 和 V5.7；
+> 2. 确保环境变量 PATH 中包含了 MySQL 客户端命令所在目录；
+> 3. 连接租户前，请确认当前客户端在租户白名单中，租户白名单的查询及设置具体操作请参见：[设置和查看租户白名单](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355590)，；
 
 ##### 2.2 通过 OBProxy 连接的方式
 
-```text
+```sql
+/*
 语法：
 	mysql -h10.10.10.1 -uusername@obmysql#obdemo -P2883 -ppassword -c -A oceanbase
 	mysql -h10.10.10.1 -uobdemo:obmysql:username -P2883 -ppassword -c -A oceanbase
@@ -84,13 +89,10 @@ obclient -h10.10.10.1 -u******@t_oracle0_91#obdoc -P2883 -p****** -c -A sys
 	-c：表示在 MySQL 运行环境中不要忽略注释。
 	-A：表示在 MySQL 连接数据库时不自动获取统计信息。
 	oceanbase：访问的数据库的名称，可以更改为业务数据库
-```
-
-```sql
-mysql -h 100.64.132.106 -P2883 -uroot@sys#zwy_hz_23011802 -p -A -c -Doceanbase
-	-- 需要输入密码，连接集群系统租户
+*/
+-- 通过 MySQL 客户端连接 OceanBase 数据库的 MySQL 租户
+mysql -h 100.64.132.106 -P2883 -uroot@sys#zwy_hz_23011802 -p -A -c -Doceanbase  -- 需要输入密码，连接集群系统租户
 mysql -h10.10.10.1 -u******@obmysql#obdemo -P2883 -p****** -c -A oceanbase      
-	-- 通过 MySQL 客户端连接 OceanBase 数据库的 MySQL 租户
 mysql -h10.10.10.1 -uobdemo:obmysql:****** -P2883 -p****** -c -A oceanbase
 ```
 
@@ -98,7 +100,8 @@ mysql -h10.10.10.1 -uobdemo:obmysql:****** -P2883 -p****** -c -A oceanbase
 ##### 2.3 通过直连方式
 普通租户通过直连方式连接时，需要确保该租户的资源分布在该 OBServer上，如果该租户的资源未分布在该 OBServer 上，则无法通过直连该 OBServer 连接到该租户；
  
-```text
+```sql
+/*
 语法：
   mysql -h10.10.10.1 -uusername@obmysql -P2881 -ppassword -c -A oceanbase
  参数说明：
@@ -110,18 +113,16 @@ mysql -h10.10.10.1 -uobdemo:obmysql:****** -P2883 -p****** -c -A oceanbase
   -c：表示在 MySQL 运行环境中不要忽略注释；
   -A：表示在 MySQL 连接数据库时不自动获取统计信息；
   oceanbase：访问的数据库的名称，可以更改为业务数据库；
-```
-
-```sql
-mysql -h10.10.10.1 -u******@obmysql -P2881 -p****** -c -A oceanbase
+*/
+-- 
+mysql -h10.10.10.1 -uroot@obmysql -P2881 -p****** -c -A oceanbase
 ```
 
 
 #### 3 通过 ODC 连接数据库
- 可以通过 OceanBase 提供的开发者工具 ODC 来连接 OceanBase 数据库的 Oracle 和 MySQL 租户；
- 详细情况请参考：[通过 ODC 连接数据库_V3.2.3](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355644)，；
+ 可以通过 OceanBase 提供的开发者工具 ODC 来连接 OceanBase 数据库的 Oracle 和 MySQL 租户；详细情况请参考：[通过 ODC 连接数据库_V3.2.3](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355644)，；
 
-### 参考文档
+### 3 参考文档
 
 
 
