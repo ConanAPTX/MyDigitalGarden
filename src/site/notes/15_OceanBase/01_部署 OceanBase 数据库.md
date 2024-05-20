@@ -7,8 +7,9 @@
 
 ### 部署 OceanBase 数据库
 #### 1 部署，管理 OAT，OceanBase 管理者工具
-1. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OAT/安装 OAT\|安装 OAT]]，；
-2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OAT/管理者工具 OAT 升级指南_V3.2 升级至 V4.1\|管理者工具 OAT 升级指南_V3.2 升级至 V4.1]]，；
+1. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OAT/安装 OAT_使用 OAT 安装包安装\|安装 OAT_使用 OAT 安装包安装]]，使用 OAT 安装包安装；
+2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OAT/安装 OAT_使用 oat-all-in-one 安装包安装\|安装 OAT_使用 oat-all-in-one 安装包安装]]，【推荐使用】；
+3. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OAT/管理者工具 OAT 升级指南_V3.2 升级至 V4.1\|管理者工具 OAT 升级指南_V3.2 升级至 V4.1]]，；
 
 #### 2 部署，管理 OCP，OceanBase 开发者中心
 1. 在 OAT 中安装单节点 OCP
@@ -21,7 +22,11 @@
 
 
 #### 3 部署，管理 OceanBase 数据库
-##### 3.1 部署 管理 OBProxy
+##### 3.1 部署，管理 OceanBase 数据库
+1. [快速上手](https://open.oceanbase.com/quickStart)，；
+2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/启动 observer 进程\|启动 observer 进程]]，；
+
+##### 3.2 部署 管理 OBProxy
 1. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/OBProxy 部署\|OBProxy 部署]]，；
 2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/部署 OBProxy_命令行\|部署 OBProxy_命令行]]，；
 3. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/部署，管理 OBProxy/生产环境运行 OBProxy - 守护进程\|生产环境运行 OBProxy - 守护进程]]，；
@@ -33,17 +38,17 @@
 9. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/分析 observer 日志\|分析 observer 日志]]，；
 10. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/拷贝 Oceanbase 日志文件\|拷贝 Oceanbase 日志文件]]，；
 
-##### 3.2 部署，管理 OceanBase 数据库
-1. [快速上手](https://open.oceanbase.com/quickStart)，；
-2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/启动 observer 进程\|启动 observer 进程]]，；
 
 ##### 3.3 部署，管理 ODC
 1. `下载 ODC，OceanBase 开发者中心`
 	1. [下载桌面版 ODC](https://help.aliyun.com/document_detail/212816.html)，可以下载各版本的桌面版 ODC 安装包；除此之外还可以在：[OceanBase 软件下载中心](https://www.oceanbase.com/softwarecenter-enterprise)，；
 2. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OceanBase 数据库/获取 ODC 日志\|获取 ODC 日志]]，；
 
+#### 4 OMS
+1. [[15_OceanBase/01_部署 OceanBase 数据库/OMS 版本升级\|OMS 版本升级]]，；
+2. [[15_OceanBase/90_/OMS 全量数据迁移报错\|OMS 全量数据迁移报错]]，升级 OMS 3.2.2 补丁包；
 
-#### 4 OBLOADER
+#### 5 OBLOADER
 1. [[15_OceanBase/01_部署 OceanBase 数据库/安装 mydumper，myloader 工具\|安装 mydumper，myloader 工具]]，；
 2. [[15_OceanBase/01_部署 OceanBase 数据库/安装导数工具 OBLOADER\|安装导数工具 OBLOADER]]，；
 
