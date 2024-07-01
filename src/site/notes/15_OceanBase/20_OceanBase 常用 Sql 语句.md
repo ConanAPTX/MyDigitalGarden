@@ -28,7 +28,7 @@
 #### 3 获取，拷贝，分析 OB 相关日志
 1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/分析 observer 日志\|分析 observer 日志]]，；
 2. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/拷贝 Oceanbase 日志文件_1\|拷贝 Oceanbase 日志文件_1]]，；
-3. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/拷贝 Oceanbase 日志文件_2\|拷贝 Oceanbase 日志文件_2]]，浙江高院拷贝 OBServer 日志文件到本地；；
+3. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/拷贝 Oceanbase 日志文件_2\|拷贝 Oceanbase 日志文件_2]]，ZJGY 拷贝 OBServer 日志文件到本地；；
 4. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/获取 OMS 日志\|获取 OMS 日志]]，；
 5. [[15_OceanBase/20_OceanBase 常用 Sql 语句/获取，拷贝，分析 OB 相关日志/获取 ODC 日志\|获取 ODC 日志]]，；
 ```sql
