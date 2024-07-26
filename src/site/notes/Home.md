@@ -14,8 +14,11 @@
 5. [[15_OceanBase/05_OceanBase 性能调优\|05_OceanBase 性能调优]]，；
 6. [[15_OceanBase/06_OceanBase 数据迁移\|06_OceanBase 数据迁移]]，；
 7. [[15_OceanBase/20_OceanBase 常用 Sql 语句\|20_OceanBase 常用 Sql 语句]]，；
-8. [[15_OceanBase/80_OceanBase 知识库\|80_OceanBase 知识库]]，；
+8. [[15_OceanBase/80_OB 相关知识库_1_OceanBase\|80_OB 相关知识库_1_OceanBase]]，；
 9. [[15_OceanBase/99_OceanBase 内部表介绍\|99_OceanBase 内部表介绍]]，；
+
+
+
 
 
 
