@@ -11,13 +11,13 @@
 #### 1 查询 gv$sql_audit 捞 sql 语句
 ```sql
 -- MySql 模式
-SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
+SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
 FROM gv$sql_audit 
 WHERE tenant_id=1001 and user_name='xxxx' and query_sql like'%aa%'
 limit 100；
 
 -- Oracle 模式
-SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
+SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
 FROM gv$sql_audit 
 WHERE tenant_id=1005 and query_sql LIKE '%INSERT INTO test%' 
 	and rownum <= 10 
@@ -66,18 +66,13 @@ Oracle 模式：
 -- DBA_INDEXES：用于查看数据库所有表的索引信息；  
 SELECT OWNER,INDEX_NAME,INDEX_TYPE,TABLE_OWNER,TABLE_NAME,TABLE_TYPE,UNIQUENESS,COMPRESSION,STATUS,PARTITIONED,VISIBILITY  
 FROM DBA_INDEXES  
-WHERE TABLE_OWNER = UPPER('zxnew') AND TABLE_NAME = UPPER('ajjb');  
+WHERE TABLE_OWNER = UPPER('zxnew') AND TABLE_NAME IN (UPPER('ajjb'), UPPER('zd_ay'))
+ORDER BY TABLE_OWNER,TABLE_NAME,INDEX_NAME; 
   
 -- DBA_IND_COLUMNS：查看数据库所有表的索引的索引列信息；  
-SELECT * FROM DBA_IND_COLUMNS WHERE TABLE_OWNER = UPPER('ZXNEW') AND TABLE_NAME = UPPER('AJJB') ORDER BY INDEX_NAME, COLUMN_POSITION;  
-  
--- DBA_INDEXES：用于查看数据库所有表的索引信息；  
-SELECT OWNER,INDEX_NAME,INDEX_TYPE,TABLE_OWNER,TABLE_NAME,TABLE_TYPE,UNIQUENESS,COMPRESSION,STATUS,PARTITIONED,VISIBILITY  
-FROM DBA_INDEXES  
-WHERE TABLE_OWNER = UPPER('ZD') AND TABLE_NAME = UPPER('zd_ay');  
-  
--- DBA_IND_COLUMNS：查看数据库所有表的索引的索引列信息；  
-SELECT * FROM DBA_IND_COLUMNS WHERE TABLE_OWNER = UPPER('ZD') AND TABLE_NAME = UPPER('ZD_AY') ORDER BY INDEX_NAME, COLUMN_POSITION;  
+SELECT * FROM DBA_IND_COLUMNS 
+WHERE TABLE_OWNER = UPPER('ZXNEW') AND TABLE_NAME IN (UPPER('AJJB'),UPPER('ZD_AY')) 
+ORDER BY TABLE_OWNER,TABLE_NAME,INDEX_NAME, COLUMN_POSITION;  
 ```
 更多详细：[[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/查看索引_Oracle 租户\|查看索引_Oracle 租户]]，；
 
@@ -88,7 +83,7 @@ select a.svr_ip, a.tenant_id, c.tenant_name, /*b.database_id,*/ b.database_name,
 from oceanbase.__all_virtual_meta_table a  
 INNER JOIN oceanbase.gv$table b ON a.table_id = b.table_id  
 INNER JOIN oceanbase.gv$tenant c ON a.tenant_id = c.tenant_id  
-where a.tenant_id = 1005 /*and svr_ip = '100.63.41.160'*/ and database_name = 'ZXNEW' and b.table_name = 'AJJB'  
+where a.tenant_id = 1005 /*AND svr_ip = '100.63.41.160'*/ AND database_name = 'ZXNEW' AND b.table_name IN ('AJJB','AJJB')  
 group by a.svr_ip,a.tenant_id,c.tenant_name,b.database_name,b.database_id,b.table_id, b.table_name  
 order by size_gb desc limit 10;  
 ```
