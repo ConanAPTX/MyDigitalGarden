@@ -10,7 +10,15 @@
 
 
 #### 1 租户
-##### 1.1 字典视图_备份恢复相关
+##### 1.1 字典视图_Outline
+ 1. [[15_OceanBase/99_内部表介绍/字典视图_Outline 信息\|字典视图_Outline 信息]]，；
+	 1. *GV$OUTLINE*：展示当前租户的 Outline 信息；
+	 2. 【*从 V4.0.0 版本开始引入*】
+		 1. *oceanbase.DBA_OB_OUTLINES*：展示本租户的执行计划 Outline 信息；
+		 2.  *oceanbase.DBA_OB_CONCURRENT_LIMIT_SQL*：展示本租户的限流规则 Outline 相关信息；
+		 3. *oceanbase.DBA_OB_OUTLINE_CONCURRENT_HISTORY*：展示本租户的执行计划和限流规则 Outline 历史信息；
+
+##### 1.2 字典视图_备份恢复相关
 1. 【_从 V2.2.76 版本已存在_】
 	1. [[15_OceanBase/99_内部表介绍/系统视图_日志备份相关_1000\|系统视图_日志备份相关_1000]]，；
 		1. `oceanbase.CDB_OB_BACKUP_PROGRESS`：展示数据库备份任务的进度；
@@ -37,18 +45,17 @@
 		4. *oceanbase.CDB_OB_BACKUP_ARCHIVELOG_PROGRESS*：用于展示单个 Partition Group 的备份进度信息；【_从 V2.2.76 版本已存在_】
 	2. *oceanbase.CDB_OB_BACKUP_JOB_DETAILS*：用于展示备份任务的详细信息；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376339)，；
 	3. [[15_OceanBase/99_内部表介绍/系统视图_日志备份相关_999\|系统视图_日志备份相关_999]]，；
-		1. *oceanbase.CDB_OB_BACKUP_PIECE_FILES*：用于展示备份集中 Piece 的状态；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376361)，；
+		1. *oceanbase.CDB_OB_BACKUP_PIECE_FILES*：用于展示备份集中 Piece 的状态；
+		2. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_JOB*：用于展示备份备份 Piece 的任务进度；
+		3. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_JOB_HISTORY*：用于展示已完成的备份一组备份 Piece 的任务的历史信息表；
+		4. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_TASK*：用于展示备份某个备份 Piece 的任务详细信息；
+		5. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_TASK_HISTORY*：用于展示已完成的备份某个备份 Piece 的任务的历史信息表；
 	4. *oceanbase.CDB_OB_BACKUP_CLEAN_HISTORY*：租户级别备份数据清理的历史信息表；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376344)，；
 	5. *oceanbase.CDB_OB_BACKUP_BACKUP_ARCHIVELOG*：用于展示正在执行备份备份的日志 Round；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376360)，；
-	6. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_JOB*：用于展示备份备份 Piece 的任务进度；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376363)，；
-	7. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_JOB_HISTORY*：用于展示已完成的备份一组备份 Piece 的任务的历史信息表；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376364)，；
-	8. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_TASK*：用于展示备份某个备份 Piece 的任务详细信息；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376465)，；
-	9. *oceanbase.CDB_OB_BACKUP_BACKUPPIECE_TASK_HISTORY*：用于展示已完成的备份某个备份 Piece 的任务的历史信息表；[V2.2.77_MySql](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376466)，；
-	10. `CDB_OB_RESTORE_PROGRESS`：用于展示物理恢复任务当前的执行进度；
-		1. *SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051559) ，；
-	11. `CDB_OB_RESTORE_HISTORY`：用于展示物理恢复任务完成时的状态；
-		1. *SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051631)，；
-	12.  `CDB_OB_BACKUP_SET_FILES`：展示备份集的文件状态；用于展示备份集的文件状态；
+	6. [[15_OceanBase/99_内部表介绍/系统视图_日志备份相关_1000\|系统视图_日志备份相关_1000]]，；
+		1. *CDB_OB_RESTORE_PROGRESS*：用于展示物理恢复任务当前的执行进度；
+		2. *CDB_OB_RESTORE_HISTORY*：用于展示物理恢复任务完成时的状态；
+	7.  `CDB_OB_BACKUP_SET_FILES`：展示备份集的文件状态；用于展示备份集的文件状态；
 		1. *SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051533)，；*MySql 租户*：[V2.2.77](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376362)，；*Oracle 租户*：[V2.2.77](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000945465)，；
 3. 【*从 V4.0.0 版本开始引入*】：
 	1. `CDB_OB_ARCHIVELOG_PIECE_FILES`：用于展示备份集中 Piece 的状态；
@@ -146,41 +153,33 @@
 		1. *Oracle 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051130)，；
 
 
-##### 1.2 性能视图_SQL 相关的统计信息
-1. 【*从 V4.0.0 版本开始引入*】：
+##### 1.3 性能视图_SQL 相关的统计信息
+1. [[15_OceanBase/99_内部表介绍/SQL_PLAN_MONITOR_1232131\|SQL_PLAN_MONITOR_1232131]]：；
+	1. *oceanbase.gv$SQL_PLAN_MONITOR*：展示所有 OBServer 节点慢查询的 Plan 层面的统计，每个慢查询都会有一条统计信息，同时记录该 Plan 的 Trace 信息；
+	2. *oceanbase.v$SQL_PLAN_MONITOR*：慢查询的 Operation 层面的统计，每个 Operation 会有一条统计信息；
+2. [[15_OceanBase/99_内部表介绍/gv$sql_audit，gv$ob_sql_audit\|gv$sql_audit，gv$ob_sql_audit]]，用于展示所有 Server 上每一次 SQL 请求的来源、执行状态等统计信息；
+	1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
+	2. 该视图从 V4.0.0 版本开始视图名由 `v$sql_audit` 调整为 `v$ob_sql_audit`；
+6. [[15_OceanBase/99_内部表介绍/计划缓存相关视图_001\|计划缓存相关视图_001]]，；
+	1. `(G)V$PLAN_CACHE_STAT`：该视图记录当前租户在所有 Server 上的每个计划缓存整体的状态；
+	2. `(G)V$PLAN_CACHE_PLAN_STAT` 视图记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
+	3. `(G)V$PLAN_CACHE_PLAN_EXPLAIN` 视图：用于展示缓存在全部的 OBServer 节点中的计划缓存中的物理执行计划；
+8. [[15_OceanBase/99_内部表介绍/计划缓存相关视图_002\|计划缓存相关视图_002]]，【*从 V4.0.0 版本开始引入*】；
 	1. `(G)V$OB_PLAN_CACHE_STAT`：当前租户在所有 OBServer 节点上的每个计划缓存整体的状态；
-		1. `GV`：*SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051701)，；*MySql 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051837)，；*Oracle 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050992)，；
-		2. `V`：*SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051782)：*MySql 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051887)，；*Oracle 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050984)，；
-	2. `(G)V$OB_PLAN_CACHE_PLAN_STAT`：展示当前租户在所有 OBServer 节点上的计划缓存中缓存的每一个缓存对象的状态；
-		1. 该视图从 V4.0.0 版本开始视图名由 *GV\$PLAN_CACHE_PLAN_STAT* 调整为 *GV\$OB_PLAN_CACHE_PLAN_STAT*；
-		2.  `GV`：*SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051816)，；
-		3.  `V`：*SYS 租户*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051742)，；
-2. *plan_cache_plan_explain / OB_PLAN_CACHE_PLAN_EXPLAIN*：用于展示缓存在全部【*当前*】的 Server 中的计划缓存中的物理执行计划；
-	1. [[15_OceanBase/99_内部表介绍/gv, plan_cache_plan_explain\|gv, plan_cache_plan_explain]]，*GV$PLAN_CACHE_PLAN_STAT* 视图记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-		1. 该视图从 V4.0.0 版本开始视图名由 *V\$PLAN_CACHE_PLAN_STAT* 调整为 *V\$OB_PLAN_CACHE_PLAN_STAT*；
-	2. `SYS 租户`：*(G)V\$OB_PLAN_CACHE_PLAN_EXPLAIN*：[V4.3.2_GV](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051734)，；[V4.3.2_V](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051814)，；
-	3. `MySQl 租户`：*(G)V\$OB_PLAN_CACHE_PLAN_EXPLAIN*：[V4.3.2_GV](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051938)，[V4.3.2_V](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051870)，；
-	4. `Oracle 租户`：*(G)V\$OB_PLAN_CACHE_PLAN_EXPLAIN*：[V4.3.2_GV](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050976)，；[V4.3.2_V](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050987)，；
-3. [GV$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051811)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
-4. [V$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051765)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
-5. [GV$OB_PS_ITEM_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051807)：用于给 prepared statement 提供监控功能，包含 PS Cache 中所有 prepare statement 的基本信息；
-6. [V$OB_PS_ITEM_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051739)：用于给 prepared statement 提供监控功能，包含 PS Cache 中所有 prepare statement 的基本信息；
-7. [GV$OB_PX_P2P_DATAHUB](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051779)：展示并行执行的数据传输操作的相关信息；
-8. [GV$OB_PX_TARGET_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051714)：展示所有 OBServer 节点上的 PX 线程使用情况；
-9. [V$OB_PX_TARGET_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051746)：展示 OBServer 节点上的 PX 线程使用情况；
-10. *sql_audi / OB_SQL_AUDIT*： 用于展示所有 Server 上每一次 SQL 请求的来源、执行状态等统计信息；
-	1.  [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
-		1. [[15_OceanBase/99_内部表介绍/gv, sql_audit 视图详细介绍\|gv, sql_audit 视图详细介绍]]，；
-	2. `SYS 租户`：*GV\$OB_SQL_AUDIT*：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051729)，；*V\$OB_SQL_AUDIT*：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051817)，；
-	3. `MySQl 租户`：*GV\$OB_SQL_AUDIT*: [V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051902)，；*V\$OB_SQL_AUDIT*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051880)，；
-	4. `Oracle 租户`：*GV\$OB_SQL_AUDIT*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050945)，；*V\$OB_SQL_AUDIT*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051060)，；
-11. *SQL_PLAN_MONITOR*：
-	1. [GV$SQL_PLAN_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051689)：展示所有 OBServer 节点慢查询的 Plan 层面的统计，每个慢查询都会有一条统计信息，同时记录该 Plan 的 Trace 信息；
-	2. [V$SQL_PLAN_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051757)：慢查询的 Operation 层面的统计，每个 Operation 会有一条统计信息；
-12. [V$SQL_MONITOR_STATNAME](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051812)：展示 `GV$SQL_PLAN_MONITOR` 的 `OTHERSTAT_X_ID`字段中数字的含义；
-13. [GV$OB_FLT_TRACE_CONFIG](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051718)：展示全链路诊断的诊断信息；
-14. [GV$OB_SQLSTAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051776)：用于展示集群中 SQL 的基本性能统计数据，每个 SQL 语句为一行（即每个 `SQL_ID` + `Plan_Hash` 的唯一值为一行）；
-15. [V$OB_SQLSTAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051775)：用于展示当前节点上 SQL 的基本性能统计数据，每个 SQL 语句为一行（即每个 `SQL_ID` + `Plan_Hash` 的唯一值为一行）；
+	2. `(G)V$OB_PLAN_CACHE_PLAN_STAT`：展示当前租户在当前（所有）OBServer 节点上的计划缓存中缓存的每一个缓存对象的状态；
+	3. `(G)V$OB_PLAN_CACHE_PLAN_EXPLAIN`：用于展示缓存在全部的 Server 中的计划缓存中的物理执行计划；
+9. [[15_OceanBase/99_内部表介绍/计划缓存相关视图_0034\|计划缓存相关视图_0034]]，；
+10. [GV$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051811)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
+11. [V$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051765)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
+12. [GV$OB_PS_ITEM_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051807)：用于给 prepared statement 提供监控功能，包含 PS Cache 中所有 prepare statement 的基本信息；
+13. [V$OB_PS_ITEM_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051739)：用于给 prepared statement 提供监控功能，包含 PS Cache 中所有 prepare statement 的基本信息；
+14. [GV$OB_PX_P2P_DATAHUB](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051779)：展示并行执行的数据传输操作的相关信息；
+15. [GV$OB_PX_TARGET_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051714)：展示所有 OBServer 节点上的 PX 线程使用情况；
+16. [V$OB_PX_TARGET_MONITOR](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051746)：展示 OBServer 节点上的 PX 线程使用情况；
+17. [V$SQL_MONITOR_STATNAME](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051812)：展示 `GV$SQL_PLAN_MONITOR` 的 `OTHERSTAT_X_ID`字段中数字的含义；
+18. [GV$OB_FLT_TRACE_CONFIG](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051718)：展示全链路诊断的诊断信息；
+19. [GV$OB_SQLSTAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051776)：用于展示集群中 SQL 的基本性能统计数据，每个 SQL 语句为一行（即每个 `SQL_ID` + `Plan_Hash` 的唯一值为一行）；
+20. [V$OB_SQLSTAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051775)：用于展示当前节点上 SQL 的基本性能统计数据，每个 SQL 语句为一行（即每个 `SQL_ID` + `Plan_Hash` 的唯一值为一行）；
 
 
 #### 2 sys 租户下视图总览
@@ -238,9 +237,8 @@
 	1. 说明：该视图仅用于兼容 MySQL 5.7，相关功能并不支持，仅可以查询表结构；
 
 ###### 2.1.3 Outline
- 1. [oceanbase.DBA_OB_OUTLINES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051655) ：展示本租户的执行计划 Outline 信息；
- 2. [oceanbase.DBA_OB_CONCURRENT_LIMIT_SQL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051538) ：展示本租户的限流规则 Outline 相关信息；
- 3. [oceanbase.DBA_OB_OUTLINE_CONCURRENT_HISTORY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051545) ：展示本租户的执行计划和限流规则 Outline 历史信息；
+SYS 租户，MySql 租户，Oracle 租户 已合并；
+
 
 ###### 2.1.4 数据库基本信息
 1. [oceanbase.CDB_OB_DATABASES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-；00000001051652) ：系统租户下展示所有租户的数据库元信息；
@@ -431,12 +429,9 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 10. [V$OB_TENANT_MEMORY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051792)：用于展示当前 observer 进程中每个租户的内存使用状况；
 
 ###### 2.2.5 SQL 相关的统计信息_已迁移至
-1. [GV$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051701)：展示当前租户的 Outline 信息，主要用于 Outline 的迁移；
-2. [V$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051782)：记录当前租户在所有 Server 上的每个计划缓存整体的状态；
-3. [GV$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051816)：记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-4. [V$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051742)：记录了当前租户在当前 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-5. [GV$OB_PLAN_CACHE_PLAN_EXPLAIN](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051734)：用于展示缓存在全部的 Server 中的计划缓存中的物理执行计划；
-6. [V$OB_PLAN_CACHE_PLAN_EXPLAIN](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051814)：用于展示缓存在当前 Server 的计划缓存中的物理执行计划；
+
+
+
 7. [GV$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051811)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
 8. [V$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051765)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
 9. [GV$OB_PS_ITEM_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051807)：用于给 prepared statement 提供监控功能，包含 PS Cache 中所有 prepare statement 的基本信息；
@@ -466,19 +461,21 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 1. [GV$OB_SESSION](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051808)：记录所有 Server 中创建的 Session 信息；
 
 ###### 2.2.9 数据库相关的统计信息
-1. [GV$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051760)：展示每台 OBServer 节点上的 KVCACHE 信息；
-2. [GV$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051721)：展示租户所在的所有 OBServer 节点上的配置项信息；
-3. [GV$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051683)：展示所有 Server 上的 Schema 信息；
-4. [GV$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051773)：展示所有 OBServer 节点的信息；
-5. [GV$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051768)：展示租户所在的 OBServer 节点的 Unit 信息，系统租户看到本集群所有 OBServer 节点的 Unit 信息；
-6. [V$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051764)：展示每台 OBServer 节点上的 KVCACHE 信息；
-7. [V$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051702)：展示本 OBServer 节点上的配置项信息；
-8. [V$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051761)：展示所有 Server 上的 Schema 信息；
-9. [V$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051711)：展示本 OBServer 节点的信息；
-10. [V$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051786)：展示本 OBServer 节点的 Unit 信息；
-11. [GV$DML_STATS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051691)：展示当前用户表中的 DML 信息；
-12. [V$DML_STATS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051780)：展示当前用户表中的 DML 信息；
-13. [V$OB_COMPATIBILITY_CONTROL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051787)：用于展示所有可以按 OceanBase 数据库发行版本进行产品行为兼容控制的功能；
+1. [[15_OceanBase/99_内部表介绍/(G)V$OB_PARAMETERS\|(G)V$OB_PARAMETERS]]，；
+	1. 
+2. [GV$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051760)：展示每台 OBServer 节点上的 KVCACHE 信息；
+3.
+4. [GV$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051683)：展示所有 Server 上的 Schema 信息；
+5. [GV$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051773)：展示所有 OBServer 节点的信息；
+6. [GV$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051768)：展示租户所在的 OBServer 节点的 Unit 信息，系统租户看到本集群所有 OBServer 节点的 Unit 信息；
+7. [V$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051764)：展示每台 OBServer 节点上的 KVCACHE 信息；
+8. 
+9. [V$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051761)：展示所有 Server 上的 Schema 信息；
+10. [V$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051711)：展示本 OBServer 节点的信息；
+11. [V$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051786)：展示本 OBServer 节点的 Unit 信息；
+12. [GV$DML_STATS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051691)：展示当前用户表中的 DML 信息；
+13. [V$DML_STATS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051780)：展示当前用户表中的 DML 信息；
+14. [V$OB_COMPATIBILITY_CONTROL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051787)：用于展示所有可以按 OceanBase 数据库发行版本进行产品行为兼容控制的功能；
 
 ###### 2.2.10 Time Model 相关的统计信息
 1. [GV$OB_SESS_TIME_MODEL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051735)：用于展示集群中 Session 级别的 Time Model 统计项；
@@ -621,9 +618,8 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 
 
 ###### 3.1.11 Outline
-1. [oceanbase.DBA_OB_OUTLINES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001052059)：展示本租户的执行计划 Outline 信息；
-2. [oceanbase.DBA_OB_CONCURRENT_LIMIT_SQL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001052050)：展示本租户的限流规则 Outline 相关信息；
-3. [oceanbase.DBA_OB_OUTLINE_CONCURRENT_HISTORY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051990)：展示本租户的执行计划和限流规则 Outline 历史信息；
+SYS 租户，MySql 租户，Oracle 租户 已合并；
+
 
 
 ###### 3.1.12 数据库基本信息
@@ -786,10 +782,8 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 10. [V$OB_TENANT_MEMORY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051901)：用于展示当前 observer 进程中每个租户的内存使用状况；
 
 ###### 3.2.6 SQL 相关的统计信息
-1. [GV$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051837)：展示当前租户的 Outline 信息，主要用于 Outline 的迁移；
-2. [V$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051887)：记录当前租户在所有 Server 上的每个计划缓存整体的状态；
-3. [GV$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051897)：记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-4. [V$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051909)：记录了当前租户在当前 Server 上的计划缓存中缓存的每一个缓存对象的状态；
+
+
 
 7. [GV$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051919)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
 8. [V$OB_PS_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051868)：监控 PS Cache 的整体状态，包括命中率、内存占用、缓存的 item 数目；
@@ -815,12 +809,12 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 
 ###### 3.2.9 数据库相关的统计信息
 1. [GV$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051844)：展示每台 OBServer 节点上的 KVCACHE 信息；
-2. [GV$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051935)：展示租户所在的所有 OBServer 节点上的配置项信息；
-3. [GV$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051822)：展示所有 Server 上的 Schema 信息；
-4. [GV$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051924)：展示所有 OBServer 节点的信息；
-5. [GV$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051957)：展示租户所在的 OBServer 节点的 Unit 信息，系统租户看到本集群所有 OBServer 节点的 Unit 信息；
-6. [V$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051945)：展示每台 OBServer 节点上的 KVCACHE 信息；
-7. [V$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051827)：展示本 OBServer 节点上的配置项信息；
+
+4. [GV$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051822)：展示所有 Server 上的 Schema 信息；
+5. [GV$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051924)：展示所有 OBServer 节点的信息；
+6. [GV$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051957)：展示租户所在的 OBServer 节点的 Unit 信息，系统租户看到本集群所有 OBServer 节点的 Unit 信息；
+7. [V$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051945)：展示每台 OBServer 节点上的 KVCACHE 信息；
+7.
 8. [V$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051913)：展示所有 Server 上的 Schema 信息；
 9. [V$OB_SERVERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051900)：展示本 OBServer 节点的信息；
 10. [V$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051835)：展示本 OBServer 节点的 Unit 信息；
@@ -873,40 +867,47 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 > 该内容仅适用于 OceanBase 数据库企业版。OceanBase 数据库社区版仅提供 MySQL 模式。
 
 ###### 4.1.1 表和视图相关
-1. [ALL_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051361)：展示用户可访问的对象表和关系表；
-2. [ALL_COL_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051351)：展示用户可访问的视图和表的所有列注释；
-3. [ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051166)：展示用户可访问的所有表；
-4. [ALL_TAB_COLS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051206)：展示当前用户可访问的表、视图、集群的所有列；
-5. [ALL_TAB_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051184)：展示当前用户可访问的表、视图、集群的所有列；
-6. [ALL_TAB_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051100)：展示当前用户可访问的表、视图的注释；
-7. [DBA_COL_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051333)：展示数据库中所有的视图和表的所有列注释；
-8. [DBA_TAB_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051386)：展示数据库中所有表、视图的注释；
-9. [USER_COL_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051182)：展示当前用户拥有的视图和表的所有列注释；
-10. [USER_TAB_COMMENTS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051384)：展示当前用户拥有的表、视图的注释；
-11. [DBA_OB_TABLEGROUP_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051270)：展示 TABLEGROUP、TABLE 关联关系。不展示不在 TABLEGROUP 中的 TABLE；
-12. [DBA_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051109)：展示数据库中的所有表；
-13. [DBA_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051098)：展示数据库中的对象表和关系表，它的字段与 ALL_ALL_TABLES 相同；
-14. [DBA_TABLESPACES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051316)：展示数据库中的所有表空间；
-15. [DBA_TAB_COLS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051097)：展示数据库中的所有表、视图、集群的所有列；
-16. [DBA_TAB_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051087)：展示数据库中所有的表、视图、集群的所有列；
-17. [USER_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051076)：展示当前用户可访问的对象表和关系表，除了 OWNER 字段之外，其他字段和 ALL_ALL_TABLES 相同；
-18. [USER_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051350)：展示当前用户拥有的所有表；
-19. [USER_TABLESPACES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051393)：展示当前用户可以访问的表空间。其列与 `DBA_TABLESPACES` 中的列相同，去除了 `PLUGGED_IN` 字段；
-20. [USER_TAB_COLS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051139)：展示当前用户拥有的表、视图、集群的所有列；
-21. [USER_TAB_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051324)：展示当前用户拥有的表、视图、集群的所有列；
-22. [ALL_VIEWS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051332)：展示当前用户可访问的视图；
-23. [DBA_VIEWS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051327)：展示数据库中的所有视图。其列与 `ALL_VIEWS` 中的列相同；
-24. [USER_VIEWS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051189)：展示当前用户拥有的视图；
-25. [DICTIONARY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051376)：展示数据字典表和视图的描述；
-26. [DICT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051322)：展示数据字典表和视图的描述；
-27. [DBA_OB_TABLE_LOCATIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051172)：展示表或者分区所在的位置，包括：系统表、用户表、索引表等；
-28. [DBA_OB_SPATIAL_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051343)：展示空间索引列对应的数据库名、表名、类型以及 SRS 信息；
+1. [[15_OceanBase/99_内部表介绍/表和视图相关_oracle_01\|表和视图相关_oracle_01]]，；
+	1. 查询表的信息：*USER_TABLES*,  *ALL_TABLES*,  *DBA_TABLES*；
+		1. *USER_TABLES*：：展示当前用户拥有的所有表； *ALL_TABLES*：展示用户可访问的所有表；*DBA_TABLES*：展示数据库中的所有表；
+	2. 查询视图的信息：*USER_VIEWS*,  *ALL_VIEWS*,  *DBA_VIEWS*；
+		1. *USER_VIEWS*：展示当前用户拥有的视图； 
+		2. *ALL_VIEWS*：展示当前用户可访问的视图；
+		3. *DBA_VIEWS*：展示数据库中的所有视图。其列与 `ALL_VIEWS` 中的列相同；
+	3. 查询表、视图、集群的所有列的信息；
+		1. `USER_TAB_COLUMNS`，`ALL_TAB_COLUMNS`，`DBA_TAB_COLUMNS`
+			1. *USER_TAB_COLUMNS*：展示当前用户拥有的表、视图、集群的所有列；
+			2. *ALL_TAB_COLUMNS*：展示当前用户可访问的表、视图、集群的所有列；
+			3. *DBA_TAB_COLUMNS*：展示数据库中所有的表、视图、集群的所有列；
+		2. `USER_TAB_COLS`，`ALL_TAB_COLS`，`DBA_TAB_COLS`
+			1. *USER_TAB_COLS*：展示当前用户拥有的表、视图、集群的所有列；
+			2. *ALL_TAB_COLS*：展示当前用户可访问的表、视图、集群的所有列；
+			3. *DBA_TAB_COLS*：展示数据库中的所有表、视图、集群的所有列；
+	4. 查询视图，表的注释：`USER_COL_COMMENTS`，`ALL_COL_COMMENTS`，`DBA_COL_COMMENTS`
+		1. *USER_COL_COMMENTS*：展示当前用户拥有的视图和表的所有列注释；
+		2. *ALL_COL_COMMENTS*：展示用户可访问的视图和表的所有列注释；
+		3. *DBA_COL_COMMENTS*：展示数据库中所有的视图和表的所有列注释；
+	5. 查询视图，表的列注释：`USER_TAB_COMMENTS`，`ALL_TAB_COMMENTS`，`DBA_TAB_COMMENTS`
+		1. *USER_TAB_COMMENTS*：展示当前用户拥有的表、视图的注释；
+		2. *ALL_TAB_COMMENTS*：展示当前用户可访问的表、视图的注释；
+		3. *DBA_TAB_COMMENTS*：展示数据库中所有表、视图的注释；
+2. 11231
+	1. [USER_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051076)：展示当前用户可访问的对象表和关系表，除了 OWNER 字段之外，其他字段和 ALL_ALL_TABLES 相同；
+	2. [ALL_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051361)：展示用户可访问的对象表和关系表；
+	3. [DBA_ALL_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051098)：展示数据库中的对象表和关系表，它的字段与 ALL_ALL_TABLES 相同；
+3. 1
+	1. [USER_TABLESPACES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051393)：展示当前用户可以访问的表空间。其列与 `DBA_TABLESPACES` 中的列相同，去除了 `PLUGGED_IN` 字段；
+	2. [DBA_TABLESPACES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051316)：展示数据库中的所有表空间；
+4. [DBA_OB_TABLEGROUP_TABLES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051270)：展示 TABLEGROUP、TABLE 关联关系。不展示不在 TABLEGROUP 中的 TABLE；
+5. [DICTIONARY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051376)：展示数据字典表和视图的描述；
+6. [DICT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051322)：展示数据字典表和视图的描述；
+7. [DBA_OB_TABLE_LOCATIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051172)：展示表或者分区所在的位置，包括：系统表、用户表、索引表等；
+8. [DBA_OB_SPATIAL_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051343)：展示空间索引列对应的数据库名、表名、类型以及 SRS 信息；
 
 
 ###### 4.1.2 Outline
-1. [DBA_OB_OUTLINES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051159)：展示本租户的执行计划 Outline 信息；
-2. [DBA_OB_CONCURRENT_LIMIT_SQL](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051246)：展示本租户的限流规则 Outline 相关信息；
-3. [DBA_OB_OUTLINE_CONCURRENT_HISTORY](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051083)：展示本租户的执行计划和限流规则 Outline 历史信息；
+SYS 租户，MySql 租户，Oracle 租户 已合并；
+
 
 
 ###### 4.1.3 SPM 相关
@@ -1030,25 +1031,30 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 
 
 ###### 4.1.11 索引
-1. [ALL_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051179)：展示用户可访问的所有表的索引的索引列信息；
-2. [ALL_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051215)：展示用户可访问的所有表的索引的索引列信息；
-3. [ALL_IND_EXPRESSIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051186)：展示用户在数据库中可访问的 function-based 索引的信息；
-4. [ALL_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051173)：展示用户可访问的数据库中索引分区的信息；
-5. [ALL_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051254)：展示数据库中用户可以访问的所有索引子分区的信息；
-6. [ALL_PART_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051093)：展示当前用户可访问的分区索引的分区信息；
-7. [DBA_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051145)：展示数据库所有表的索引信息；
-8. [DBA_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051323)：展示数据库所有表的索引的索引列信息；
-9. [DBA_IND_EXPRESSIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051165)：展示数据库中所有 function-based 索引的信息；
-10. [DBA_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051306)：展示数据库中所有索引分区的信息；
-11. [DBA_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051212)：展示数据库中所有索引子分区的信息；
-12. [USER_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051317)：展示用户拥有的所有表的索引信息；
-13. [USER_IND_COLUMNS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051218)：展示用户拥有的所有表的索引的索引列信息；
-14. [USER_IND_EXPRESSIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051236)：展示用户在数据库中所拥有的 function-based 索引的信息；
-15. [USER_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051121)：
-	1. 展示当前用户为所有者的数据库中索引分区的信息，与 `ALL_IND_PARTITIONS`、`DBA_IND_PARTITIONS` 相比没有`INDEX_OWNER` 字段；
-16. [USER_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051195)：
-	1. 展示数据库中用户所拥有的所有索引子分区的信息，与 `DBA_IND_SUBPARTITIONS`、`ALL_IND_SUBPARTITIONS` 相比没有 `INDEX_OWNER` 字段；
-17. [USER_PART_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051080)：展示当前用户的分区索引的分区信息；
+1. [[15_OceanBase/99_内部表介绍/Oracle 租户索引信息_01\|Oracle 租户索引信息_01]]，；
+	1. `查看索引信息`
+		1. *USER_INDEXES*：展示用户拥有的所有表的索引信息；
+		2. *ALL_INDEXES*：展示用户可访问的所有表的索引的索引列信息；
+		3. *DBA_INDEXES*：展示数据库所有表的索引信息；
+	2. `查询索引列信息`
+		1. *USER_IND_COLUMNS*：展示用户拥有的所有表的索引的索引列信息；
+		2. *ALL_IND_COLUMNS*：展示用户可访问的所有表的索引的索引列信息；
+		3. *DBA_IND_COLUMNS*：展示数据库所有表的索引的索引列信息；
+	3. 123
+		1. *USER_IND_EXPRESSIONS*：展示用户在数据库中所拥有的 function-based 索引的信息；
+		2. *ALL_IND_EXPRESSIONS*：展示用户在数据库中可访问的 function-based 索引的信息；
+		3. *DBA_IND_EXPRESSIONS*：展示数据库中所有 function-based 索引的信息；
+3. 123
+	1. [USER_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051121)：1. 展示当前用户为所有者的数据库中索引分区的信息，与 `ALL_IND_PARTITIONS`、`DBA_IND_PARTITIONS` 相比没有`INDEX_OWNER` 字段；
+	2. [ALL_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051173)：展示用户可访问的数据库中索引分区的信息；
+	3. [DBA_IND_PARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051306)：展示数据库中所有索引分区的信息；
+4. 123
+	1. [USER_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051195)：展示数据库中用户所拥有的所有索引子分区的信息，与 `DBA_IND_SUBPARTITIONS`、`ALL_IND_SUBPARTITIONS` 相比没有 `INDEX_OWNER` 字段；
+	2. [ALL_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051254)：展示数据库中用户可以访问的所有索引子分区的信息；
+	3. [DBA_IND_SUBPARTITIONS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051212)：展示数据库中所有索引子分区的信息；
+5. 123
+	1. [ALL_PART_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051093)：展示当前用户可访问的分区索引的分区信息；
+	2. [USER_PART_INDEXES](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051080)：展示当前用户的分区索引的分区信息；
 
 
 ###### 4.1.12 分区
@@ -1206,7 +1212,7 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 
 ###### 4.2.2 统计信息
 1. [GV$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050962)：展示每台 OBServer 节点上的 KVCACHE 信息；
-2. [GV$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051017)：展示租户所在的所有 OBServer 节点上的配置项信息；
+2.
 3. [GV$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051003)：展示所有 Server 上的 Schema 信息；
 4. [V$OB_SERVER_SCHEMA_INFO](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050959)：展示所有 Server 上的 Schema 信息；
 5. [GV$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051042)：展示租户所在的 OBServer 节点的 Unit 信息，系统租户看到本集群所有 OBServer 节点的 Unit 信息；
@@ -1215,7 +1221,7 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 8. [V$DML_STATS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051050)：展示当前用户表中的 DML 信息；
 9. [V$GLOBALCONTEXT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051013)：展示当前会话可访问的全局上下文属性的 `CLIENT_IDENTIFIER` 值；
 10. [V$OB_KVCACHE](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051044)：展示每台 OBServer 节点上的 KVCACHE 信息；
-11. [V$OB_PARAMETERS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050961)：展示本 OBServer 节点上的配置项信息；
+11. 
 12. [V$SYSSTAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051038)：展示当前服务器上系统级别的统计事件信息；
 13. [V$OB_UNITS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050943)：展示本 OBServer 节点的 Unit 信息；
 14. [V$VERSION](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050974)：查看数据库产品所有组件的名称和版本信息；
@@ -1243,11 +1249,8 @@ SYS 租户，MySql 租户，Oracle 租户 已合并；
 
 ###### 4.2.5 缓存相关
 
-3. [GV$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050990)：记录了当前租户在所有 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-4. [GV$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050992)：记录当前租户在所有 Server 上的每个计划缓存整体的状态；
-5. 
-6. [V$OB_PLAN_CACHE_PLAN_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050971)：记录了当前租户在当前 Server 上的计划缓存中缓存的每一个缓存对象的状态；
-7. [V$OB_PLAN_CACHE_STAT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001050984)：记录当前租户在所有 Server 上的每个计划缓存整体的状态；
+3. 
+
 8. [V$RSRC_PLAN](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001051053)：展示当前活跃租户的资源管理计划；
 
 
