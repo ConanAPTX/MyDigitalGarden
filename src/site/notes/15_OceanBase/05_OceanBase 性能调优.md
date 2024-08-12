@@ -18,7 +18,10 @@
 	5. 网络工具
 3. 内部表
 	1. gv$sysstat
-	2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，；
+	2. `gv$sql_audit`，`gv$ob_sql_audit`
+		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，介绍 SQL AUDIT 的开启及清理；
+		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 gv$sql_audit 视图_2.x，3.x\|查询 gv$sql_audit 视图_2.x，3.x]]，；
+		3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 gv$ob_sql_audit 视图_4.x\|查询 gv$ob_sql_audit 视图_4.x]]，；
 	3. `__all_virtual_trans_stat`
 4. 日志
 	1. slow trans
@@ -44,7 +47,6 @@
 	1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 配置参数设置，及调优\|OBProxy 配置参数设置，及调优]]，；
 		1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 生产环境建议使用参数\|OBProxy 生产环境建议使用参数]]，详细介绍OBProxy 生产环境建议使用的参数；
 	2. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 配置参数详细介绍\|OBProxy 配置参数详细介绍]]，；
-	3. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 慢查询日志\|OBProxy 慢查询日志]]，；
 
 
 #### 3 性能诊断
@@ -63,6 +65,31 @@
 
 
 #### 5 Sql 调优指南
+
+1.  _V4.3.2:管理数据库> 性能调优 > SQL 调优_
+	1. SQL 优化体系
+		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 TOP SQL\|查询 TOP SQL]]，；
+	2. 执行计划优化
+		1. 统计信息和估行机制
+			1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/统计信息\|统计信息]]，；
+			2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询统计信息\|查询统计信息]]，；
+			3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/管理统计信息\|管理统计信息]]，；
+			4. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/优化器估行机制\|优化器估行机制]]，；
+		2. 【计划管理】，【管理执行计划】：_V4.2.1:参考指南 > 性能调优 > Sql 调优指南 > SQL 优化 > 管理执行计划_：
+			1.  [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/计划绑定\|计划绑定]]，；
+			2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/OceanBase 执行计划管理\|OceanBase 执行计划管理]]，；
+		3. 索引选择：[[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 索引概述\|OceanBase 索引概述]]，；
+		4. 连接：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/连接简介\|连接简介]]，；
+			1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/连接次序\|连接次序]]，；
+		5. 排序和 limit 优化：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/排序和 limit 优化\|排序和 limit 优化]]，；
+	3. 业务逻辑优化
+		1. SQL 规范：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/SQL 规范概述\|SQL 规范概述]]，；
+		2. Schema 规范
+	4. [[15_OceanBase/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
+	5. SQL 调优典型场景和案例
+
+##### 5.1 
+
 1. [[15_OceanBase/05_OceanBase 性能调优/SQL 调优方法\|SQL 调优方法]]，；
 2. _V4.2.1:参考指南 > 性能调优 > Sql 调优指南_：[Sql 调优指南](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000218532)，；
 3. SQL 请求执行流程，[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/Sql 请求执行流程\|Sql 请求执行流程]]，；
@@ -72,10 +99,14 @@
 		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/EXPLAIN，查看执行计划\|EXPLAIN，查看执行计划]]，；
 	2. [[15_OceanBase/05_OceanBase 性能调优/执行计划算子\|执行计划算子]]，详细介绍 OceanBase 执行计划算子；
 	3. 执行计划缓存：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/执行计划缓存\|执行计划缓存]]，；
-		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查看 SQL 执行的物理执行计划\|查看 SQL 执行的物理执行计划]]，查询 sql 实际执行计划 ；
-	4. 快速参数化
-	5. 实时执行计划展示
-	6. SQL Explain 优化实践
+		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/计划缓存相关的视图\|计划缓存相关的视图]]，；
+		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查看 SQL 执行的物理执行计划\|查看 SQL 执行的物理执行计划]]，查询 sql 实际执行计划 ；
+	5. 快速参数化
+	6. 实时执行计划展示
+	7. SQL Explain 优化实践
+	8. 
+	9. 执行计划优化：_V4.3.2:管理数据库> 性能调优 > SQL 调优 > 执行计划优化_
+
 5. 分布式执行计划
 	1. 分布式执行和并行查询
 	2. 分布式计划的生成
@@ -98,27 +129,13 @@
 	2. SQL 调优基本流程
 	3. SQL 执行性能监控
 		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，可以查看每一次 SQL 请求的来源、执行状态等统计信息；
-		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/SQL Trace\|SQL Trace]]，通过 SQL Trace 查看执行过程信息及各阶段的耗时；
-		3. 计划缓存视图
-		4. SQL 性能分析示例
-			1. 通过 SQL Audit 分析查询中等待事件
-			2. 分析 RT 突然抖动的 SQL
-			3. 查看执行计划形状并做分析
-			4. 分析慢 SQL 查询
-			5. 查询 SQL 流量分布情况及 QPS
-			6. 查看集群 SQL 请求流量是否均衡
-			7. 查询排名 TOP N 的 SQL
-			8. 分析系统或某个 SQL 的执行是否出现大量不合理远程执行请求
-			9. 查找某个租户中执行全表扫描的 SQL
-			10. 查询某段时间内执行时间排名 TOP N 的请求
-			11. 分析分布式计划相关的查询问题
-			12. 查看分布式子计划 RPC 执行数是否均衡
+		2. [[15_OceanBase/05_OceanBase 性能调优/捞取慢 SQL\|捞取慢 SQL]]，在 OBServer 日志中查找慢 SQL；
+		3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/SQL Trace\|SQL Trace]]，通过 SQL Trace 查看执行过程信息及各阶段的耗时；
+		4. 计划缓存视图
+		5. SQL 性能分析示例：该部分内容迁移至：[[15_OceanBase/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
 	4. 优化器统计信息
 	5. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/OceanBase 查询改写\|OceanBase 查询改写]]，；
 	6. 查询优化
-	7. 管理执行计划
-		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/计划绑定\|计划绑定]]，；
-		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/OceanBase 执行计划管理\|OceanBase 执行计划管理]]，；
 8. 相关术语
 9. SQL 调优常见问题
 
@@ -140,3 +157,16 @@
 #### 1 案例分析
 1. [[15_OceanBase/05_OceanBase 性能调优/大查询线程的管理及调度机制\|大查询线程的管理及调度机制]]，；
 
+
+
+
+
+1. _V4.3.2:管理数据库> 性能调优_
+	1. 性能调优概述
+	2. 识别链路上的瓶颈
+	3. 识别组件内的瓶颈
+		1. [[15_OceanBase/ODP 性能瓶颈\|ODP 性能瓶颈]]，ODP 性能瓶颈；
+			1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 慢查询日志\|OBProxy 慢查询日志]]，介绍获取 obproxy 慢查询日志，并解析；
+		3. ODP 性能分析
+		4. OBServer 端性能瓶颈
+	4. SQL 调优：该部分已迁移走；
