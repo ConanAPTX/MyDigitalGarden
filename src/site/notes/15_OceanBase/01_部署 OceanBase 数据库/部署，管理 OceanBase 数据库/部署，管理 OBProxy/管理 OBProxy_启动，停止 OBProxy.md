@@ -14,7 +14,6 @@
 #### 1.2 启动方式
 支持通过以下两种方式来启动 obproxy 进程：
 1. 在启动命令中指定 `-r` 参数来指定 OceanBase 集群的 RootServer 信息，该启动方式不需要额外配置，一般用于开发调试阶段；
-	1. 
 2. 在启动命令中指定 `obproxy_config_server_url` 参数项来查询获取 OceanBase 集群的 RootServer 信息，该方式需要配置 `obproxy_config_server_url`，故会依赖 Config Server 的启动。推荐使用该方式启动 OBProxy；
 
 #### 1.3 启动步骤
@@ -78,8 +77,7 @@ cd /opt/taobao/install/obproxy
 #### 1.4 查看 obproxy 进程是否存在
 
 ```shell
-# 检查进程是否存在
-ps -ef|grep obproxy
+ps -ef|grep obproxy   # 检查进程是否存在
 ```
 
 
