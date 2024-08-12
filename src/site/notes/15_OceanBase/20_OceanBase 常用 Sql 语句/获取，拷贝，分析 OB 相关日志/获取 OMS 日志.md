@@ -46,8 +46,8 @@ hostname -i    # 查看所在机器 IP；
 
 	##  获取 common-default.log common-error.log 组件日志
 		cd /home/admin/logs/ghana/Ghana/  
-		# common-default.log common-error.log  
 		ls | grep common  
+			# 文件列表：common-default.log common-error.log
 ```
 
 
