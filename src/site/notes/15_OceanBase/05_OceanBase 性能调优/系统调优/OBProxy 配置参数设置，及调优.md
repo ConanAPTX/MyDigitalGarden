@@ -11,11 +11,11 @@ OBProxy，即 OceanBase Database Proxy，就是 OceanBase 数据库代理 ODP；
 
 #### 1 查询，修改 OBProxy 配置参数
 
-> ODP 参数可以分为以下四类：
-> 	1. 支持动态修改的参数此类参数修改后立即生效。详细信息请参考 [支持动态修改的参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050267)，；
-> 	2. 不支持动态修改的参数此类参数修改后需要重启 ODP 才能生效。详细信息请参考 [不支持动态修改的参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050265)，；
-> 	3. 对普通用户不可见的参数此类参数包括 ODP 内部使用的一些参数以及从通用配置中继承的配置。此类参数仅支持特殊权限用户使用内部命令修改，您无需关注；
-> 	4. 内存级参数此类参数的修改仅生效一次。详细信息请参考 [内存级参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050268)，；
+> [!NOTE] ODP 参数可以分为以下四类：
+> 1. 支持动态修改的参数此类参数修改后立即生效。详细信息请参考 [支持动态修改的参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050267)，；
+> 2. 不支持动态修改的参数此类参数修改后需要重启 ODP 才能生效。详细信息请参考 [不支持动态修改的参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050265)，；
+> 3. 对普通用户不可见的参数此类参数包括 ODP 内部使用的一些参数以及从通用配置中继承的配置。此类参数仅支持特殊权限用户使用内部命令修改，您无需关注；
+> 4. 内存级参数此类参数的修改仅生效一次。详细信息请参考 [内存级参数](https://www.oceanbase.com/docs/common-odp-doc-cn-1000000000050268)，；
 
 ```sql
 -- 通过 OBProxy 登录 OceanBase 数据库
@@ -38,14 +38,14 @@ OBProxy 配置参数详细介绍请参考：[[15_OceanBase/05_OceanBase 性能�
 ##### 2.2 OBProxy 性能调优
 OBProxy 作为 OceanBase 数据库的访问代理，其最主要的功能是 SQL 路由；在高并发场景下，是否能快速，高效地路由对应用 SQL 的性能有重要影响；
 
-> 影响 OBProxy 路由性能的参数主要有：
-> 1. `work_thread_num：`8，工作线程数，对 CPU 占用影响比较大，默认值为 8；更改后需要重启 OBProxy;
-> 2. `automatic_match_work_thread：`，True，根据 Server 的 CPU 个数，自动设置工作线程数；
-> 3. `enable_compression_protocol：`，True，开启 TCP 传输压缩；
-> 4. `proxy_mem_limited:`，2G，OBProxy 的内存限制；
+影响 OBProxy 路由性能的参数主要有：
+1. `work_thread_num：`8，工作线程数，对 CPU 占用影响比较大，默认值为 8；更改后需要重启 OBProxy;
+2. `automatic_match_work_thread：`，True，根据 Server 的 CPU 个数，自动设置工作线程数；
+3. `enable_compression_protocol：`，True，开启 TCP 传输压缩；
+4. `proxy_mem_limited:`，2G，OBProxy 的内存限制；
 
 
-###### 2.2.1 在实际生产环境，相关参数的设置建议为：
+*在实际生产环境，相关参数的设置建议为*：
 1. `关于线程数`：
 	1. 当 OBProxy 和 OBServer 共同部署时，建议设置为 automatic_match_work_thread = false，指定 work_thread_num = 16/24/32；
 		1. OBServer 的 CPU 数通常比较高，如果让 OBProxy 根据 CPU 数自动设置线程数，OBProxy 会分配较大的线程数，很容易导致 OBProxy 与 OBServer 的 CPU 争抢；
@@ -59,28 +59,28 @@ OBProxy 作为 OceanBase 数据库的访问代理，其最主要的功能是 SQL
 	2. 在 OLAP 场景，如果 SQL 执行返回的记录比较多，可以打开 TCP 传输的压缩，提升数据转发的效率；
 
 
-##### 2.3 路由管理
-> 影响 OBProxy 路由行为的参数主要有：
-> 1. `enable_index_route`，False，全局索引表路由的开关；
-> 2. `enable_reroute`，False，二次路由的开关；
-> 3. `enable_ob_protocol_v2`，False，OceanBase 2.0 传输协议的开关；
+##### 0.1 路由管理
+影响 OBProxy 路由行为的参数主要有：
+1. `enable_index_route`，False，全局索引表路由的开关；
+2. `enable_reroute`，False，二次路由的开关；
+3. `enable_ob_protocol_v2`，False，OceanBase 2.0 传输协议的开关；
 	
 在 OLTP 场景，建议把以上三个参数全部设置为 True，打开全局索引路由和二次路由；
-	1.二次路由：当 OBProxy 因为路由信息不准未把 SQL 路由到正确的 OBServer 节点时，重新路由 SQL 给正确的 OBServer 节点，而不是在错误的节点上进行远程执行；
-	2.全局索引路由：当 SQL 查询条件不包含表的分区键，而包含全局索引的键值时，使用全局索引键来进行路由，把 SQL 路由到全局索引所在的 Leader 节点执行；
+1. 二次路由：当 OBProxy 因为路由信息不准未把 SQL 路由到正确的 OBServer 节点时，重新路由 SQL 给正确的 OBServer 节点，而不是在错误的节点上进行远程执行；
+2. 全局索引路由：当 SQL 查询条件不包含表的分区键，而包含全局索引的键值时，使用全局索引键来进行路由，把 SQL 路由到全局索引所在的 Leader 节点执行；
 
 在 OceanBase V4 之前，OBProxy 无法对于事务中的 SQL 进行自由路由，而是把 SQL 路由到开启事务的 scheduler 角色的 OBServer 上，OceanBase 和 OBProxy 对于只读事务的 SQL 路由做了优化，可以按照 SQL 访问对象的位置进行自由的路由；
 1. OBProxy 通过 SQL 回包中的事务标记来判断是否开启了事务，如果开启了事物，则后续的 SQL 都只能路由到上一条 SQL 被路由到的OBServer 节点。
 2. 只读事务中的事务标记由 OceanBase 的租户级配置项 ob_proxy_readonly_transaction_routing_policy 控制,其默认值为 True，即只读事务中的 SQL 也带事务标记。我们建议修改改参数为 False，让 OBProxy 只读事务中的 SQL 按照 Leader 节点的位置来路由，减少远程执行的 SQL 数量。
 
-ob_proxy_readonly transaction_routing policy，True，只读事务中的 SQL 是否带事务标记；
+`ob_proxy_readonly_transaction_routing policy`，True，只读事务中的 SQL 是否带事务标记；
 
 以上我们描述的都是强一致读场景下的路由，在弱一致性读场景下 OBProxy 可以根据路由策略按照 LDC 来就近路由，配置方法详见最佳实践系列文章《OceanBase 配置读写分离最住实践》
 
 
-##### 2.4 链路管理
-OBProxy 把应用到数据库的链接分成了两段：
-一段是应用到 OBProxy 的链路，称为 client session；一段是 OBProxy 到 OBServer 的链路，称为 server session；
+##### 0.2 链路管理
+OBProxy 把应用到数据库的链接分成了两段：一段是应用到 OBProxy 的链路，称为 client session；一段是 OBProxy 到 OBServer 的链路，称为 server session；
+
 因为 OBProxy 可以把同—个 cient session 的 SQL 请求路由到不同的 OBServer 节点，因此一个 client session 可以有多个 server session；
 
 OBProxy 的链路管理主要景 client session 数量的管理，以及 client session 与 server session 的探活和超时处理；
