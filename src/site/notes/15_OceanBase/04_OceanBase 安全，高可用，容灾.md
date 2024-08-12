@@ -27,11 +27,16 @@
 3. *V4.2.1:管理数据库 > 安全权限 > 访问控制* ，访问控制；
 	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/访问控制概述\|访问控制概述]]，；
 	2. `用户和权限`，OceanBase 权限管理实战指南；
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/用户和权限概述\|用户和权限概述]]，；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 权限管理实战指南/OceanBase 数据库的权限分类\|OceanBase 数据库的权限分类]]，包括 MySql 租户，Oracle 租户；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 权限管理实战指南/MySql 租户_用户和权限管理\|MySql 租户_用户和权限管理]]， `MySql 租户`；
-		4.  [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 权限管理实战指南/Oracle 租户_角色管理\|Oracle 租户_角色管理]]，`Oracle 租户`；
-		5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 权限管理实战指南/Oracle 租户_用户和权限管理\|Oracle 租户_用户和权限管理]]，；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/用户和权限概述\|用户和权限概述]]，；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/OceanBase 数据库的权限分类\|OceanBase 数据库的权限分类]]，包括 MySql 租户，Oracle 租户；
+		3.  `MySql 租户`
+			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户_用户和权限管理\|MySql 租户_用户和权限管理]]， `MySql 租户`；
+			2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/查询用户权限_MySql 模式\|查询用户权限_MySql 模式]]，；
+		4. `Oracle 租户`
+			1.  [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/Oracle 租户_角色管理\|Oracle 租户_角色管理]]，`Oracle 租户`；
+			2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/Oracle 租户_用户和权限管理\|Oracle 租户_用户和权限管理]]，；
+			3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/查询用户权限_Oracle 模式\|查询用户权限_Oracle 模式]]，；
+		5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/修改用户密码\|修改用户密码]]，； 
 	3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 网络安全访问控制\|OceanBase 网络安全访问控制]]，详细介绍查看，设置租户白名单；
 	4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/RPC 连接认证\|RPC 连接认证]]，；
 	5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 行级访问权限控制\|OceanBase 行级访问权限控制]]，；
@@ -47,61 +52,63 @@
 	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/安全审计概述\|安全审计概述]]，；
 
 
-#### 3 OceanBase 备份恢复
+#### 3 OceanBase 备份恢复_V3.x
 1. *V3.2.3:使用指南 > 高可用和容灾  > 备份恢复管理*
-	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 物理备份与恢复概述\|OceanBase 物理备份与恢复概述]]，；
+	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 物理备份与恢复概述\|OceanBase 物理备份与恢复概述]]，；
 	2. 部署 NFS
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OB 备份前准备\|OB 备份前准备]]，；
-			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/backup_dest_option 配置项\|backup_dest_option 配置项]]，；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/计算 OceanBase 备份存储空间大小\|计算 OceanBase 备份存储空间大小]]，；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/部署 NFS\|部署 NFS]]，；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OB 备份前准备\|OB 备份前准备]]，；
+			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/backup_dest_option 配置项\|backup_dest_option 配置项]]，；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/计算 OceanBase 备份存储空间大小\|计算 OceanBase 备份存储空间大小]]，；
+		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/部署 NFS\|部署 NFS]]，；
 	3. 备份数据
 		1. 日志归档
 			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/日志归档概述_V4.x\|日志归档概述_V4.x]]，；
-			2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OB 发起日志备份\|OB 发起日志备份]]，日志备份的启动，停止，及查询日志备份的状态；
-			3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/开启基于日志分片的备份_集群级别\|开启基于日志分片的备份_集群级别]]，；
-			4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/更改归档目的端\|更改归档目的端]]，；
-			5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/查询 OceanBase 备份信息_V2.x，V3.x\|查询 OceanBase 备份信息_V2.x，V3.x]]，包括*数据备份*，*日志备份*；
+			2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OB 发起日志备份\|OB 发起日志备份]]，日志备份的启动，停止，及查询日志备份的状态；
+			3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/开启基于日志分片的备份_集群级别\|开启基于日志分片的备份_集群级别]]，；
+			4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/更改归档目的端\|更改归档目的端]]，；
+			5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/查询 OceanBase 备份信息_V2.x，V3.x\|查询 OceanBase 备份信息_V2.x，V3.x]]，包括*数据备份*，*日志备份*；
 		2. 数据备份
-			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OB 发起数据备份\|OB 发起数据备份]]，数据备份的启动，停止，及查询备份状态，包括全量备份和增量备份；
+			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OB 发起数据备份\|OB 发起数据备份]]，数据备份的启动，停止，及查询备份状态，包括全量备份和增量备份；
 		3. 清理备份数据
-			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/清理备份的数据\|清理备份的数据]]，介绍备份数据的清理，包括自动，手动清理备份数据，及停止清理备份数据；
+			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/清理备份的数据\|清理备份的数据]]，介绍备份数据的清理，包括自动，手动清理备份数据，及停止清理备份数据；
 	4. 备份备份的数据
 	5. 备份过程中更新备份目的端中 OSS 的密钥信息
 	6. 数据校验
 	7. `恢复数据`
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行全量恢复\|OceanBase 执行全量恢复]]，包括：【全量恢复租户】，【取消恢复】；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 恢复指定的表\|OceanBase 恢复指定的表]]，；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行备份备份数据的恢复\|OceanBase 执行备份备份数据的恢复]]，；
-			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行备份备份数据的恢复_实践\|OceanBase 执行备份备份数据的恢复_实践]]，；
-		4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行物理恢复\|OceanBase 执行物理恢复]]，；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行全量恢复\|OceanBase 执行全量恢复]]，包括：【全量恢复租户】，【取消恢复】；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 恢复指定的表\|OceanBase 恢复指定的表]]，；
+		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行备份备份数据的恢复\|OceanBase 执行备份备份数据的恢复]]，；
+			1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行备份备份数据的恢复_实践\|OceanBase 执行备份备份数据的恢复_实践]]，；
+		4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行物理恢复\|OceanBase 执行物理恢复]]，；
 		5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/查看 OceanBase 恢复进度和结果_V4.x\|查看 OceanBase 恢复进度和结果_V4.x]]，；
 	8. 日常维护
 		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/查看备份相关参数\|查看备份相关参数]]，查看备份相关参数；
 		2. 强制停止备份相关的所有任务
 		3. 设置 backup_zone
-2. *V4.2.1:管理数据库 > 备份恢复 * ：
+
+#### 4 OceanBase 备份恢复_V4.x
+1. *V4.2.1:管理数据库 > 备份恢复 * ：
 	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/OceanBase 物理备份与恢复概述_V4.x\|OceanBase 物理备份与恢复概述_V4.x]]，；
 	2. 极简化体验物理备份与恢复
 	3. 部署 NFS
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OB 备份前准备\|OB 备份前准备]]，；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/计算 OceanBase 备份存储空间大小\|计算 OceanBase 备份存储空间大小]]，；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/部署 NFS\|部署 NFS]]，；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OB 备份前准备\|OB 备份前准备]]，；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/计算 OceanBase 备份存储空间大小\|计算 OceanBase 备份存储空间大小]]，；
+		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/部署 NFS\|部署 NFS]]，；
 	4. `日志归档`
 		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/日志归档概述_V4.x\|日志归档概述_V4.x]]，；
 		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/OceanBase 日志归档的准备工作_V4.2.1\|OceanBase 日志归档的准备工作_V4.2.1]]，；
 		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/OceanBase 开启，暂停，关闭归档模式_V4.2.1\|OceanBase 开启，暂停，关闭归档模式_V4.2.1]]，；
 		4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/查询 OceanBase 日志归档信息_V4.x\|查询 OceanBase 日志归档信息_V4.x]]，；
-		5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/更改归档目的端\|更改归档目的端]]，；
+		5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/更改归档目的端\|更改归档目的端]]，；
 	5. 数据备份
 		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/OceanBase 数据备份备份前准备_V4.2.1\|OceanBase 数据备份备份前准备_V4.2.1]]，；
 		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/OceanBase 发起数据备份_V4.x\|OceanBase 发起数据备份_V4.x]]，；
 	6. 清理备份数据
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/清理备份的数据\|清理备份的数据]]，介绍备份数据的清理，包括自动，手动清理备份数据，及停止清理备份数据；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/清理备份的数据\|清理备份的数据]]，介绍备份数据的清理，包括自动，手动清理备份数据，及停止清理备份数据；
 	7. 恢复数据
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行全量恢复\|OceanBase 执行全量恢复]]，；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行备份备份数据的恢复\|OceanBase 执行备份备份数据的恢复]]，；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理/OceanBase 执行物理恢复\|OceanBase 执行物理恢复]]，；
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行全量恢复\|OceanBase 执行全量恢复]]，；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行备份备份数据的恢复\|OceanBase 执行备份备份数据的恢复]]，；
+		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 备份恢复/OceanBase 执行物理恢复\|OceanBase 执行物理恢复]]，；
 		4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/备份恢复管理_V4.x/查看 OceanBase 恢复进度和结果_V4.x\|查看 OceanBase 恢复进度和结果_V4.x]]，；
 	8. 按表恢复
 
