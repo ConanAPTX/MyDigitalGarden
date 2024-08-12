@@ -28,7 +28,9 @@
 4. 日常运维操作
 5. 数据库监控
 6. 常见异常处理
-7. 灾难恢复
+	1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/运维，监控与异常处理/Ocean Base 错误信息概述\|Ocean Base 错误信息概述]]，；
+	2. [[15_OceanBase/20_OceanBase 常用 Sql 语句/运维，监控与异常处理/问题排查概述：副本迁移问题排查\|问题排查概述：副本迁移问题排查]]，；
+8. 灾难恢复
 
 #### 4 查询
 1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/查询磁盘使用情况\|查询磁盘使用情况]]，；
@@ -50,12 +52,21 @@
 
 #### 6 其他
 1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/OB 常用查询\|OB 常用查询]]，；
+2. [[15_OceanBase/20_OceanBase 常用 Sql 语句/sql_plan_monitor\|15_OceanBase/20_OceanBase 常用 Sql 语句/sql_plan_monitor]]，；
 
 #### 7 
 1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase 系统视图概述_V4.x\|OceanBase 系统视图概述_V4.x]]，；
 2. [[15_OceanBase/99_OceanBase 内部表介绍\|99_OceanBase 内部表介绍]]，；
 
 ### 参考文档
+
+
+
+
+```sql
+-- log盘满：查询表__all_virtual_server_clog_stat，清除较老的日志
+SELECT svr_min_log_timestamp FROM oceanbase.__all_virtual_server_clog_stat WHERE zone_status='ACTIVE';
+```
 
 
 
