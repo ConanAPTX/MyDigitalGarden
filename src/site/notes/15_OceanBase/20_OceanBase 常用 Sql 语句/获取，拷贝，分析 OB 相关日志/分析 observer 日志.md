@@ -44,6 +44,17 @@ grep "ERROR" obesi-daemon.log*
 ```
 
 
+```shell
+# 前提条件：进入相应的日志目录
+
+# 通过 last_trace_id() 获取 trace_id
+select last_trace_id();
+	# YB426440AE66-0005F28319F16BB5-0-0
+
+# 获取 trace_id 所对应的日志，执行 grep $trace_id observer.log 命令
+grep YB426440AE66-0005F28319F16BB5-0-0 observer.log
+```
+
 
 ### 参考文档
 
