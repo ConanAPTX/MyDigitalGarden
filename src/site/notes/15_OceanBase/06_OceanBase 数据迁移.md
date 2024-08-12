@@ -33,7 +33,8 @@
 #### 6 OMS 迁移数据
 1. [[15_OceanBase/06_OceanBase 数据迁移/OMS 迁移数据/OMS 架构概览\|OMS 架构概览]]，；
 2. *OMS 数据源管理*
-	1. [[15_OceanBase/06_OceanBase 数据迁移/OMS 迁移数据/OMS 数据源用户权限说明\|OMS 数据源用户权限说明]]，；
+	1. [[15_OceanBase/06_OceanBase 数据迁移/OMS 数据源用户权限说明_01\|OMS 数据源用户权限说明_01]]，OceanBase 数据库；
+	2. [[15_OceanBase/06_OceanBase 数据迁移/OMS 迁移数据/OMS 数据源用户权限说明_02\|OMS 数据源用户权限说明_02]]，；
 3. *OMS 数据迁移*
 	1. [[15_OceanBase/06_OceanBase 数据迁移/OMS 迁移数据/OMS 支持的项目类型\|OMS 支持的项目类型]]，；
 	2. [[15_OceanBase/06_OceanBase 数据迁移/OMS 迁移数据/使用 OMS 从 MySQL 数据库迁移数据到 OceanBase 数据库 MySQL 租户\|使用 OMS 从 MySQL 数据库迁移数据到 OceanBase 数据库 MySQL 租户]]，；
