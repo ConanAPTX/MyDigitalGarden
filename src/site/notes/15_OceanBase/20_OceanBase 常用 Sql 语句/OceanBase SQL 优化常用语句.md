@@ -14,7 +14,7 @@
 SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
 FROM gv$sql_audit 
 WHERE tenant_id=1001 and user_name='xxxx' and query_sql like'%aa%'
-limit 100；
+limit 100;
 
 -- Oracle 模式
 SELECT svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
