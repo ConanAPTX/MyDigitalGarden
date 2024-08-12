@@ -66,9 +66,7 @@
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查询，终止租户会话\|查询，终止租户会话]]，查询连接信息；
 		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
 	7. *管理用户和权限*
-		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/管理用户和权限/查询用户权限_MySql 模式\|查询用户权限_MySql 模式]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/管理用户和权限/查询用户权限_Oracle 模式\|查询用户权限_Oracle 模式]]，；
-		3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/管理用户和权限/修改用户密码\|修改用户密码]]，； 
+
 6. 管理数据存储
 { #c7aa88}
 
@@ -133,8 +131,9 @@
 1. *V4.2.1：参考指南 > 数据库对象管理 > Oracle 模式*；
 	1. 管理表，表组，视图
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理表_Oracle 租户\|管理表_Oracle 租户]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理表，表列，视图，视图列的注释\|管理表，表列，视图，视图列的注释]]，查询管理*表，表列，视图，视图列* 的注释；
-		3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理视图_Oracle 模式\|管理视图_Oracle 模式]]，；
+		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/查询表的信息_Oracle 模式\|查询表的信息_Oracle 模式]]，；
+		3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理表，表列，视图，视图列的注释\|管理表，表列，视图，视图列的注释]]，查询管理*表，表列，视图，视图列* 的注释；
+		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理视图_Oracle 模式\|管理视图_Oracle 模式]]，；
 	2. *创建和管理分区*
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 分区表概述\|OceanBase 分区表概述]]，；
 		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/分区表_Oracle 模式\|分区表_Oracle 模式]]，；
