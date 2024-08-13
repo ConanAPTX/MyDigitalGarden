@@ -29,14 +29,22 @@ obclient -h10.x.x.x -P2883 -uroot@oboracle#obcluster -p   -- 通过普通用户�
 </div></div>
 
 
+
+##### 1.1 MySql 租户
 ```sql
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
+	svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
+FROM gv$ob_sql_audit 
+WHERE tenant_id = 1001 and user_name = 'xxxx' and query_sql like'%%'
+limit 10 ;
+
 /* 开启全链路追踪 Session 级别 Trace，记录当前 Session 所有 SQL 的相关耗时等信息，采样频率为 50%。*/
 CALL DBMS_MONITOR.OB_SESSION_TRACE_ENABLE(null,1,0.5,'ALL');
 Query OK, 0 rows affected
 
- SELECT request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL 
- FROM v$OB_SQL_AUDIT 
- where ELAPSED_TIME > 100000 limit 10 ;
+SELECT request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL 
+FROM v$OB_SQL_AUDIT 
+where ELAPSED_TIME > 100000 limit 10 ;
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | request_id | usec_to_time(request_time) | ELAPSED_TIME | QUEUE_TIME | EXECUTE_TIME | FLT_TRACE_ID                         | QUERY_SQL                                                                                                                                                          |
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -47,8 +55,18 @@ Query OK, 0 rows affected
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 4 rows in set
 ```
+该视图详细介绍：[[15_OceanBase/99_内部表介绍/gv$sql_audit，gv$ob_sql_audit\|gv$sql_audit，gv$ob_sql_audit]]，；
 
-#### 2 
+
+##### 1.2 Oracle 租户
+```sql
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
+	svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
+FROM gv$ob_sql_audit 
+WHERE tenant_id=1005 and query_sql LIKE '%INSERT INTO test%' and rownum <= 10 
+ORDER BY request_time DESC;
+```
+
 
 
 ### 参考文档
