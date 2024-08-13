@@ -54,6 +54,7 @@
 2. 集群性能诊断
 3. 租户性能诊断
 4. OBProxy 性能监控
+	1. [[15_OceanBase/05_OceanBase 性能调优/ODP 性能瓶颈\|ODP 性能瓶颈]]，；
 5. 主机性能监控
 
 
@@ -85,7 +86,7 @@
 	3. 业务逻辑优化
 		1. SQL 规范：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/SQL 规范概述\|SQL 规范概述]]，；
 		2. Schema 规范
-	4. [[15_OceanBase/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
+	4. [[15_OceanBase/05_OceanBase 性能调优/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
 	5. SQL 调优典型场景和案例
 
 ##### 5.1 
@@ -132,7 +133,7 @@
 		2. [[15_OceanBase/05_OceanBase 性能调优/捞取慢 SQL\|捞取慢 SQL]]，在 OBServer 日志中查找慢 SQL；
 		3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/SQL Trace\|SQL Trace]]，通过 SQL Trace 查看执行过程信息及各阶段的耗时；
 		4. 计划缓存视图
-		5. SQL 性能分析示例：该部分内容迁移至：[[15_OceanBase/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
+		5. SQL 性能分析示例：该部分内容迁移至：[[15_OceanBase/05_OceanBase 性能调优/OceanBase SQL 优化实践示例\|OceanBase SQL 优化实践示例]]，；
 	4. 优化器统计信息
 	5. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/OceanBase 查询改写\|OceanBase 查询改写]]，；
 	6. 查询优化
@@ -165,7 +166,7 @@
 	1. 性能调优概述
 	2. 识别链路上的瓶颈
 	3. 识别组件内的瓶颈
-		1. [[15_OceanBase/ODP 性能瓶颈\|ODP 性能瓶颈]]，ODP 性能瓶颈；
+		1. [[15_OceanBase/05_OceanBase 性能调优/ODP 性能瓶颈\|ODP 性能瓶颈]]，ODP 性能瓶颈；
 			1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/OBProxy 慢查询日志\|OBProxy 慢查询日志]]，介绍获取 obproxy 慢查询日志，并解析；
 		3. ODP 性能分析
 		4. OBServer 端性能瓶颈
