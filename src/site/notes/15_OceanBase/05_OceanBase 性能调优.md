@@ -20,8 +20,8 @@
 	1. gv$sysstat
 	2. `gv$sql_audit`，`gv$ob_sql_audit`
 		1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/gv, sql_audit 视图\|gv, sql_audit 视图]]，介绍 SQL AUDIT 的开启及清理；
-		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 gv$sql_audit 视图_2.x，3.x\|查询 gv$sql_audit 视图_2.x，3.x]]，；
-		3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 ob_sql_audit 视图_4.x\|查询 ob_sql_audit 视图_4.x]]，；
+		2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 gv, sql_audit 视图_2.x，3.x\|查询 gv, sql_audit 视图_2.x，3.x]]，；
+		3. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/查询 gv, ob_sql_audit 视图_4.x\|查询 gv, ob_sql_audit 视图_4.x]]，；
 	3. `__all_virtual_trans_stat`
 4. 日志
 	1. slow trans
