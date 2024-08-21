@@ -87,7 +87,7 @@ where a.tenant_id = 1005 /*AND svr_ip = '100.63.41.160'*/ AND database_name = 'Z
 group by a.svr_ip,a.tenant_id,c.tenant_name,b.database_name,b.database_id,b.table_id, b.table_name  
 order by size_gb desc limit 10;  
 ```
-更多详细：[[15_OceanBase/20_OceanBase 常用 Sql 语句/查询磁盘使用情况#2.1.1 _ _all_virtual_meta_table 表\|查询磁盘使用情况#2.1.1 _ _all_virtual_meta_table 表]]，；
+更多详细：[[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase 常用查询语句/查询磁盘使用情况_v2.x，v3.x#2.1.1 _ _all_virtual_meta_table 表\|查询磁盘使用情况_v2.x，v3.x#2.1.1 _ _all_virtual_meta_table 表]]，；
 
 #### 7 hint 强制指定索引
 更多详细：[[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/与访问路径相关的 Hint\|与访问路径相关的 Hint]]，与访问路径相关的 Hint 包括 `INDEX Hint` 和 `FULL Hint`；
