@@ -39,7 +39,7 @@ obclient> SET GLOBAL ob_read_consistency = STRONG;
 SELECT /*+READ_CONSISTENCY(WEAK) */ * FROM t1;   -- 指定 WEAK Consistency
 SELECT /*+READ_CONSISTENCY(STRONG) */ * FROM t1; -- 指定 STRONG Consistency
 ```
-
+更多信息：[[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/其他 Hint_02#1 READ_CONSISTENCY Hint\|其他 Hint_02#1 READ_CONSISTENCY Hint]]，；
 
 #### 2 事务的一致性级别
 
