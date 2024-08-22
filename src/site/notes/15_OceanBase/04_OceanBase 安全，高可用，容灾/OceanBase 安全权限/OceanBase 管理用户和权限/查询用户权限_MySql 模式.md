@@ -6,40 +6,66 @@
 
 
 ### 查询用户权限_MySql 模式
-#### 1 通过 SQL 语句查看用户权限
-##### 1.1 通过 SHOW GRANTS 语句
-```sql
--- 1.管理员登录数据库的 MySQL 租户
+可以通过 SQL 语句查看用户权限，也可以通过 OCP 查看用户权限；
 
--- 2.查看某个用户被授予的权限
-SHOW GRANTS FOR user1;
+#### 1 查看用户，角色被授予的权限
+通过 `SHOW GRANTS` 语句查看【用户或角色】被授予的【角色或权限】；
+
+```sql
+-- 1.查看用户被授予的角色和权限
+	-- 1.管理员登录数据库的 MySQL 租户
+	
+	-- 2.查看当前用户被授予的权限【3 个命令效果一致】
+		SHOW GRANTS;
+		SHOW GRANTS FOR CURRENT_USER;
+		SHOW GRANTS FOR CURRENT_USER();
+	
+	-- 3.查看某个用户被授予的权限
+		SHOW GRANTS FOR user1;
+		SHOW GRANTS FOR test1 USING role1;    -- 添加一个 USING 子句，指定展示该角色所包含的权限；
+		+-------------------------------------------------+
+		| Grants for test1@%                              |
+		+-------------------------------------------------+
+		| GRANT ALTER SYSTEM ON *.* TO 'test1'            |
+		| GRANT UPDATE, SELECT ON `dbtest`.* TO 'test1'   |
+		| GRANT `employee`@`%`,`role1`@`%` TO `test1`@`%` |
+		+-------------------------------------------------+
+
+-- 2.查看角色被授予的角色或权限
+	SHOW GRANTS FOR role1;    -- 查看角色被授予的角色或权限；
+	+-------------------------------------------------------+
+	| Grants for role1@%                                    |
+	+-------------------------------------------------------+
+	| GRANT ALTER SYSTEM ON *.* TO 'role1'                  |
+	| GRANT SELECT ON `dbtest`.* TO 'role1'                 |
+	| GRANT SELECT ON `test1`.`tbl1` TO 'role1'             |
+	| GRANT `employee`@`%` TO `role1`@`%` WITH ADMIN OPTION |
+	+-------------------------------------------------------+
 ```
 
-##### 1.2 通过 mysql.user 视图查询权限
-管理员可以通过 mysql.user 视图查看某个用户所拥有的用户级权限；
-普通用户可以通过 mysql.user 视图查看自己所拥有的用户级权限；
+
+#### 2 查看用户所拥有的用户级权限
+【管理员】可以通过 *mysql.user* 视图查看某个用户所拥有的用户级权限；【普通用户】可以通过 *mysql.user* 视图查看自己所拥有的用户级权限；
+
 ```sql
 -- 查看用户所拥有的用户级权限
 SELECT * FROM mysql.user WHERE user='user1'\G;
 ```
-更多 mysql.user 视图的字段及说明请参见 mysql.user； 
+更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#1 mysql.user\|MySql 租户权限相关_01#1 mysql.user]]，；
 
-##### 1.3 通过 mysql.db 视图
-管理员可以通过 mysql.db 视图查看某个用户所拥有的数据库级权限；
-普通用户可以通过 mysql.db 视图查看自己所拥有的数据库级权限；
+
+#### 3 查看用户所拥有的数据库级权限
+【管理员】可以通过 *mysql.db* 视图查看某个用户所拥有的数据库级权限；【普通用户】可以通过 *mysql.db* 视图查看自己所拥有的数据库级权限；
+
 ```sql
  -- 查看用户所拥有的数据库级权限
  SELECT * FROM mysql.db WHERE user='user1'\G;
 ```
+更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#2 mysql.db\|MySql 租户权限相关_01#2 mysql.db]]，；
 
-#### 2 通过 OCP 查看用户权限
 
-1. 登录 OCP。
-2. 在左导航栏上单击 **租户** ，进入 **租户** 页面。
-3. 在租户列表中，选择 **租户模式** 为 **Oracle** 的租户，进入 **总览** 页面。
-4. 在左侧导航栏上，单击 **用户管理** 。
-5. 在用户列表中，找到待查看的用户，将鼠标悬停在 **拥有系统权限** 、 **拥有角色** 对应的列上，查看该用户所拥有的权限及角色；
+
 
 
 ### 参考文档
-
+1. *查看用户权限*：[v4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000821413)，；
