@@ -12,17 +12,7 @@
 #### 1 修改转储配置
 ##### 1.1 通过 SQL 语句修改转储配置
 ```sql
--- 通过 SHOW PARAMETERS 语句查询参数设置
-SHOW PARAMETERS LIKE 'minor_compact_trigger';
-SHOW PARAMETERS LIKE 'major_compact_trigger';
-SHOW PARAMETERS LIKE 'freeze_trigger_percentage';
-SHOW PARAMETERS LIKE 'memstore_limit_percentage';
 
--- 修改转储配置
-ALTER SYSTEM SET minor_compact_trigger=2;
-ALTER SYSTEM SET major_compact_trigger=10;
-ALTER SYSTEM SET freeze_trigger_percentage=20;
-ALTER SYSTEM SET memstore_limit_percentage=50; 
 ```
 
 ##### 1.2 转储参数设置
@@ -82,7 +72,7 @@ alter system set zone_merge_order = '';          -- 取消自定义合并顺序
 	1. 在 V4.0.0 版本中，该参数调整为【_租户级_】；
 3. `minor_freeze_times`：用于设置多少次小合并触发一次全局合并；【*从 V4.0.0 版本开始弃用*】；
 	
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02/ob/ocean-base/#d1c59a" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 
 
@@ -92,7 +82,7 @@ alter system set zone_merge_order = '';          -- 取消自定义合并顺序
 
 2. `major_compact_trigger`：用于设置多少次小合并触发一次全局合并；该参数控制在转储多少次后自动转化为合并；
 	
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02/ob/ocean-base/#2b32eb" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 
 
@@ -113,7 +103,7 @@ alter system set zone_merge_order = '';          -- 取消自定义合并顺序
 	1. `enable_manual_merge`: OB 的配置项，指示是否开启手动合并；
 	2. `enable_merge_by_turn`：OB 的配置项，指示是否开启自动轮转合并；
 	
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02/ob/ocean-base/#579c89" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 
 
@@ -123,7 +113,7 @@ alter system set zone_merge_order = '';          -- 取消自定义合并顺序
 
 	1. `merge_list` / `zone_merge_order`：指定自动轮转合并的合并顺序；
 	
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02/ob/ocean-base/#f50cc7" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 
 
