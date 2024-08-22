@@ -39,8 +39,12 @@
 	4. [[15_OceanBase/05_OceanBase 性能调优/OceanBase 线程管理\|OceanBase 线程管理]]，包括*租户线程管理*，*系统后台线程管理*；
 3. 操作系统参数调优
 4. OceanBase 数据库参数调优
+{ #137be8}
+
 	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OB 配置管理/OceanBase 管理配置项，租户变量\|OceanBase 管理配置项，租户变量]]，；
 	2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OB 配置管理/OceanBase 配置项，变量详细介绍\|OceanBase 配置项，变量详细介绍]]，；
+	3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OB 配置管理/OceanBase 配置项，变量详细介绍 _V4.x\|OceanBase 配置项，变量详细介绍 _V4.x]]，；
+		1. [[15_OceanBase/05_OceanBase 性能调优/系统调优/secure_file_priv 配置项\|secure_file_priv 配置项]]，；
 5. OBProxy 参数调优
 { #9c71b0}
 
@@ -80,7 +84,7 @@
 			1.  [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/计划绑定\|计划绑定]]，；
 			2. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/OceanBase 执行计划管理\|OceanBase 执行计划管理]]，；
 		3. 索引选择：[[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 索引概述\|OceanBase 索引概述]]，；
-		4. 连接：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/连接简介\|连接简介]]，；
+		4. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/连接简介\|连接简介]]，介绍联接算法：`Nested Loops Joins`，`Hash Join`，`Merge Join`；介绍连接类型；
 			1. [[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/连接次序\|连接次序]]，；
 		5. 排序和 limit 优化：[[15_OceanBase/05_OceanBase 性能调优/Sql 调优指南/排序和 limit 优化\|排序和 limit 优化]]，；
 	3. 业务逻辑优化
