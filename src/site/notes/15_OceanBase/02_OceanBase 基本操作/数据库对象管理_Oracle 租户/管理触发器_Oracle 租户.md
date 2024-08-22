@@ -82,7 +82,7 @@ SELECT TRIGGER_BODY FROM USER_TRIGGERS WHERE TRIGGER_NAME = 'DEL_NEW_REGION'\G
 	1. `USER_SOURCE`：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000750318)，查看当前用户拥有的存储对象的文本源。其列与 `ALL_SOURCE` 中的列相同，去除了 `OWNER` 字段；
 	2. `DBA_SOURCE`：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000750404)，查看数据库中所有存储对象的文本源。其列与 `ALL_SOURCE` 中的列相同；
 	3. `ALL_SOURCE`：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000750178)，查看当前用户可以访问的存储对象的文本源；
-2. 亦可通过查询数据库对象获取触发器信息：[[15_OceanBase/20_OceanBase 常用 Sql 语句/Oceanase 查询数据库对象情况\|Oceanase 查询数据库对象情况]]，；
+2. 亦可通过查询数据库对象获取触发器信息：[[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase 常用查询语句/Oceanase 查询数据库对象情况\|Oceanase 查询数据库对象情况]]，；
 	1. `DBA_OBJECTS`：[V4.2.3](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000750204)，用于查看数据库所有数据库对象；`该视图从 V2.2.77 版本开始引入`； 
 		1. *该视图仅适用于 OceanBase 数据库 Oracle 模式*；
 
