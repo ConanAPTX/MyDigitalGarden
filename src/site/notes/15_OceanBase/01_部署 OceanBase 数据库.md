@@ -22,7 +22,8 @@
 	3. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OCP/部署单点 OCP\|部署单点 OCP]]，；
 	4. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OCP/部署 OCP 后的检查\|部署 OCP 后的检查]]，；
 2. 在 OAT 中安装高可用模式 OCP
-3. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OCP/获取 OCP 相关账号密码\|获取 OCP 相关账号密码]]，；
+3. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OCP/OCP 平台的用户管理\|OCP 平台的用户管理]]，；
+4. [[15_OceanBase/01_部署 OceanBase 数据库/部署，管理 OCP/获取 OCP 相关账号密码\|获取 OCP 相关账号密码]]，；
 
 
 #### 3 部署，管理 OceanBase 数据库
