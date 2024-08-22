@@ -197,9 +197,11 @@ observer.log 会定期打印各个租户的内存使用情况，RPC 线程归属
   
 ###### 2.2.1 相关系统参数  
 Rebalance task 的并行线程数由以下参数控制：  
-1. `data_copy_concurrency`，整个集群内数据库迁移复制任务的最大并发数；  
-2. `server_data_copy_in_concurrency`，单个节点上数据迁入任务的最大并发数；  
-3. `server_data_copy_out_concurrency`，单个节点上数据迁出任务的最大并发数；  
+1. *migrate_concurrency* / *data_copy_concurrency*  / *server_data_copy_in_concurrency* / *server_data_copy_out_concurrency*：【`从 V4.0.0 版本开始删除`】
+	1. `data_copy_concurrency`，整个集群内数据库迁移复制任务的最大并发数；  
+	2. `server_data_copy_in_concurrency`，单个节点上数据迁入任务的最大并发数；  
+	3. `server_data_copy_out_concurrency`，单个节点上数据迁出任务的最大并发数；  
+	4. 详细情况：[[15_OceanBase/02_OceanBase 基本操作/管理数据库/数据负载均衡概述\|数据负载均衡概述]]
   
 其他影响 rebalance task 性能的系统参数：  
 1. `migrate_concurrency`，所有数据迁出任务 copy 宏块数据的并发线程总数；  
