@@ -43,26 +43,35 @@
 
 #### 2 集群和多租户管理
 1. `集群管理`，*V3.2.3：使用指南 > 集群和多租户管理 > 管理集群*
-	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/查询集群信息\|查询集群信息]]，；
+	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/查询 OceanBase 集群，Zone 信息\|查询 OceanBase 集群，Zone 信息]]，；
 	3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/集群租户管理概述\|集群租户管理概述]]，；
 	4. *V4.3.1：集群管理 > 管理 Zone*
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/管理集群中的 Zone\|管理集群中的 Zone]]，；
 	5. *V4.3.1：集群管理 > 管理 OBServer*
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/Server 管理及状态\|Server 管理及状态]]，；
 2. OceanBase 配置管理
-	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OB 配置管理/OceanBase 管理配置项，租户变量\|OceanBase 管理配置项，租户变量]]，；
-	2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OB 配置管理/OceanBase 配置项，变量详细介绍\|OceanBase 配置项，变量详细介绍]]，；
-3. 资源管理
+	
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/05-ocean-base/#137be8" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+
+
+4. OceanBase 数据库参数调优 
+
+</div></div>
+
+4. 资源管理
 	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/OceanBase 资源管理概述\|OceanBase 资源管理概述]]，介绍`资源配置`，`资源单元`，`资源池`的概念；
 	3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/OceanBase 管理资源单元，资源池\|OceanBase 管理资源单元，资源池]]，介绍资源单元，资源池的管理，包括查询，创建，删除等；
 	5. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/租户内资源的扩容和缩容\|15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/租户内资源的扩容和缩容]]，；
-	6. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/查询 OB 资源分配情况\|查询 OB 资源分配情况]]，查询 OB 集群的 OBServer ，及租户的资源使用情况；
+	6. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/查询 OceanBase 资源分配情况\|查询 OceanBase 资源分配情况]]，查询 OB 集群的 OBServer ，及租户的资源使用情况；
 	7. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OceanBase 集群资源池的分配，移除\|OceanBase 集群资源池的分配，移除]]
-4. `租户管理`：*V3.2.3：使用指南 > 集群和多租户管理 > 管理租户*
-	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/OceanBase 管理租户_查询，创建，修改，删除租户\|OceanBase 管理租户_查询，创建，修改，删除租户]]，介绍查询，创建，修改，删除租户等；
-	3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 网络安全访问控制\|OceanBase 网络安全访问控制]]，详细介绍查看，设置租户白名单；
-	4. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查看，修改租户的资源配置\|查看，修改租户的资源配置]]，；
-	5. *OceanBase 租户会话管理*
+5. `租户管理`：*V3.2.3：使用指南 > 集群和多租户管理 > 管理租户*
+	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/OceanBase 租户类型\|OceanBase 租户类型]]，；
+	2. [[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase 常用查询语句/查询 OceanBase 租户信息\|查询 OceanBase 租户信息]]，；
+	3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/OceanBase 管理租户_创建，修改，删除租户\|OceanBase 管理租户_创建，修改，删除租户]]，介绍查询，创建，修改，删除租户等；
+	4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 网络安全访问控制\|OceanBase 网络安全访问控制]]，详细介绍查看，设置租户白名单；
+	5. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查看，修改租户的资源配置\|查看，修改租户的资源配置]]，；
+	6. *OceanBase 租户会话管理*
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查询，终止租户会话\|查询，终止租户会话]]，查询连接信息；
 		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
 	7. *管理用户和权限*
@@ -163,53 +172,10 @@
 	9. 管理 DBLink
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理 DBLink_Oracle 模式\|管理 DBLink_Oracle 模式]]，；
 
-#### 4 SQL 参考 > SQL 语法
-1. *V4.3.1：参考指南 > SQL 参考 > SQL 语法 > 系统租户*
-2. *V4.3.1：参考指南 > SQL 参考 > SQL 语法 > 普通租户_MySql 模式*
-	1. `基本元素 > 字面量`
-		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/NULL 值\|NULL 值]]，包括 MySql，Oracle 模式；
-	2. *SQL 语法 > 普通租户_MySql 模式 > 函数*
-		1. [[15_OceanBase/02_OceanBase 基本操作/OB 系统函数_MySql 模式/函数概述，MySq 模式\|函数概述，MySq 模式]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/OB 系统函数_MySql 模式/OB 系统函数介绍_MySql 模式\|OB 系统函数介绍_MySql 模式]]，介绍 OceanBase 数据库 MySql 模式中的函数；
-4. *V4.3.1：参考指南 > SQL 参考 > SQL 语法 > 普通租户_Oracle 模式*
-	1. *SQL 语法 > 普通租户_Oracle 模式 > SQL 概述*
-	2. *SQL 语法 > 普通租户_Oracle 模式 > 伪列*
-		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/OceanBase 伪列概述\|OceanBase 伪列概述]]，，ROWNUM 函数，；
-	3. *SQL 语法 > 普通租户_Oracle 模式 > 基本元素 *
-		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/NULL 值\|NULL 值]]，包括 MySql，Oracle 模式；
-		2. `注释`
-			1. 注释概述
-			2. SQL 语句的注释
-			3. [Schema 与非 Schema 对象的注释](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000511610)，;
-	4. *SQL 语法 > 普通租户_Oracle 模式 > 基本元素 > 注释 > Hint*
-		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/Hint 概述\|Hint 概述]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/与访问路径相关的 Hint\|与访问路径相关的 Hint]]，与访问路径相关的 Hint 包括 `INDEX Hint` 和 `FULL Hint`；
-		3. [[15_OceanBase/03_OceanBase 高阶进阶/事务管理/OceanBase 一致性级别的指定方式\|OceanBase 一致性级别的指定方式]]，；
-	5. SQL 语法 > 普通租户_Oracle 模式 > 运算符 
-	6. SQL 语法 > 普通租户_Oracle 模式 > 函数
-		1. [[15_OceanBase/02_OceanBase 基本操作/OB 系统函数_Oracle 模式/函数概述，Oracle 模式\|函数概述，Oracle 模式]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/OB 系统函数_Oracle 模式/OB 系统函数介绍_Oracle 模式\|OB 系统函数介绍_Oracle 模式]]，介绍 OceanBase 数据库 Oracle 模式中的函数；
-	7. SQL 语法 > 普通租户_Oracle 模式 > 表达式
-	8. SQL 语法 > 普通租户_Oracle 模式 > 条件
-		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/OceanBase 模式匹配条件_Oracle 模式\|OceanBase 模式匹配条件_Oracle 模式]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍\|副本介绍]]，；
-		3. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/EXISTS 条件\|EXISTS 条件]]，；
-	9. SQL 语法 > 普通租户_Oracle 模式 > 查询和子查询
-	10. SQL 语法 > 普通租户_Oracle 模式 > SQL 语句
-	11. SQL 语法 > 普通租户_Oracle 模式 > DDL 功能
-5. 参考指南 > SQL 参考 > SQL 实践和建议
-6. 参考指南 > SQL 参考 > PL 参考
-
-#### 5 分布式存储管理
-1. *V3.2.3：分布式存储管理*
-	1. [[15_OceanBase/02_OceanBase 基本操作/数据分布概述\|数据分布概述]]，数据分布概述
-	2. 管理分区
-	3. 管理副本
-	4. 管理 Locality
-	5. 负载均衡
 
 
-#### 6 管理数据库
+
+#### 4 管理数据库
 1. *V4.3.1：管理数据库*
 	1. 登录 OceanBase 租户
 	2. 集群管理
