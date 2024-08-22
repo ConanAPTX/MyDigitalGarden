@@ -74,21 +74,9 @@ obclient> ALTER TABLE table_name TABLE_MODE = 'queuing';
 ##### 2.1 自动触发转储 
 租户在创建时指定了租户的内存大小，租户的内存分为 *动态可伸缩内存*  和 *MemTable*；
 
-当一个租户的 MemTable 内存的使用量达到 *memstore_limit_percentage \* freeze_trigger_percentage* 所限制使用的值时，就会自动触发冻结(转储的前置动作)，然后系统内部会再调度转储；
+当一个租户的 MemTable 内存的使用量达到 *memstore_limit_percentage \* freeze_trigger_percentage* 所限制使用的值时，就会自动触发冻结(转储的前置动作)，然后系统内部会再调度转储；当转储达到一定的条件时，则可能会触发自动合并；
 
-当转储达到一定的条件时就会触发自动合并，自动触发合并的相关介绍请参见 [自动触发合并](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000946261)，；
-
-1. `freeze_trigger_percentage`：用于设置租户触发冻结内存的使用阈值；
-	
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02/ob/ocean-base/#a61add" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
-
-
-
-3. `freeze_trigger_percentage`：用于设置租户触发冻结内存的使用阈值； 
-
-</div></div>
-
-
+关于上述的集群的 2 个配置项，详细情况：[[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OceanBase 管理内存#4.1 Memstore 内存管理相关配置项\|OceanBase 管理内存#4.1 Memstore 内存管理相关配置项]]，；
 
 ##### 2.2 手动触发转储
 系统租户可以通过命令手动触发转储，手动转储支持租户级别、Zone 级别、Server 级别、日志流级别和 Tablet 级别；
