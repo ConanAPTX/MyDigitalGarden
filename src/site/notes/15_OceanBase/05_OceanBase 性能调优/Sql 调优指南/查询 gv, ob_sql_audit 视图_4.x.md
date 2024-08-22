@@ -32,18 +32,18 @@ obclient -h10.x.x.x -P2883 -uroot@oboracle#obcluster -p   -- 通过普通用户�
 
 ##### 1.1 MySql 租户
 ```sql
-SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
-	svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
-FROM gv$ob_sql_audit 
-WHERE tenant_id = 1001 and user_name = 'xxxx' and query_sql like'%%'
-limit 10 ;
-
 /* 开启全链路追踪 Session 级别 Trace，记录当前 Session 所有 SQL 的相关耗时等信息，采样频率为 50%。*/
 CALL DBMS_MONITOR.OB_SESSION_TRACE_ENABLE(null,1,0.5,'ALL');
 Query OK, 0 rows affected
 
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
+	svr_ip,svr_port,TRACE_ID,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
+FROM oceanbase.gv$ob_sql_audit 
+WHERE tenant_id = 1001 and user_name = 'xxxx' and query_sql like'%%'
+limit 10 ;
+
 SELECT request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL 
-FROM v$OB_SQL_AUDIT 
+FROM oceanbase.v$OB_SQL_AUDIT 
 where ELAPSED_TIME > 100000 limit 10 ;
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | request_id | usec_to_time(request_time) | ELAPSED_TIME | QUEUE_TIME | EXECUTE_TIME | FLT_TRACE_ID                         | QUERY_SQL                                                                                                                                                          |
@@ -54,6 +54,20 @@ where ELAPSED_TIME > 100000 limit 10 ;
 |    5954522 | 2023-09-07 16:21:48.317360 |       128803 |         27 |       128542 | 000604c0-8d22-1659-7b0c-a0ac0645894d | SELECT request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL FROM v$OB_SQL_AUDIT where ELAPSED_TIME > 100000  limit 10 |
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 4 rows in set
+/*
+TRACE_ID：该语句的 trace_id；
+RETRY_CNT：retry 次数是否很多, 如果次数很多，则可能有锁冲突或切主等情况；
+QUEUE_TIME：queue time 的值是否过大，很高表明CPU资源不够用；
+GET_PLAN_TIME：获取执行计划时间, 如果时间很长，一般会伴随 IS_HIT_PLAN ＝ 0, 表示没有命中 plan cache；
+EXECUTE_TIME：查看 EXECUTE_TIME 值，如果值过大，则：
+	l.查看是否有很长等待事件耗时；
+	2.分析逻辑读次数是否异常多(突然有大账户时可能会出现）；
+
+SQL audit 记录的等待事件如下相关信息：
+	记录了 4 大类等待事件分别的耗时（APPLICATION_WAIT_TIME, CONCURRENCY_WAIT_TIME, USER_IO_WAIT_TIME, SCHEDULE_TIME), 每类等待事件都涉及很多具体的等待事件；
+	记录了耗时最多的等待事件名称（EVENT）及该等待事件耗时（WAIT_TIME_MICRO）；
+	记录了所有等待事件发生的次数（TOTAL_WAITS）及所有等待事件总耗时（TOTAL_WAIT_TIME_MICRO）；
+*/
 ```
 该视图详细介绍：[[15_OceanBase/99_内部表介绍/gv$sql_audit，gv$ob_sql_audit\|gv$sql_audit，gv$ob_sql_audit]]，；
 
@@ -62,7 +76,7 @@ where ELAPSED_TIME > 100000 limit 10 ;
 ```sql
 SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
 	svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
-FROM gv$ob_sql_audit 
+FROM sys.gv$ob_sql_audit 
 WHERE tenant_id=1005 and query_sql LIKE '%INSERT INTO test%' and rownum <= 10 
 ORDER BY request_time DESC;
 ```
