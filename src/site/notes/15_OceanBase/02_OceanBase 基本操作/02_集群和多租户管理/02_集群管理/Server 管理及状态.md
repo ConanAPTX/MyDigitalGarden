@@ -7,81 +7,7 @@
 
 ### Server 管理及状态
 
-#### 1 检查 OBServer 状态
-查询 OBServer 状态；查看 OBServer 状态；
 
-##### 1.1 通过视图查看 OBServer 状态
-所有的节点的 ip，对外提供的服务端口，内部通信端口，所属可用区，状态等信息；
-
-```sql  
--- 查询集群内 OBServer 的状态(使用 root 用户登录到数据库的 sys 租户)  
-obclient -h10.10.10.1 -P2881 -uroot@sys -p -A              -- 使用 root 用户登录数据库的 sys 租户
-
-SELECT * FROM oceanbase.__all_server order by zone;  
-SELECT id,svr_ip,svr_port,zone,stop_time,status FROM oceanbase.__all_server order by zone;  
-SELECT id,svr_ip,svr_port,zone,inner_port,with_rootserver,status,block_migrate_in_time,start_service_time,stop_time,last_offline_time,build_version 
-FROM oceanbase.__all_server 
-order by zone;  
-/* 字段详解：
-gmt_create: ；  
-gmt_modified:  
-svr_ip: IP 地址；  
-svr_port: 端口；  
-id: 服务器 ID；  
-zone: zone 名称；  
-inner_port: 2881，sql 执行端口；  
-with_rootserver: 是否 RS 所在服务器；  
-status: 表示该 OBServer 状态；
-	有3种状态；active，为正常状态；inactive，下线状态；deleting，正在被删除； 
-block_migrate_in_time: 0  
-build_version: 3.2.1_20211031212624-2c7eade2fd94a4ae32bec1683d1118da9d30cf8b(Oct 31 2021 22:03:03)  
-stop_time：
-	在该内部表中同时通过 stop_time 和 status 两个字段来标识 OBserver 的状态：  
-	值为 0 时，表示 OBServer 为 started 状态；若值不为 0 时，表示 OBServer 处于 stopped 状态，且此时的值为 OBServer 被 Stop 的时间戳；  
-start_service_time: 开始服务的时间；  
-first_sessid: 0  
-with_partition: 1  
-last_offline_time: 最近下线时间； 
-*/ 
-```  
-
-从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_SERVERS* 视图，该视图用于展示所有 OBServer 节点的信息；
-```sql
-obclient> SELECT status FROM oceanbase.DBA_OB_SERVERS;
-+--------+
-| status |
-+--------+
-| active |
-| active |
-+--------+
-2 rows in set (0.00 sec)
-/* 字段详解：
-status:
-	如果返回结果为 `active`，说明 OBServer 处于正常运行状态；
-	如果返回结果为 `inactive`，说明 OBServer 处于下线状态；
-	如果返回结果为 `deleting`，说明 OBServer 处于正在被删除状态；
-*/
-```
-
-##### 1.2 通过宿主机查看 OBServer 状态
-```shell
-# 1.登录 OBServer 所在的宿主机
-
-# 2.在命令行工具中运行以下命令查看 observer 进程；
-	# 查看OBServer进程：登录OceanBase Server 所在的宿主机
-	ps -ef | grep observer
-	root       6136      0 99 11:23 ?        08:53:50 ./bin/observer
-	root      20514  19521  0 16:09 pts/25   00:00:00 grep --color=auto observer
-
-# 启动 OBServer 进程：登录 OceanBase Server 主机
-	cd /home/admin/oceanbase/
-	./bin/observer [启动参数]
-	./bin/observer --help   # 查看 OBServer 启动参数的详细信息
-
-# 停止OBServer进程
-	kill -15 `pgrepobserver`
-	kill -9 `pgrepobserver`
-```
 
 黑屏：Observer 服务启动恢复
 由于增删改数据在内存中，进程启动后：
@@ -179,6 +105,6 @@ ALTER SYSTEM STOP SERVER 'ip:port' [,'ip:port'...] [ZONE='zone'];
 
 ### 参考文档
 1. [检查 OBServer 状态_V4.2.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000218101)，；
-2. *oceanbase.DBA_OB_SERVERS*：*SYS 租户*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000820088)，；
+
 
 
