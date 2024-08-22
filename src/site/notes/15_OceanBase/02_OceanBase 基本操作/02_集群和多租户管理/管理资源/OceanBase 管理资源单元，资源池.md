@@ -127,6 +127,7 @@ ORDER BY t1.`resource_pool_id`, t2.`unit_config_id`, t3.unit_id;
 
 
 ##### 2.2 创建，删除资源池
+从 V4.0.0 版本开始废弃 *gv$unit* 视图；
 ```sql
 -- 1.创建资源池(使用 root 用户登录数据库的 sys 租户)  
 CREATE RESOURCE POOL pool1 UNIT='unit1',UNIT_NUM=1,ZONE_LIST=('zone1','zone2','zone3'); -- 创建资源池 pool1 并为其指定资源配置
@@ -142,7 +143,7 @@ SELECT tenant_id,tenant_name FROM oceanbase.gv$unit WHERE resource_pool_name='re
 DROP RESOURCE POOL resource_pool1;   -- 删除资源池(使用 root 用户登录到集群的 sys 租户)
 SELECT * FROM oceanbase.__all_resource_pool where name='resource_pool1';   -- 删除后再次查询确认
 ```
-
+[[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理资源/查询 OceanBase 资源分配情况\|查询 OceanBase 资源分配情况]]，；
 
 ### 参考文档：
 1. [资源管理概述](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000944862)，；
