@@ -54,17 +54,14 @@
 
 
 
-
 #### 2 查询角色相关权限
 ##### 2.1 查看当前会话中被激活的角色
-查看当前用户在当前会话中被激活的角色，语句如下：
 
 ```sql
+-- 查看当前用户在当前会话中被激活的角色；
 obclient [oceanbase]> SELECT current_role();
 ```
-
 如果查询结果为 `NONE`，则表示当前用户没有处于激活状态的角色，只有处于激活状态的角色的权限才能被用户使用；
-
 
 
 ##### 2.2 查看用户登录时默认激活的角色
@@ -73,7 +70,7 @@ obclient [oceanbase]> SELECT current_role();
 ```sql
 CREATE ROLE IF NOT EXISTS role1;                   -- 新建角色 `role1`
 GRANT ALTER SYSTEM ON *.* TO role1;                -- 将 `ALTER SYSTEM` 权限授予角色 `role1`
-CREATE USER 'user001'@'%' IDENTIFIED BY '******';  -- 新建用户 `user001`
+CREATE USER 'user001'@'%' IDENTIFIED BY '123456';  -- 新建用户 `user001`
 GRANT role001 TO user001 WITH ADMIN OPTION;        -- 将角色 `role1` 授予新创建的用户 `user001`
 SET DEFAULT ROLE ALL TO user001;                   -- 指定用户 `user001` 在登录时默认激活用户被授予的所有角色
 
