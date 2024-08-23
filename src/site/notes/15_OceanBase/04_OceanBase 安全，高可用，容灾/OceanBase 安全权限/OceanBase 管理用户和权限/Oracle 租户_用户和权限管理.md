@@ -78,42 +78,6 @@ ALTER USER user_name IDENTIFIED BY 'password';
 
 
 #### 2 用户权限管理  
-##### 2.1 查看用户权限  
-管理员可以通过 DBA_SYS_PRIVS 视图查看某个用户被授予的系统权限，详细说明请参见 [DBA_SYS_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219432)，；  
-普通用户和管理员都可以通过 USER_SYS_PRIVS 视图查看自己被授予的系统权限，详细说明请参见 [USER_SYS_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219277)；  
-
-```sql  
--- 查看某个用户被授予的系统权限  
-SELECT * FROM DBA_SYS_PRIVS WHERE grantee='SECUSER';  
-  
--- 查看当前用户被授予的系统权限  
-SELECT * FROM USER_SYS_PRIVS;  
-```  
-
-管理员可以通过 DBA_TAB_PRIVS 视图查看某个用户被授予的对象权限，说明请参见 [DBA_TAB_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219217)，；  
-普通用户和管理员都可以通过 USER_TAB_PRIVS 视图查看当前自己被授予的对象权限，说明请参见 [USER_TAB_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219409)，；  
-
-```sql  
--- 查看某个用户被授予的对象权限  
-SELECT * FROM DBA_TAB_PRIVS WHERE grantee='SECUSER';  
-  
--- 查看当前用户被授予的对象权限  
-SELECT * FROM USER_TAB_PRIVS;  
-```  
-
-管理员可以通过 DBA_ROLE_PRIVS 视图查看某个用户所拥有的角色，说明请参见 [DBA_ROLE_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219223)，；  
-管理员和普通用户都可以通过 USER_ROLE_PRIVS 视图查看自己被授予的角色，说明请参见 [USER_ROLE_PRIVS](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000219420)，；
-
-```sql  
--- 查看某个用户所拥有的角色  
-SELECT * FROM DBA_ROLE_PRIVS WHERE grantee='USER2';  
-  
--- 查看当前用户被授予的角色  
-SELECT * FROM USER_ROLE_PRIVS;  
-```  
-
-如果需要查看当前角色所拥有的对象权限或系统权限，可以参见 [查看角色](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000221476)，；
-
 
 ##### 2.2 授予，撤销权限  
 直接授予权限详情请参考：[直接授予权限_Oracle_4.2.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000220862)，关于 GRANT 语句的更多信息，参见 [GRANT](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000222051)，；  
