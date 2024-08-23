@@ -6,7 +6,26 @@
 
 
 ### 查询 OceanBase 日志归档信息_V4.x
-#### 1 查看 Piece 信息
+#### 1 查看租户的归档模式
+
+````sql
+-- 1.【sys 租户】查看集群中所有租户的归档模式
+SELECT TENANT_NAME, LOG_MODE FROM oceanbase.DBA_OB_TENANTS WHERE TENANT_TYPE = 'USER'\G
+/*
+TENANT_NAME：租户名称；
+LOG_MODE：归档模式状态；NOARCHIVELOG：关闭；ARCHIVELOG：开启；
+*/
+
+-- 2.【业务租户】查看该租户所处的归档模式
+obclient [SYS]> SELECT TENANT_NAME, LOG_MODE FROM DBA_OB_TENANTS\G
+/*
+TENANT_NAME：租户名称；
+LOG_MODE：归档模式状态；NOARCHIVELOG：关闭；ARCHIVELOG：开启；
+*/
+````
+
+
+#### 2 查看 Piece 信息
 从 V4.0.0 版本开始引入 *CDB_OB_ARCHIVELOG_PIECE_FILES*，*DBA_OB_ARCHIVELOG_PIECE_FILES*；开启日志归档后，可以通过视图查看 Piece 信息；
 
 ````tab
@@ -36,10 +55,10 @@ tab: 1.2 用户租户查看本租户所有的 Piece 信息
 ````
 
 
-#### 2 查看归档进度
+#### 3 查看归档进度
 从 V4.0.0 版本开始引入 *CDB_OB_ARCHIVELOG*，*DBA_OB_ARCHIVELOG*；开启归档之后，您可以通过视图查看归档进度；
 
-##### 2.1 系统租户查看
+##### 3.1 系统租户查看
 系统租户查看集群中所有租户的归档进度
 sys 租户可以通过 `oceanbase.CDB_OB_ARCHIVELOG` 视图查看集群中所有租户的归档进度；
 ```sql
@@ -50,7 +69,7 @@ obclient [(none)]> SELECT * FROM oceanbase.CDB_OB_ARCHIVELOG\G
 ```
 更多视图的说明：[[15_OceanBase/99_内部表介绍/日志归档信息_001#2 展示每个路径上的日志归档状态\|日志归档信息_001#2 展示每个路径上的日志归档状态]]，；
 
-##### 2.2 用户租户查看
+##### 3.2 用户租户查看
 用户租户查看当前租户的归档进度
 用户租户可以通过 `oceanbase.DBA_OB_ARCHIVELOG` 视图（MySQL 模式）和 `sys.DBA_OB_ARCHIVELOG` 视图（Oracle 模式）查看本租户的归档进度；
 ```sql
@@ -64,10 +83,10 @@ obclient [(none)]> SELECT * FROM oceanbase.CDB_OB_ARCHIVELOG\G
 更多视图的说明：[[15_OceanBase/99_内部表介绍/日志归档信息_001#2 展示每个路径上的日志归档状态\|日志归档信息_001#2 展示每个路径上的日志归档状态]]，；
 
 
-#### 3 查看归档历史
+#### 4 查看归档历史
 可以通过视图查看归档的历史信息，包括当前正在进行的归档信息；
 
-##### 3.1 系统租户查看
+##### 4.1 系统租户查看
 系统租户查看集群中所有租户的归档历史；
 `sys` 租户可以通过 `oceanbase.CDB_OB_ARCHIVELOG_SUMMARY` 视图查看集群中所有租户的归档历史信息；
 ```sql
@@ -78,7 +97,7 @@ obclient [(none)]> SELECT * FROM oceanbase.CDB_OB_ARCHIVELOG_SUMMARY\G
 ```
 更多信息请参见：[[15_OceanBase/99_内部表介绍/日志归档信息_001#3 展示历史以及当前所有的日志归档的状态\|日志归档信息_001#3 展示历史以及当前所有的日志归档的状态]]，；
 
-##### 3.2 用户租户查看
+##### 4.2 用户租户查看
 用户租户查看当前租户的归档历史；
 用户租户可以通过 `oceanbase.DBA_OB_ARCHIVELOG_SUMMARY` 视图（MySQL 模式）和 `sys.DBA_OB_ARCHIVELOG_SUMMARY` 视图（Oracle 模式）查看本租户的归档历史；
 ```sql
@@ -92,7 +111,7 @@ obclient [(none)]> SELECT * FROM oceanbase.CDB_OB_ARCHIVELOG_SUMMARY\G
 更多信息请参见：[[15_OceanBase/99_内部表介绍/日志归档信息_001#3 展示历史以及当前所有的日志归档的状态\|日志归档信息_001#3 展示历史以及当前所有的日志归档的状态]]，；
 
 
-#### 4 查看归档参数
+#### 5 查看归档参数
 日志归档过程中，您可以查看归档相关的参数配置信息；
 
 ````tab
