@@ -89,7 +89,8 @@
 		4. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/OceanBase 数据库转储，合并参数设置\|OceanBase 数据库转储，合并参数设置]]，；
 	2. *查询转储，合并的信息*
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查询转储，合并的信息_V3.x 版本\|查询转储，合并的信息_V3.x 版本]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查询转储，合并的信息_V4.x 版本\|查询转储，合并的信息_V4.x 版本]]，；
+		2. [[15_OceanBase/查询 OceanBase 转储信息_V4.x 版本\|查询 OceanBase 转储信息_V4.x 版本]]，；
+		3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查看 OceanBase 合并信息_v4.x 版本\|查看 OceanBase 合并信息_v4.x 版本]]，；
 7. 管理内存
 	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OceanBase 管理内存\|OceanBase 管理内存]]，；
 	2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/查询内存的使用信息\|查询内存的使用信息]]，；
