@@ -16,12 +16,22 @@
 -- 【租户管理员】
 -- 查看某个用户被授予的系统权限
 obclient> SELECT * FROM DBA_SYS_PRIVS WHERE grantee='SECUSER';
+/* 字段说明：
+	GRANTEE：VARCHAR2(128)，NO，接受授权的授予者名称、用户或角色；
+	PRIVILEGE：VARCHAR2(40)，NO，系统权限；
+	ADMIN_OPTION：VARCHAR2(3)，NO，授予管理选项；
+*/
 ```
 
 ```sql
 -- 【租户管理员】【普通用户】
 -- 查看当前用户被授予的系统权限
 SELECT * FROM USER_SYS_PRIVS;
+/* 字段说明:
+	GRANTEE：VARCHAR2(128)，NO，接受授权的受让人名称、用户或角色；
+	PRIVILEGE：VARCHAR2(40)，NO，系统权限；
+	ADMIN_OPTION：VARCHAR2(3)，NO，授予管理选项；
+*/
 ```
 
 
@@ -33,6 +43,15 @@ SELECT * FROM USER_SYS_PRIVS;
 -- 【租户管理员】
 -- 查看某个用户被授予的对象权限
 obclient> SELECT * FROM DBA_TAB_PRIVS WHERE grantee='SECUSER';
+/* 字段说明：
+	GRANTEE：VARCHAR2(128)，NO，被授予访问权限的用户名；
+	OWNER：VARCHAR2(128)，NO，对象的所有者；
+	TABLE_NAME：VARCHAR2(128)，NO，对象名称；
+	GRANTOR：VARCHAR2(128)，NO，执行授权的用户名；
+	PRIVILEGE：VARCHAR2(40)，NO，对象的权限；
+	GRANTABLE：VARCHAR2(3)，NO，指示是否能通过 GRANT OPTION 授予权限；
+	HIERARCHY：VARCHAR2(10)，NO，指示是否能通过 HIERARCHY OPTION 授予权限；
+*/
 ```
 
 ```sql
@@ -50,6 +69,12 @@ obclient> SELECT * FROM USER_TAB_PRIVS;
 -- 【租户管理员】
 -- 查看某个用户所拥有的角色
 obclient> SELECT * FROM DBA_ROLE_PRIVS WHERE grantee='USER2';
+/* 字段说明：
+	GRANTEE：VARCHAR2(30)，NO，接收授予的用户或角色的名称；
+	GRANTED_ROLE：VARCHAR2(30)，NO。授予角色名；
+	ADMIN_OPTION：VARCHAR2(3)，NO，指示授权是否带有 ADMIN 选项；
+	DEFAULT_ROLE：VARCHAR2(3)，NO，指示角色是否被指定为用户的默认角色；
+*/
 ```
 
 ```sql
@@ -61,3 +86,4 @@ obclient> SELECT * FROM USER_ROLE_PRIVS;
 
 ### 参考文档
 1. *查看用户权限*：[V4.3.2](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000001052869)，；
+
