@@ -49,10 +49,10 @@
 	2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户_用户管理\|MySql 租户_用户管理]]， 创建用户，删除用户，锁定用户；
 	3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户的用户权限管理\|MySql 租户的用户权限管理]]，授予，撤回用户权限，及权限转述；
 	4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/查询用户权限_MySql 模式\|查询用户权限_MySql 模式]]，；
-	5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户角色管理概述\|MySql 租户角色管理概述]]，OceanBase 租户从 *V4.2.3 版本* 或 *V4.3.1 版本* 开始支持角色；
-		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户角色的权限管理\|MySql 租户角色的权限管理]]，；
-		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/查询角色相关权限_MySql 模式\|查询角色相关权限_MySql 模式]]，；
-		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/激活角色\|激活角色]]，；
+	5. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户角色管理概述\|MySql 租户角色管理概述]]，创建，删除角色；【从 *V4.2.3 版本* 或 *V4.3.1 版本* 开始支持角色】
+		1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户角色的权限管理\|MySql 租户角色的权限管理]]，向角色授予(撤销)权限；
+		2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/MySql 租户激活角色\|MySql 租户激活角色]]，；
+		3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/查询角色相关权限_MySql 模式\|查询角色相关权限_MySql 模式]]，；
 4. `Oracle 租户`
 	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/Oracle 模式下的权限分类\|Oracle 模式下的权限分类]]，； 
 	2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 管理用户和权限/Oracle 租户_角色管理\|Oracle 租户_角色管理]]，`Oracle 租户`；
