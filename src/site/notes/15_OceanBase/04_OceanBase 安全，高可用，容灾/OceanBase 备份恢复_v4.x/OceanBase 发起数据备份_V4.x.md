@@ -345,7 +345,7 @@ OceanBase 配项项详情：[系统配置项总览_V3.2.3](https://www.oceanbase
 	2. `backup_region`：用于用户指定执行备份的 Region；
 		1. 【*集群级*】【字符串类型】；默认值为：空字符串；动态生效；建议保持默认值，
 	2. 不允许同时配置 backup_zone 和 backup_region，二者只能配置一个，推荐使用 backup_zone；
-11. `log_archive_checkpoint_interval`：用于设置冷数据的日志归档检查点的时间间隔；【*在 V 2.2.77 版本中已存在*】
+11. `log_archive_checkpoint_interval`：用于设置冷数据的日志归档检查点的时间间隔；【*在 V 2.2.77 版本中已存在*】【*该配置项从 V4.0.0 版本开始删除*】
 	1. 【*集群级*】【时间类型】；取值范围为：[5s, 1h]，默认值为 120s；动态生效；
 12. `log_archive_concurrency`：用于设置日志归档的并发度；
 	1. 【*集群级*】【整型】；取值范围为：[0, +∞]，默认值为 0；动态生效；
