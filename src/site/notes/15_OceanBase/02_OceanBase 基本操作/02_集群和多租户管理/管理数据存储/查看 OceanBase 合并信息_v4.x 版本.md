@@ -1,0 +1,247 @@
+---
+{"number headings":"auto, first-level 4, max 6, contents
+{ #toc}
+, start-at 1, _.1.1","dg-publish":true,"permalink":"/15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查看 OceanBase 合并信息_v4.x 版本/","dgPassFrontmatter":true}
+---
+
+
+### 查询转储，合并的信息_V4.x 版本
+发起合并后，可以通过内部表来查看合并过程；
+
+合并的过程可以通过内部表进行查看，通常合并的时间是取决于两次合并之间的数据变化量。两次合并之间的数据变化大，合并的时间会更长。同时，合并的线程数、合并时的集群压力等都影响合并的时间长短；
+
+#### 1 系统租户查看所有租户的合并过程
+
+##### 1.1 查看租户的合并全局信息
+
+系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 1. 使用 `root` 用户登录到数据库的 `sys` 租户；
+    
+-- 2. 查看所有租户的合并全局信息
+	--查看所有租户的合并全局信息(使用 root 用户登录集群的 sys 租户)
+	SELECT * FROM oceanbase.CDB_OB_MAJOR_COMPACTION\G；
+	/*
+	  TENANT_ID：租户 ID；
+	  FROZEN_SCN：最近一次合并的版本号；
+	  FROZEN_TIME：最近一次合并发起的时间（将 FROZEN_SCN 以可读的形式展示）；
+	  GLOBAL_BROADCAST_SCN：全局广播的合并版本；
+	  LAST_SCN：上一个已经完成合并的版本；
+	  LAST_FINISH_TIME：上一次合并结束时间；
+	  START_TIME：合并开始时间；
+	  STATUS：
+		  【IDLE】：没有在合并中；【COMPACTION】：正在合并中；【CHECKSUM】：校验 checksum；
+	  IS_ERROR：
+		  【YES】：合并过程存在错误；【NO】：合并过程没有报错；
+	  IS_SUSPENDED：
+		  【YES】：暂停合并状态；【NO】：没有暂停合并；
+	  INFO：展示合并信息。例如：合并失败原因；
+	*/
+```
+
+##### 1.2 查询租户 Zone 的合并信息
+
+系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 1. 使用 `root` 用户登录到数据库的 `sys` 租户；
+    
+-- 2. 查看所有租户各个 Zone 的合并过程
+	-- 查看所有租户各个 Zone 的合并过程(使用 root 用户登录集群的 sys 租户)
+	SELECT * FROM oceanbase.CDB_OB_ZONE_MAJOR_COMPACTION\G;
+	/*
+		TENANT_ID：租户 ID。
+		ZONE：Zone 名称。
+		BROADCAST_SCN：广播的合并版本号。
+		LAST_SCN：上一次合并的版本号。
+		LAST_FINISH_TIME：上一次合并结束时间。
+		START_TIME：合并开始时间。
+		STATUS：合并状态；
+			【IDLE】：未在合并中；【COMPACTING】：正在合并中；【VERIFYING】：正在校验 Checksum 中；
+		IS_ERROR：
+			【YES】：合并过程存在错误；【NO】：合并过程没有报错；
+		INFO：展示合并信息；
+	*/
+```
+
+
+##### 1.3 查询 server 合并进度
+
+从 V4.0.0 版本开始引入 *GV$OB_COMPACTION_PROGRESS* 视图，展示租户的 OBServer 节点级合并进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 查询 server 合并进度
+select * from oceanbase.__all_virtual_server_compaction_progress; 
+select * from oceanbase.GV$OB_COMPACTION_PROGRESS;
+```
+
+
+##### 1.4 查看分区级合并信息
+V4.0.0 版本官方文档中没有，从 V4.3.1 版本开始支持；
+
+通过视图 `GV$OB_MERGE_INFO` 或 `GV$OB_TABLET_COMPACTION_HISTORY` 查看分区级合并信息；
+
+从 V4.0.0 版本开始引入视图 `GV$OB_MERGE_INFO` ，该视图展示了 Tablet 级别的合并基础统计信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 查询 Tablet 级别的合并基础统计信息
+SELECT * FROM oceanbase.GV$OB_MERGE_INFO WHERE TENANT_ID=1002 AND TABLET_ID=200001 ORDER BY START_TIME DESC LIMIT 10;
+/*
+查询结果中，`ACTION` 列中各值的含义如下：
+	`MDS_TABLE_MERGE`：多源数据转储
+	`MAJOR_MERGE`：租户级合并
+	`MEDIUM_MERGE`：分区级合并
+	`MINI_MERGE`：转储/L0 Compaction，Memtable 通过转储变成 SSTable
+	`MINOR_MERGE`：L1 Compaction，多个 Mini SSTable 合成一个
+	`META_MAJOR_MERGE`：一种特殊的 Compaction 类型，是将某个指定时间点之前的数据合成一个 Meta Major SSTable，其数据格式与 Major SSTable 一样，
+		不包含多版本数据和未提交事务数据；
+*/
+```
+
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_PROGRESS` ，展示 Tablet 级 Compaction 的进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+select * from oceanbase.GV$OB_TABLET_COMPACTION_PROGRESS;
+
+-- 查询分区合并进度
+select * from oceanbase.__all_virtual_tablet_compaction_progress;
+```
+
+
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+--  查询 Tablet 级的合并的详细历史信息
+SELECT * FROM oceanbase.GV$OB_TABLET_COMPACTION_HISTORY 
+WHERE TENANT_ID=1002 AND TABLET_ID=200001 ORDER BY START_TIME DESC LIMIT 10;
++----------------+----------+-----------+-------+-----------+-----------------+---------------------+----------------------------+----------------------------+-----------------------------------+-------------+-------------------+-------------------------------+------------------------------+--------------------------------------+-----------------+-----------------------+-------------------+---------------------+------------------------------+----------------------------+-----------------+---------------+----------------------------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------+-------------+-----------+----------------------------------------------------------------+-------------------+
+| SVR_IP         | SVR_PORT | TENANT_ID | LS_ID | TABLET_ID | TYPE            | COMPACTION_SCN      | START_TIME                 | FINISH_TIME                | TASK_ID                           | OCCUPY_SIZE | MACRO_BLOCK_COUNT | MULTIPLEXED_MACRO_BLOCK_COUNT | NEW_MICRO_COUNT_IN_NEW_MACRO | MULTIPLEXED_MICRO_COUNT_IN_NEW_MACRO | TOTAL_ROW_COUNT | INCREMENTAL_ROW_COUNT | COMPRESSION_RATIO | NEW_FLUSH_DATA_RATE | PROGRESSIVE_COMPACTION_ROUND | PROGRESSIVE_COMPACTION_NUM | PARALLEL_DEGREE | PARALLEL_INFO | PARTICIPANT_TABLE                                        | MACRO_ID_LIST | COMMENTS                                                                                                  | START_CG_ID | END_CG_ID | KEPT_SNAPSHOT                                                  | MERGE_LEVEL       |
++----------------+----------+-----------+-------+-----------+-----------------+---------------------+----------------------------+----------------------------+-----------------------------------+-------------+-------------------+-------------------------------+------------------------------+--------------------------------------+-----------------+-----------------------+-------------------+---------------------+------------------------------+----------------------------+-----------------+---------------+----------------------------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------+-------------+-----------+----------------------------------------------------------------+-------------------+
+| 172.xx.xxx.xxx |     2882 |      1002 |  1001 |    200001 | MAJOR_MERGE     | 1706119204801812283 | 2024-01-25 02:03:03.876629 | 2024-01-25 02:03:03.929758 | YB42AC1E87CA-00060FAC10C57D5C-0-0 |           0 |                 0 |                             0 |                            0 |                                    0 |               0 |                     0 |                 1 |                   0 |                            1 |                          0 |               1 | -             | table_cnt=1,[MAJOR]snapshot_version=1706086435242718629; |               | comment="merge_reason="TENANT_MAJOR";time=add_time:1706119382538344|wait_schedule_time=1.34s|total=53.;"; |           0 |         0 | {type:"SNAPSHOT_UNDO_RETENTION", snapshot:1706117574893656222} | MICRO_BLOCK_LEVEL |
+| 172.xx.xxx.xxx |     2882 |      1002 |  1001 |    200001 | MDS_TABLE_MERGE | 1706086731631303497 | 2024-01-24 16:58:52.078436 | 2024-01-24 16:58:52.080722 | YB42AC1E87CA-00060FAC10C5797A-0-0 |           0 |                 0 |                             0 |                            0 |                                    0 |               0 |                     0 |                 1 |                   0 |                            0 |                          0 |               0 | -             |                                                          |               | comment="time=add_time:1706086732078234|total=2.29ms;";                                                   |           0 |         0 |                                                                | MICRO_BLOCK_LEVEL |
+| 172.xx.xxx.xxx |     2882 |      1002 |  1001 |    200001 | MEDIUM_MERGE    | 1706086435242718629 | 2024-01-24 16:56:57.297697 | 2024-01-24 16:56:57.305654 | YB42AC1E87CA-00060FAC10C57979-0-0 |           0 |                 0 |                             0 |                            0 |                                    0 |               0 |                     0 |                 1 |                   0 |                            1 |                          0 |               1 | -             | table_cnt=1,[MAJOR]snapshot_version=1;                   |               | comment="merge_reason="USER_REQUEST";time=add_time:1706086617297507|total=7.96ms;";                       |           0 |         0 | {type:"SNAPSHOT_UNDO_RETENTION", snapshot:1706084810844670506} | MACRO_BLOCK_LEVEL |
+| 172.xx.xxx.xxx |     2882 |      1002 |  1001 |    200001 | MDS_TABLE_MERGE | 1706086356639492056 | 2024-01-24 16:52:37.067139 | 2024-01-24 16:52:37.069771 | YB42AC1E87CA-00060FAC10C57971-0-0 |           0 |                 0 |                             0 |                            0 |                                    0 |               0 |                     0 |                 1 |                   0 |                            0 |                          0 |               0 | -             |                                                          |               | comment="time=add_time:1706086357066962|total=2.63ms;";                                                   |           0 |         0 |                                                                | MICRO_BLOCK_LEVEL |
++----------------+----------+-----------+-------+-----------+-----------------+---------------------+----------------------------+----------------------------+-----------------------------------+-------------+-------------------+-------------------------------+------------------------------+--------------------------------------+-----------------+-----------------------+-------------------+---------------------+------------------------------+----------------------------+-----------------+---------------+----------------------------------------------------------+---------------+-----------------------------------------------------------------------------------------------------------+-------------+-----------+----------------------------------------------------------------+-------------------+
+4 rows in set
+/*
+查询结果中，`TYPE` 列中各值的含义如下：
+	`MDS_TABLE_MERGE`：多源数据转储
+	`MAJOR_MERGE`：租户级合并
+	`MEDIUM_MERGE`：分区级合并
+	`MINI_MERGE`：转储/L0 Compaction，Memtable 通过转储变成 SSTable
+	`MINOR_MERGE`：L1 Compaction，多个 Mini SSTable 合成一个
+	`META_MAJOR_MERGE`：一种特殊的 Compaction 类型，是将某个指定时间点之前的数据合成一个 Meta Major SSTable，其数据格式与 Major SSTable 一样，
+		不包含多版本数据和未提交事务数据；
+*/
+-- 查询分区合并历史记录
+select * from oceanbase.__all_virtual_tablet_compaction_history;
+```
+
+
+#### 2 用户租户查看本租户的合并过程
+##### 2.1 查看本租户的租户级合并信息
+
+系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_MAJOR_COMPACTION* 视图，展示本租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 1. 租户管理员登录数据库；
+    
+-- 2. 查看本租户的合并全局信息；
+	-- 查看本租户的合并全局信息；
+	SELECT * FROM oceanbase.DBA_OB_MAJOR_COMPACTION\G;	-- MySQL 模式
+	SELECT * FROM sys.DBA_OB_MAJOR_COMPACTION\G;        -- Oracle 模式
+	/*
+	DBA_OB_MAJOR_COMPACTION 表字段介绍：
+		FROZEN_SNAPSHOT：最新的合并快照；
+		FROZEN_SCN：最近一次合并的版本号；
+		FROZEN_TIME：最近一次合并发起的时间（将 FROZEN_SCN 以可读的形式展示）；
+		FROZEN_TIME：FROZEN_SCN 的可读时间类型；
+		GLOBAL_BROADCAST_VERSION：全局广播的合并版本；
+		GLOBAL_BROADCAST_SCN：全局广播的合并版本；
+		LAST_VERSION：上一个已经完成合并的版本；
+		LAST_SCN：上一个已经完成合并的版本；
+		LAST_FINISH_TIME：上一次合并结束时间；
+		START_TIME：合并开始时间；
+		STATUS：合并状态；
+			【IDLE】：未在合并中；【COMPACTING】：正在合并中；【VERIFYING】：正在校验 Checksum 中；
+		IS_ERROR：
+			YES：合并过程存在错误；NO：合并过程没有报错；
+		IS_SUSPENDED：
+			YES：暂停合并；NO：没有暂停合并
+		INFO：展示合并信息；例如：合并失败原因；
+	*/
+```
+
+
+系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- 1. 租户管理员登录数据库；
+    
+-- 2. 查看本租户各个 Zone 的合并过程；
+	-- 查看本租户各个 Zone 的合并过程(户租户的租户管理员登录到数据库)
+	SELECT * FROM oceanbase.DBA_OB_ZONE_MAJOR_COMPACTION\G;  -- MySQL 模式
+	SELECT * FROM sys.DBA_OB_ZONE_MAJOR_COMPACTION\G;        -- Oracle 模式
+	/*
+	在执行结果中观察 `status` 列，部分参数的说明如下表所示：
+	DBA_OB_ZONE_MAJOR_COMPACTION 表字段介绍：
+		ZONE：Zone 名称；
+		BROADCAST_VERSION：广播的合并版本号；
+		BROADCAST_SCN：广播的合并版本号；
+		LAST_VERSION：上一次合并的版本号；
+		LAST_SCN：上一次合并的版本号；
+		LAST_FINISH_TIME：上一次合并结束时间；
+		START_TIME：合并开始时间；
+		STATUS：合并状态；
+			【IDLE】：没有在合并中；【COMPACTING】：正在合并中；【VERIFYING】：正在校验 Checksum 中；
+		IS_ERROR：
+			YES：合并过程存在错误；NO：合并过程没有报错；
+		INFO：展示合并信息；
+	*/
+```
+
+
+##### 2.2 查看本租户分区级合并信息
+
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+```sql
+-- MySql 模式
+obclient [oceanbase]> SELECT * FROM oceanbase.GV$OB_TABLET_COMPACTION_HISTORY WHERE TABLET_ID=200001 ORDER BY START_TIME DESC LIMIT 10\G
+
+-- Oracle 模式
+obclient [TEST]> SELECT * FROM SYS.GV$OB_TABLET_COMPACTION_HISTORY WHERE TABLET_ID=200001 AND ROWNUM<=10 ORDER BY START_TIME\G
+/*
+查询结果中，`TYPE` 列中各值的含义如下：
+	`MDS_TABLE_MERGE`：多源数据转储
+	`MAJOR_MERGE`：租户级合并
+	`MEDIUM_MERGE`：分区级合并
+	`MINI_MERGE`：转储/L0 Compaction，Memtable 通过转储变成 SSTable
+	`MINOR_MERGE`：L1 Compaction，多个 Mini SSTable 合成一个
+	`META_MAJOR_MERGE`：一种特殊的 Compaction 类型，是将某个指定时间点之前的数据合成一个 Meta Major SSTable，其数据格式与 Major SSTable 一样，
+		不包含多版本数据和未提交事务数据；
+*/
+```
+
+
+### 2 参考文档：
+
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/15-ocean-base/02-ocean-base/02//ocean-base/#" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+
+
+### 参考文档：
+1. [存储架构概述](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000354478)，介绍 OB 存储架构，及存储引擎的功能：数据存储，转储合并，查询读写，数据校验；
+	 1. [转储和合并](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355112)，转储和合并概述；
+2. [管理数据存储](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355954)，包括转储管理，合并管理，数据压缩；
+	1. [转储管理](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355954)，包括自动触发转储，自动触发转储，手动触发转储，查询转储信息，修改转储配置；
+	2. [OceanBase 数据库的分层转储功能](https://www.oceanbase.com/knowledge-base/oceanbase-database-20000000023?back=kb)，介绍 OceanBase 数据库的分层转储功能；
+	3. [LSM-Tree 和 OceanBase 分层转储](https://my.oschina.net/actiontechoss/blog/8563823)，详细分层转储原理及相关参数介绍；
+3. [如何修改 OceanBase 数据库的合并方式](https://www.oceanbase.com/knowledge-base/oceanbase-database-20000001021?back=kb)，；
+4. *合并管理概述*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819293)，；
+5. *自动触发合并*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819289)，；
+6. *定时触发合并*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819290)，；
+7. *自适应合并*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819294)，；
+8. *手动触发合并*：[V3.2.4](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000946263)，[V4.0.0](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000886130)，[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819291)，；
+9. *手动控制合并*：[V3.2.4](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-0000000001417800)，[V4.0.0](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-0000000001467935)，[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819292)，；
+10. *查看合并信息*：[V3.2.4](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000945932)，[V4.0.0](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000886131)，[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000819295)，；
+	1. [如何查看 Compaction 的当前合并进度及历史记录](https://www.oceanbase.com/knowledge-base/oceanbase-database-1000000000209910?back=kb)，；
+	2. [查询合并过程_v4.0.0](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000886131)，；
+	3. [转储查看](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000376777)，；
+
+
+</div></div>
+
+
