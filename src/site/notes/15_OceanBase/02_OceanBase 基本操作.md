@@ -32,7 +32,8 @@
 			3. *通过 ODC 连接数据库*：[V3.2.3](https://www.oceanbase.com/docs/enterprise-oceanbase-database-cn-10000000000355644)，[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000818876)，；
 			4. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/使用数据库连接池\|使用数据库连接池]]，；
 	4. 物理连接
-		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查询，终止租户会话\|查询，终止租户会话]]，*查询数据库连接情况*；包括物理连接；物理连接主要是指网络连接部分；
+		1. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/查询，终止租户会话\|查询，终止租户会话]]，*查询数据库连接情况*；包括物理连接；物理连接主要是指网络连接部分；
+		2. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
 	5. 逻辑连接
 		1. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/逻辑连接_ODP  会话\|逻辑连接_ODP  会话]]，包括：展示全部 Session，展示 Session 详细状态，终止 Server Session；查询 OBProxy 连接信息；
 		1. 展示 Session 统计项
@@ -71,9 +72,7 @@
 	3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/OceanBase 管理租户_创建，修改，删除租户\|OceanBase 管理租户_创建，修改，删除租户]]，介绍查询，创建，修改，删除租户等；
 	4. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 安全权限/OceanBase 网络安全访问控制\|OceanBase 网络安全访问控制]]，详细介绍查看，设置租户白名单；
 	5. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查看，修改租户的资源配置\|查看，修改租户的资源配置]]，；
-	6. *OceanBase 租户会话管理*
-		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查询，终止租户会话\|查询，终止租户会话]]，查询连接信息；
-		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
+	6. *OceanBase 租户会话管理*，在【数据库连接和路由】部分已介绍；
 	7. *管理用户和权限*
 
 6. 管理数据存储
@@ -89,7 +88,7 @@
 		4. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/OceanBase 数据库转储，合并参数设置\|OceanBase 数据库转储，合并参数设置]]，；
 	2. *查询转储，合并的信息*
 		1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查询转储，合并的信息_V3.x 版本\|查询转储，合并的信息_V3.x 版本]]，；
-		2. [[15_OceanBase/查询 OceanBase 转储信息_V4.x 版本\|查询 OceanBase 转储信息_V4.x 版本]]，；
+		2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查询 OceanBase 转储信息_V4.x 版本\|查询 OceanBase 转储信息_V4.x 版本]]，；
 		3. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/管理数据存储/查看 OceanBase 合并信息_v4.x 版本\|查看 OceanBase 合并信息_v4.x 版本]]，；
 7. 管理内存
 	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/OceanBase 管理内存\|OceanBase 管理内存]]，；
