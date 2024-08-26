@@ -9,8 +9,8 @@
 #### 1 连接 OB 数据库
 1. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/通过黑屏客户端连接 OB 数据库\|通过黑屏客户端连接 OB 数据库]]，；
 2. *OceanBase 租户会话管理*
-	1. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/查询，终止租户会话\|查询，终止租户会话]]，查询连接信息；*查询数据库连接情况*；包括物理连接；物理连接主要是指网络连接部分；
-	2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/租户管理/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
+	1. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/查询，终止租户会话\|查询，终止租户会话]]，查询连接信息；*查询数据库连接情况*；包括物理连接；物理连接主要是指网络连接部分；
+	2. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/设置租户最大连接数\|设置租户最大连接数]]，介绍查询及设置租户的最大连接数；
 3. [[15_OceanBase/02_OceanBase 基本操作/01_数据库连接和路由/逻辑连接_ODP  会话\|逻辑连接_ODP  会话]]，包括：展示全部 Session，展示 Session 详细状态，终止 Server Session；查询 OBProxy 连接信息；
 4. [[15_OceanBase/20_OceanBase 常用 Sql 语句/Sql 相关 timeout 设置\|Sql 相关 timeout 设置]]，；
 
@@ -19,6 +19,7 @@
 2. [[15_OceanBase/02_OceanBase 基本操作/02_集群和多租户管理/02_集群管理/Server 管理及状态#1 检查 OBServer 状态\|Server 管理及状态#1 检查 OBServer 状态]]，；
 3. [[15_OceanBase/20_OceanBase 常用 Sql 语句/日常巡检/检查 NTP 偏移量\|检查 NTP 偏移量]]，；
 4. [[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase SQL 优化常用语句\|OceanBase SQL 优化常用语句]]，；
+5. [[15_OceanBase/20_OceanBase 常用 Sql 语句/OceanBase SQL 优化常用语句_v4.x 版本\|OceanBase SQL 优化常用语句_v4.x 版本]]，；
 
 ##### 2.1 运维最佳实践
 1. [[15_OceanBase/20_OceanBase 常用 Sql 语句/运维最佳实践/OceanBase 集群级别的扩容和缩容\|OceanBase 集群级别的扩容和缩容]]，；
