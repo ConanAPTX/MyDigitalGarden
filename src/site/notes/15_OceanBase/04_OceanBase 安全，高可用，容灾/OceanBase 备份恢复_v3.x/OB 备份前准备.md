@@ -107,15 +107,15 @@ ALTER SYSTEM SET backup_dest_option='log_archive_checkpoint_interval=2m&recovery
 				1. 若 2 个配置项都未设置，则使用默认值 *120s*；若 2 个配置仅设置一个，则已设置的配置项生效；若 2 个配置项都已设置，则以 【*backup_dest_option*】 配置的值为准；
 		2. *recovery_window 参数*：用于控制备份数据可恢复的时间窗口，以及作为判断备份数据是否过期的依据；【*V 3.1.2 版本引入*】
 			1. 该参数取值范围为 \[0, +∞)，默认值为 0，表示备份数据不过期；单位为 d（天），填写值时，需带上单位才能生效；
-			2. 通过 `recovery_window` 判断数据备份过期的方式： 比满足 `当前时间 - 备份时间点 >= recovery_window` 条件的最新备份更早的所有备份都被视为过期；
+			2. 通过 *recovery_window* 判断数据备份过期的方式： 比满足 `当前时间 - 备份时间点 >= recovery_window` 条件的最新备份更早的所有备份都被视为过期；
 			3. 设置 *recovery_window=7d* 表示从当前时间往前推，7 天内的数据保证可恢复，且与这 7 天数据恢复无关的备份数据将被视为过期的数据；对于自动清理场景，备份的数据过期后，系统会按照一定的规则自动清理过期的数据；对于手动清理的场景，备份的数据过期后，管理员可以手动清理过期的备份数据
-			4. 该参数与配置项 *backup_recovery_window* 的功能相同，建议使用配置项 *backup_dest_option* 来设置备份数据可恢复的时间窗口；
+			4. 该参数与配置项 `backup_recovery_window` 的功能相同，建议使用配置项 *backup_dest_option* 来设置备份数据可恢复的时间窗口；
 				1. 若 2 个配置项都未设置，则使用默认值 *0*，表示备份数据不过期；若 2 个配置仅设置一个，则已设置的配置项生效；
 				2. 若 2 个配置项都已设置，则以 【*backup_dest_option*】 配置的值为准；
 		3. *auto_delete_obsolete_backup 参数*：用于控制是否启动自动清理功能；【*V 3.1.2 版本引入*】
 			1. 该参数取值范围为：true，false；默认为 *false*，表示系统不会自动清理过期的备份数据；若值为 true，则表示系统将会自动清理过期的备份数据；
 			2. 自动清理场景下，设置该参数为 true，表示启动自动清理功能后，系统将会自动清理过期的备份数据；
-			3. 该参数与配置项 *auto_delete_expired_backup* 的功能相同，建议使用配置项 *backup_dest_option* 来设置；
+			3. 该参数与配置项 `auto_delete_expired_backup` 的功能相同，建议使用配置项 *backup_dest_option* 来设置；
 				1. 若 2 个配置项都未设置，则使用默认值 *false*，表示不自动清理过期的备份数据；若 2 个配置仅设置一个，则已设置的配置项生效；
 				2. 若 2 个配置项都已设置，则以 【*backup_dest_option*】 配置的值为准；
 		4. *log_archive_piece_switch_interval 参数*：用于控制自动按照时间段来切日志文件的目录；【*V 2.2.77 版本引入*】 			1. 该参数取值范围为： \[1d, 7d\]，默认值为 0，表示不切分 Piece；如果需要开启切分 Piece 的备份，则需要配置此参数；
