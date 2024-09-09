@@ -77,15 +77,18 @@ SHOW PARAMETERS LIKE 'clog_max_unconfirmed_log_count' TENANT='mytenant';
 SHOW PARAMETERS WHERE svr_ip='xx.xx.xx.xx' AND name='clog_max_unconfirmed_log_count' TENANT='mytenant';
 ```
 
-还可以通过查询 `GV$OB_PARAMETERS` 视图查询配置项，与 SHOW 语句不同，通过该视图可以查看集群中的所有配置项（含隐藏配置项）及其所有属性描述；有关该视图的更多信息，请参见 [GV$OB_PARAMETERS（MySQL 模式）](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000034188)，*该视图在 V4.0.0 版本中新增*；
 
+##### 2.2 查询隐藏配置项
+从 V4.0.0 版本开始引入视图 `GV$OB_PARAMETERS`，该视图更多介绍：[[15_OceanBase/99_内部表介绍/性能视图_配置项，变量相关_01\|性能视图_配置项，变量相关_01]]，；
+
+可以通过该视图查询配置项，与 SHOW 语句不同，通过该视图可以查看集群中的所有配置项（含隐藏配置项）及其所有属性描述；
 ```sql  
 -- 查看集群配置项(该视图 V4.0.0 版本中新增*)
 SELECT * FROM GV$OB_PARAMETERS WHERE NAME LIKE '%syslog_level%';  
 ```  
 
-##### 2.2 修改 OceanBase 配置项  
 
+##### 2.3 修改 OceanBase 配置项  
 租户参数即租户级配置项，系统租户（即 sys 租户）和普通租户都可以设置租户级配置项。系统租户可以设置本租户和其他租户的租户级配置项，普通租户只能设置本租户的租户级配置项；
 
 > [!NOTE] `说明：`  
@@ -190,7 +193,7 @@ SHOW GLOBAL VARIABLES WHERE VARIABLE_NAME LIKE 'ob_query_timeout';
 	-- SYS.TENANT_VIRTUAL_GLOBAL_VARIABLE：记录当前租户下的全局变量信息；  
 	SELECT * FROM SYS.TENANT_VIRTUAL_GLOBAL_VARIABLE WHERE VARIABLE_NAME = 'ob_query_timeout';
 ```
-
+关于上述视图更多信息：[[15_OceanBase/99_内部表介绍/性能视图_配置项，变量相关_01#2 OceanBase 变量相关\|性能视图_配置项，变量相关_01#2 OceanBase 变量相关]]，；
 
 ##### 3.2 设置 OceanBase 变量  
   
