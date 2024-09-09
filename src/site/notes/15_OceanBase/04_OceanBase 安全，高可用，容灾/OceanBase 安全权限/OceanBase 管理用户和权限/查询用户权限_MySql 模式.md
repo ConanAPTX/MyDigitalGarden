@@ -51,7 +51,7 @@
 -- 查看用户所拥有的用户级权限
 SELECT * FROM mysql.user WHERE user='user1'\G;
 ```
-更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#1 mysql.user\|MySql 租户权限相关_01#1 mysql.user]]，；
+更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/字典视图_MySql 租户权限相关_01#1 mysql.user\|字典视图_MySql 租户权限相关_01#1 mysql.user]]，；
 
 
 #### 3 查看用户所拥有的数据库级权限
@@ -61,7 +61,7 @@ SELECT * FROM mysql.user WHERE user='user1'\G;
  -- 查看用户所拥有的数据库级权限
  SELECT * FROM mysql.db WHERE user='user1'\G;
 ```
-更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#2 mysql.db\|MySql 租户权限相关_01#2 mysql.db]]，；
+更多该视图的字段及说明请参见：[[15_OceanBase/99_内部表介绍/字典视图_MySql 租户权限相关_01#2 mysql.db\|字典视图_MySql 租户权限相关_01#2 mysql.db]]，；
 
 
 
