@@ -118,8 +118,12 @@
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 分区表概述\|OceanBase 分区表概述]]，；
 		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/分区表_MySql 模式\|分区表_MySql 模式]]，；
 		3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/创建分区表_MySql 模式\|创建分区表_MySql 模式]]，；
-		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 分区裁剪_MySql 模式\|OceanBase 分区裁剪_MySql 模式]]，；
-		5. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/指定分区查询数据\|指定分区查询数据]]，适用于 Oracle 模式，MySql 模式；；
+		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 修改分区规则_MySql 模式\|OceanBase 修改分区规则_MySql 模式]]，；
+		5. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/添加分区_MySQL 模式\|添加分区_MySQL 模式]]，；
+		6. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/删除分区_MySql 模式\|删除分区_MySql 模式]]，；
+		7. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/Truncate 分区_MySql 模式\|Truncate 分区_MySql 模式]]，；
+		8. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 分区裁剪_MySql 模式\|OceanBase 分区裁剪_MySql 模式]]，；
+		9. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/指定分区查询数据\|指定分区查询数据]]，适用于 Oracle 模式，MySql 模式；；
 	4. 创建和管理表组
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/管理表组_MySql 租户\|管理表组_MySql 租户]]，；
 	5. *创建和管理索引*
@@ -131,6 +135,7 @@
 			3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/OceanBase 创建局部索引，全局索引\|OceanBase 创建局部索引，全局索引]]，适用于 Oracle 模式，MySql 模式；
 			4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 创建函数索引_MySql 模式\|OceanBase 创建函数索引_MySql 模式]]，； 
 	6. 管理视图
+		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/管理视图_MySql 模式\|管理视图_MySql 模式]]，创建，修改，删掉视图；
 	7. 管理序列
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/创建和管理序列_MySql 租户\|创建和管理序列_MySql 租户]]，；
 	8. 管理触发器
@@ -142,12 +147,12 @@
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理表_Oracle 租户\|管理表_Oracle 租户]]，；
 		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/查询表的信息_Oracle 模式\|查询表的信息_Oracle 模式]]，；
 		3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理表，表列，视图，视图列的注释\|管理表，表列，视图，视图列的注释]]，查询管理*表，表列，视图，视图列* 的注释；
-		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理视图_Oracle 模式\|管理视图_Oracle 模式]]，；
+		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/管理视图_Oracle 模式\|管理视图_Oracle 模式]]，创建，修改，删掉视图；
 	2. *创建和管理分区*
 		1. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_MySql 租户/OceanBase 分区表概述\|OceanBase 分区表概述]]，；
 		2. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/分区表_Oracle 模式\|分区表_Oracle 模式]]，；
 		3. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/创建分区表_Oracle 模式\|创建分区表_Oracle 模式]]，；
-		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/修改分区规则_Oracle 模式\|修改分区规则_Oracle 模式]]，；
+		4. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/OceanBase 修改分区规则_Oracle 模式\|OceanBase 修改分区规则_Oracle 模式]]，；
 		5. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/添加，删除，Truncate 分区_Oracle 模式\|添加，删除，Truncate 分区_Oracle 模式]]，；
 		6. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/OceanBase 分区裁剪_Oracle 模式\|OceanBase 分区裁剪_Oracle 模式]]，；
 		7. [[15_OceanBase/02_OceanBase 基本操作/数据库对象管理_Oracle 租户/指定分区查询数据\|指定分区查询数据]]，适用于 Oracle 模式，MySql 模式；
@@ -181,7 +186,7 @@
 	2. 集群管理
 	3. 租户管理
 	4. 副本管理
-		1. [[15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍\|副本介绍]]，副本介绍；
+		1. [[15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍\|15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍]]，副本介绍；
 		2. 副本分布
 		3. Locality 介绍
 		4. Locality 常见操作
