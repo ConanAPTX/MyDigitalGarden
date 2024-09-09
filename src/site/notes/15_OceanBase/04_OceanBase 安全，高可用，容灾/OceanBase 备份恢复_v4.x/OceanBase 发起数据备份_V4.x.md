@@ -244,7 +244,7 @@ OceanBase 配项项详情：[系统配置项总览_V3.2.3](https://www.oceanbase
 	2. 副本迁移等后台任务连续失败次数超过该阈值后，将被放入黑名单；
 7. `balance_blacklist_retry_interval`，用于设置副本迁移等后台任务被放入黑名单后的重试时间间隔；
 	1. 【*集群级*】【时间类型】；默认值为 30m，表示 30 分钟，取值范围为：[0s, 180m]；动态生效；
-8. `global_index_build_single_replica_timeout`，用于建全局索引时，设置每个副本构建的超时时间；
+8. `global_index_build_single_replica_timeout`，用于建全局索引时，设置每个副本构建的超时时间；【*该配置项从 V4.0.0 版本开始删除*】
 	1. 【*集群级*】【时间类型】；默认值为 48h，取值范围为：\[1h, +∞)；动态生效；
 9. `ignore_replica_checksum_error`，用于设置是否忽略多副本间校验和检查发生的错误；
 	1. 【*集群级*】【bool】；默认值为 False，取值范围为：[True, False]；动态生效；
