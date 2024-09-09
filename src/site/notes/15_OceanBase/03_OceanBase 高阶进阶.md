@@ -35,7 +35,7 @@
 	7. SQL 语法 > 普通租户_Oracle 模式 > 表达式
 	8. SQL 语法 > 普通租户_Oracle 模式 > 条件
 		1. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/OceanBase 模式匹配条件_Oracle 模式\|OceanBase 模式匹配条件_Oracle 模式]]，；
-		2. [[15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍\|副本介绍]]，；
+		2. [[15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍\|15_OceanBase/02_OceanBase 基本操作/管理数据库/副本介绍]]，；
 		3. [[15_OceanBase/02_OceanBase 基本操作/SQL 参考，SQL 语法/EXISTS 条件\|EXISTS 条件]]，；
 	9. SQL 语法 > 普通租户_Oracle 模式 > 查询和子查询
 	10. SQL 语法 > 普通租户_Oracle 模式 > SQL 语句
@@ -89,3 +89,13 @@
 [[15_OceanBase/03_OceanBase 高阶进阶/死锁检测\|死锁检测]]，；
 
 
+#### 5 PL 系统包（Oracle 模式）
+[[15_OceanBase/DBMS_XPLAN/DBMS_XPLAN 概述\|DBMS_XPLAN 概述]]，DISABLE_OPT_TRACE，ENABLE_OPT_TRACE，SET_OPT_TRACE_PARAMETER，DISPLAY_ACTIVE_SESSION_PLAN，DISPLAY，DISPLAY_CURSOR，DISPLAY_SQL_PLAN_BASELINE；
+
+
+#### 6 副本管理
+1. [[15_OceanBase/副本管理/副本介绍\|15_OceanBase/副本管理/副本介绍]]，；
+	1. [[15_OceanBase/副本管理/查看日志流的信息\|查看日志流的信息]]，；
+2. [[15_OceanBase/副本管理/副本分布\|副本分布]]，；
+3. [[15_OceanBase/副本管理/修改 Locality\|修改 Locality]]，；
+4. [[15_OceanBase/副本管理/Unit 迁移\|Unit 迁移]]，；
