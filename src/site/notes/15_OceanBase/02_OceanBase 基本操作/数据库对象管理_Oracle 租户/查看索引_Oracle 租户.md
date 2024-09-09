@@ -8,7 +8,7 @@
 ### 查看索引_Oracle 租户
 
 #### 1 查看索引信息
-可以通过 `USER_INDEXES`，`ALL_INDEXES`，`DBA_INDEXES` 系统视图查看索引，视图详细情况：[[15_OceanBase/99_内部表介绍/Oracle 租户索引信息_01#1 查看索引信息\|Oracle 租户索引信息_01#1 查看索引信息]]，；
+可以通过 `USER_INDEXES`，`ALL_INDEXES`，`DBA_INDEXES` 系统视图查看索引，视图详细情况：[[15_OceanBase/99_内部表介绍/系统视图_Oracle 租户索引信息_01#1 查看索引信息\|系统视图_Oracle 租户索引信息_01#1 查看索引信息]]，；
 
 ##### 1.1 查看用户拥有的所有表的索引信息
 ```sql
@@ -79,7 +79,7 @@ PARTITIONED：VARCHAR2(3)，NO，表示索引是否是分区索引；
 
 
 #### 2 查询索引列信息
-可以通过 `ALL_IND_COLUMNS`，`USER_IND_COLUMNS`，`DBA_IND_COLUMNS` 系统视图查看索引，视图详细情况：[[15_OceanBase/99_内部表介绍/Oracle 租户索引信息_01#2 查询索引列信息\|Oracle 租户索引信息_01#2 查询索引列信息]]，；
+可以通过 `ALL_IND_COLUMNS`，`USER_IND_COLUMNS`，`DBA_IND_COLUMNS` 系统视图查看索引，视图详细情况：[[15_OceanBase/99_内部表介绍/系统视图_Oracle 租户索引信息_01#2 查询索引列信息\|系统视图_Oracle 租户索引信息_01#2 查询索引列信息]]，；
 
 ##### 2.1 查看表的索引的详细信息
 查看表的索引的详细信息；
