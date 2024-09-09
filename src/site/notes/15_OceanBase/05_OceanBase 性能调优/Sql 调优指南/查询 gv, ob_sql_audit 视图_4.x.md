@@ -36,14 +36,14 @@ obclient -h10.x.x.x -P2883 -uroot@oboracle#obcluster -p   -- 通过普通用户�
 CALL DBMS_MONITOR.OB_SESSION_TRACE_ENABLE(null,1,0.5,'ALL');
 Query OK, 0 rows affected
 
-SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
-	svr_ip,svr_port,TRACE_ID,tenant_id,user_name, db_name, sql_id, plan_id, elapsed_time, execute_time, query_sql 
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ TRACE_ID,plan_id,svr_ip,svr_port,tenant_id,user_name,db_name,sql_id,elapsed_time,execute_time,query_sql 
 FROM oceanbase.gv$ob_sql_audit 
 WHERE tenant_id = 1001 and user_name = 'xxxx' and query_sql like'%%'
+	and ELAPSED_TIME > 100000
 limit 10 ;
 
-SELECT request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL 
-FROM oceanbase.v$OB_SQL_AUDIT 
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ request_id,usec_to_time(request_time),ELAPSED_TIME,QUEUE_TIME,EXECUTE_TIME,FLT_TRACE_ID,QUERY_SQL 
+FROM oceanbase.gv$ob_sql_audit 
 where ELAPSED_TIME > 100000 limit 10 ;
 +------------+----------------------------+--------------+------------+--------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | request_id | usec_to_time(request_time) | ELAPSED_TIME | QUEUE_TIME | EXECUTE_TIME | FLT_TRACE_ID                         | QUERY_SQL                                                                                                                                                          |
@@ -74,8 +74,7 @@ SQL audit 记录的等待事件如下相关信息：
 
 ##### 1.2 Oracle 租户
 ```sql
-SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ 
-	svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
+SELECT /*+ QUERY_TIMEOUT(10000000) READ_CONSISTENCY(WEAK) */ svr_ip,svr_port,tenant_id,user_name, db_name, sql_id, plan_id, type, elapsed_time, execute_time, query_sql 
 FROM sys.gv$ob_sql_audit 
 WHERE tenant_id=1005 and query_sql LIKE '%INSERT INTO test%' and rownum <= 10 
 ORDER BY request_time DESC;
