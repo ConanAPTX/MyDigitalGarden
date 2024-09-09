@@ -35,7 +35,7 @@ limit 10;
 ```sql
 select * from oceanbase.CDB_OB_DATABASES where tenant_id=1002 limit 10;  
 ```
-关于该视图更多信息：[[15_OceanBase/99_内部表介绍/数据库基本信息_01#3 CDB_OB_DATABASES\|数据库基本信息_01#3 CDB_OB_DATABASES]]，；
+关于该视图更多信息：[[15_OceanBase/99_内部表介绍/字典视图_数据库基本信息_01#3 CDB_OB_DATABASES\|字典视图_数据库基本信息_01#3 CDB_OB_DATABASES]]，；
 
 从 V4.0.0 版本开始引入 _oceanbase.DBA_OB_DATABASES_ 视图：展示租户的数据库元信息；
 ```sql
@@ -45,7 +45,7 @@ select * from oceanbase.CDB_OB_DATABASES where tenant_id=1002 limit 10;
 -- Oracle 租户
 select * from sys.CDB_OB_DATABASES
 ```
-关于该视图更多信息：[[15_OceanBase/99_内部表介绍/数据库基本信息_01#4 DBA_OB_DATABASES\|数据库基本信息_01#4 DBA_OB_DATABASES]]，；
+关于该视图更多信息：[[15_OceanBase/99_内部表介绍/字典视图_数据库基本信息_01#4 DBA_OB_DATABASES\|字典视图_数据库基本信息_01#4 DBA_OB_DATABASES]]，；
 
 
 
