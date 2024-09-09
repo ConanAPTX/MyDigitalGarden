@@ -27,7 +27,7 @@ supervisorctl status
 	oms_drc_supervisor               RUNNING   pid 1223, uptime 3 days, 5:39:38
 	sshd                             RUNNING   pid 1419, uptime 3 days, 5:39:27
 
-# 3.登录 OMS 控制台，在 **机器列表** 页面确认机器数量是否符合预期。
+# 3.登录 OMS 控制台，在 **机器列表** 页面确认机器数量是否符合预期；
 ```
 详情请参见 OMS 用户指南中的 [登录 OMS 控制台](https://www.oceanbase.com/docs/enterprise-oms-doc-cn-1000000000613321) 和 [查看机器信息](https://www.oceanbase.com/docs/enterprise-oms-doc-cn-1000000000613422)，；
 
