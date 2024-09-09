@@ -45,7 +45,7 @@ SELECT owner, table_name, tablespace_name, avg_row_len, num_rows, last_analyzed 
 SELECT table_name FROM user_tables ORDER BY table_name; -- 查询所有表的名称  
 SELECT * FROM user_tables where table_name = upper('ali_org');  
 ```  
-关于视图更多信息：[[15_OceanBase/99_内部表介绍/表和视图相关_oracle_01#1 USER_TABLES, ALL_TABLES, DBA_TABLES\|表和视图相关_oracle_01#1 USER_TABLES, ALL_TABLES, DBA_TABLES]]，；
+关于视图更多信息：[[15_OceanBase/99_内部表介绍/字典视图_表和视图相关_oracle_01#1 USER_TABLES, ALL_TABLES, DBA_TABLES\|字典视图_表和视图相关_oracle_01#1 USER_TABLES, ALL_TABLES, DBA_TABLES]]，；
 
 ```sql  
 SELECT t.owner, t.table_name, c.column_name, data_type, data_length, nullable, index_name  
@@ -70,7 +70,7 @@ DESCRIBE TEST.AA;
 
 
 #### 3 查询视图的信息
-关于视图更多信息：[[15_OceanBase/99_内部表介绍/表和视图相关_oracle_01#2 USER_VIEWS, ALL_VIEWS, DBA_VIEWS\|表和视图相关_oracle_01#2 USER_VIEWS, ALL_VIEWS, DBA_VIEWS]]，；
+关于视图更多信息：[[15_OceanBase/99_内部表介绍/字典视图_表和视图相关_oracle_01#2 USER_VIEWS, ALL_VIEWS, DBA_VIEWS\|字典视图_表和视图相关_oracle_01#2 USER_VIEWS, ALL_VIEWS, DBA_VIEWS]]，；
 
 #### 4 查看表、视图的所有列；
 ```sql
@@ -84,7 +84,7 @@ SELECT * FROM DBA_TAB_COLUMNS
 -- 查看当前用户可访问的表、视图的所有列
 SELECT * FROM ALL_TAB_COLUMNS
 ```
-关于视图更多信息：[[15_OceanBase/99_内部表介绍/表和视图相关_oracle_01#3 查询表，视图的列信息\|表和视图相关_oracle_01#3 查询表，视图的列信息]]，；
+关于视图更多信息：[[15_OceanBase/99_内部表介绍/字典视图_表和视图相关_oracle_01#3 查询表，视图的列信息\|字典视图_表和视图相关_oracle_01#3 查询表，视图的列信息]]，；
 
 
 ### 参考文档
