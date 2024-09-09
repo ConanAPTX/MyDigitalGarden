@@ -42,7 +42,7 @@ SELECT * FROM oceanbase.__all_zone WHERE name = 'region';
 ```sql
 SELECT * FROM oceanbase.DBA_OB_ZONES WHERE name = 'idc';
 ```
-关于该视图更多信息；[[15_OceanBase/99_内部表介绍/数据库基本信息_01#1 DBA_OB_ZONES\|数据库基本信息_01#1 DBA_OB_ZONES]]，；
+关于该视图更多信息；[[15_OceanBase/99_内部表介绍/字典视图_数据库基本信息_01#1 DBA_OB_ZONES\|字典视图_数据库基本信息_01#1 DBA_OB_ZONES]]，；
 
 
 ### 参考文档
