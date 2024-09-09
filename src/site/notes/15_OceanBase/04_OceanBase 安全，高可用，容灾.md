@@ -17,7 +17,7 @@
 6. *V4.2.1:管理数据库 > 高可用 > 闪回查询*，`闪回`，；
 	1. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/闪回/OceanBase Restore Point\|OceanBase Restore Point]]，；
 	2. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/闪回/OceanBase  闪回查询多数据库版本\|OceanBase  闪回查询多数据库版本]]，；
-	3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/闪回/OceanBase 闪回查询\|OceanBase 闪回查询]]，；
+	3. [[15_OceanBase/04_OceanBase 安全，高可用，容灾/OceanBase 高可用和容灾/闪回/OceanBase 闪回查询_MySql，Oracle 模式\|OceanBase 闪回查询_MySql，Oracle 模式]]，；
 
 #### 2 OceanBase 安全权限
 1. *V4.2.1:管理数据库 > 安全权限 > 安全权限概述*：[V4.3.1](https://www.oceanbase.com/docs/common-oceanbase-database-cn-1000000000818464)，；
