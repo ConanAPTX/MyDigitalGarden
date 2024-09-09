@@ -90,7 +90,7 @@ obclient [oceanbase]> SELECT * FROM mysql.default_roles;
 	DEFAULT_ROLE_USER：varchar(128)，NO，默认启用的 Role 的账户名；
 */
 ```
-有关该视图各字段的详细说明：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#3 mysql.default_roles\|MySql 租户权限相关_01#3 mysql.default_roles]]，；
+有关该视图各字段的详细说明：[[15_OceanBase/99_内部表介绍/字典视图_MySql 租户权限相关_01#3 mysql.default_roles\|字典视图_MySql 租户权限相关_01#3 mysql.default_roles]]，；
 
 
 ##### 2.3 查看角色与用户之间的授权关系
@@ -119,7 +119,7 @@ obclient [oceanbase]> SELECT * FROM mysql.role_edges;
 	WITH_ADMIN_OPTION：varchar(1)，NO，授予角色的权限是否具有 ADMIN 权限选项，即是否有权限将该角色转授给其他用户或角色；
 */
 ```
-有关该视图各字段的详细说明：[[15_OceanBase/99_内部表介绍/MySql 租户权限相关_01#4 mysql.role_edges\|MySql 租户权限相关_01#4 mysql.role_edges]]，；
+有关该视图各字段的详细说明：[[15_OceanBase/99_内部表介绍/字典视图_MySql 租户权限相关_01#4 mysql.role_edges\|字典视图_MySql 租户权限相关_01#4 mysql.role_edges]]，；
 
 ### 参考文档
 
