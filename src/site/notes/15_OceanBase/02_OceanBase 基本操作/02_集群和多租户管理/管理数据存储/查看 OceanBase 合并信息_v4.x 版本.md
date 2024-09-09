@@ -14,7 +14,7 @@
 
 ##### 1.1 查看租户的合并全局信息
 
-系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 1. 使用 `root` 用户登录到数据库的 `sys` 租户；
     
@@ -41,7 +41,7 @@
 
 ##### 1.2 查询租户 Zone 的合并信息
 
-系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+系统租户从 V4.0.0 版本开始引入 *oceanbase.CDB_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 1. 使用 `root` 用户登录到数据库的 `sys` 租户；
     
@@ -66,7 +66,7 @@
 
 ##### 1.3 查询 server 合并进度
 
-从 V4.0.0 版本开始引入 *GV$OB_COMPACTION_PROGRESS* 视图，展示租户的 OBServer 节点级合并进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+从 V4.0.0 版本开始引入 *GV$OB_COMPACTION_PROGRESS* 视图，展示租户的 OBServer 节点级合并进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 查询 server 合并进度
 select * from oceanbase.__all_virtual_server_compaction_progress; 
@@ -79,7 +79,7 @@ V4.0.0 版本官方文档中没有，从 V4.3.1 版本开始支持；
 
 通过视图 `GV$OB_MERGE_INFO` 或 `GV$OB_TABLET_COMPACTION_HISTORY` 查看分区级合并信息；
 
-从 V4.0.0 版本开始引入视图 `GV$OB_MERGE_INFO` ，该视图展示了 Tablet 级别的合并基础统计信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+从 V4.0.0 版本开始引入视图 `GV$OB_MERGE_INFO` ，该视图展示了 Tablet 级别的合并基础统计信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 查询 Tablet 级别的合并基础统计信息
 SELECT * FROM oceanbase.GV$OB_MERGE_INFO WHERE TENANT_ID=1002 AND TABLET_ID=200001 ORDER BY START_TIME DESC LIMIT 10;
@@ -95,7 +95,7 @@ SELECT * FROM oceanbase.GV$OB_MERGE_INFO WHERE TENANT_ID=1002 AND TABLET_ID=2000
 */
 ```
 
-从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_PROGRESS` ，展示 Tablet 级 Compaction 的进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_PROGRESS` ，展示 Tablet 级 Compaction 的进度信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 select * from oceanbase.GV$OB_TABLET_COMPACTION_PROGRESS;
 
@@ -104,7 +104,7 @@ select * from oceanbase.__all_virtual_tablet_compaction_progress;
 ```
 
 
-从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 --  查询 Tablet 级的合并的详细历史信息
 SELECT * FROM oceanbase.GV$OB_TABLET_COMPACTION_HISTORY 
@@ -136,7 +136,7 @@ select * from oceanbase.__all_virtual_tablet_compaction_history;
 #### 2 用户租户查看本租户的合并过程
 ##### 2.1 查看本租户的租户级合并信息
 
-系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_MAJOR_COMPACTION* 视图，展示本租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_MAJOR_COMPACTION* 视图，展示本租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 1. 租户管理员登录数据库；
     
@@ -167,7 +167,7 @@ select * from oceanbase.__all_virtual_tablet_compaction_history;
 ```
 
 
-系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+系统租户从 V4.0.0 版本开始引入 *oceanbase.DBA_OB_ZONE_MAJOR_COMPACTION* 视图，查询所有租户的合并全局信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- 1. 租户管理员登录数据库；
     
@@ -196,7 +196,7 @@ select * from oceanbase.__all_virtual_tablet_compaction_history;
 
 ##### 2.2 查看本租户分区级合并信息
 
-从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/合并信息_01\|合并信息_01]]，；
+从 V4.0.0 版本开始引入视图 `GV$OB_TABLET_COMPACTION_HISTORY`，用于展示 Tablet 级 Compaction 的历史信息；关于该视图：[[15_OceanBase/99_内部表介绍/字典视图_合并信息_01\|字典视图_合并信息_01]]，；
 ```sql
 -- MySql 模式
 obclient [oceanbase]> SELECT * FROM oceanbase.GV$OB_TABLET_COMPACTION_HISTORY WHERE TABLET_ID=200001 ORDER BY START_TIME DESC LIMIT 10\G
